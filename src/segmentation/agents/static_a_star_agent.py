@@ -1,6 +1,13 @@
+from typing import Callable
+
 from segmentation_core.engine import GameState, Action, Player
 
 class StaticAStarAgent:
+    # Name of the agent for leaderboard purposes
+    _name: str
+    # Which side the agent is on
+    _side: Player
+
     def __init__(self, side: Player):
         self._name = "Static A* Agent"
         self._side = side
@@ -13,8 +20,26 @@ class StaticAStarAgent:
     def side(self) -> Player:
         return self._side
 
-    def a_star(self, state: GameState):
+    def a_star(self, state: GameState, heuristic: Callable[[GameState], float]):
+        """
+        Task 3: Implement the A* search algorithm on the game tree to determine a sequence of actions
+        that gets your agent to SlothBot.
+
+        Note:
+            - You can assume that SlothBot is stationary and will always be reachable
+        """
         raise NotImplementedError
 
     def get_action(self, state: GameState) -> Action:
+        """
+        Computes the next action to take based on the given game state.
+
+        Parameters:
+            `state` (`GameState`): The current state of the game.
+
+        Returns:
+            Action: The next action to take to move towards SlothBot.
+
+        Task 3: Return the next action to take based on the given game state to get
+        """
         raise NotImplementedError
