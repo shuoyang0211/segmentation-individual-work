@@ -4,7 +4,11 @@ from segmentation_core.engine import Action, GameState, Player
 from segmentation_core.agents import AgentProtocol
 
 
-def game_loop(filename: str, agent_one_class: Type[AgentProtocol], agent_two_class: Type[AgentProtocol]) -> tuple[Player, list[Action], list[Action]]:
+def game_loop(
+    filename: str,
+    agent_one_class: Type[AgentProtocol],
+    agent_two_class: Type[AgentProtocol],
+) -> tuple[Player, list[Action], list[Action]]:
     """
     Helper function to run a game loop between two agents in a given world.
 

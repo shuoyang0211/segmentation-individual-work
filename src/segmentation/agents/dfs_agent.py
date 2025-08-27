@@ -1,11 +1,11 @@
 from segmentation_core.engine import GameState, Action, Player
 
-class DFSAgent():
+
+class DFSAgent:
     # Name of the agent for leaderboard purposes
     _name: str
     # Which side the agent is on
     _side: Player
-
 
     def __init__(self, side: Player):
         self._name = "DFS Agent"

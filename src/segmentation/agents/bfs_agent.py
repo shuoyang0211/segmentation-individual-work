@@ -1,5 +1,6 @@
 from segmentation_core.engine import GameState, Action, Player
 
+
 class BFSAgent:
     # Name of the agent for leaderboard purposes
     _name: str

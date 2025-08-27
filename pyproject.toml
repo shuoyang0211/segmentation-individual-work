@@ -4,8 +4,9 @@ version = "0.1.0"
 requires-python = ">=3.11"
 dependencies = [
     "pygame>=2.6.1",
-    "pytest>=8.4.1",
-    "segmentation_core==0.1.*",
+ "pytest>=8.4.1",
+ "ruff>=0.12.10",
+ "segmentation_core==0.1.*",
 ]
 
 [project.scripts]
@@ -15,7 +16,7 @@ segmentation = "segmentation.__main__:main"
 package = true
 
 [tool.uv.sources]
-segmentation-core = { index = "course" }    # hyphen (PEP 503 normalized)
+segmentation-core = { index = "course" } # hyphen (PEP 503 normalized)
 
 [[tool.uv.index]]
 name = "course"

@@ -2,6 +2,7 @@ import pygame
 
 from segmentation_core.engine import GameState, Action, Player
 
+
 class TeleopAgent:
     def __init__(self, side: Player) -> None:
         self._name = "Teleop Agent"
@@ -17,7 +18,6 @@ class TeleopAgent:
     @property
     def side(self) -> Player:
         return self._side
-
 
     def _from_key(self, key: int) -> Action | None:
         if key == pygame.K_SPACE:

@@ -1,6 +1,5 @@
-from typing import Callable
-
 from segmentation_core.engine import GameState, Action, Player
+
 
 class DynamicAStarAgent:
     # Name of the agent for leaderboard purposes

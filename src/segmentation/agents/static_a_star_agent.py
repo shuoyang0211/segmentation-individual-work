@@ -2,6 +2,7 @@ from typing import Callable
 
 from segmentation_core.engine import GameState, Action, Player
 
+
 class StaticAStarAgent:
     # Name of the agent for leaderboard purposes
     _name: str
