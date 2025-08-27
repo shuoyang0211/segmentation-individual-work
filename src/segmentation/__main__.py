@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from argparse import ArgumentParser
-from enum import StrEnum
+from enum import Enum
 from time import sleep
 from typing import Callable
 
@@ -11,7 +11,7 @@ from segmentation_core.agents import AgentProtocol, ChaserBot, SlothBot, RandomB
 from segmentation.agents import BFSAgent, DFSAgent, DynamicAStarAgent, StaticAStarAgent, TeleopAgent
 from segmentation.renderer import render
 
-class AgentId(StrEnum):
+class AgentId(Enum, str):
     BFS           = "bfs"
     DFS           = "dfs"
     CHASER        = "chaser"

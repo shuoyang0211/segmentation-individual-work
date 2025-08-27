@@ -60,7 +60,7 @@ uv run pytest
 
 #### Setting up your environment & Installing Dependencies
 
-If you prefer not having to install another package manager, then you can choose to use a currently installed Python interpreter and configure your virtual environment manually. It's recommended to use a Python interpreter with version 3.11+, although it is possible to modify the stencil code type hints to make things work with Python 3.10 (we recommend against it).
+If you prefer not having to install another package manager, then you can choose to use a currently installed Python interpreter and configure your virtual environment manually. It's recommended to use a Python interpreter with version 3.11+, although it should be possible to run the stencil with a 3.10 interpreter.
 
 To setup your virtual environment we provide a setup script at `scripts/setup.sh`.
 
