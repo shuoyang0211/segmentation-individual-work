@@ -13,5 +13,8 @@ class StaticAStarAgent:
     def side(self) -> Player:
         return self._side
 
+    def a_star(self, state: GameState):
+        raise NotImplementedError
+
     def get_action(self, state: GameState) -> Action:
         raise NotImplementedError

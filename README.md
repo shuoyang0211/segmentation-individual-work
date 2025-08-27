@@ -47,6 +47,12 @@ To run the starter code use:
 uv run segmentation [--help] [--world WORLD] [--agent-one AGENT_ID] [--agent-two AGENT_ID] [--headless] [--render-delay]
 ```
 
+To run the provided tests (or ones you created use):
+
+```
+uv run pytest
+```
+
 > [!NOTE]
 > No sourcing required! If you prefer the virtual environment folder to not be called `.venv` then you can pass a name to the `uv venv` command. However, this would require setting the `UV_PROJECT_ENVIRONMENT` variable to this name either prior to every `uv sync` and `uv run` command, exporting the variable in every terminal session, or using some external dependency to manage your environment variables like [`direnv`](https://direnv.net/).
 
@@ -74,8 +80,14 @@ source .venv/bin/activate
 > [!TIP]
 > You should see `(.venv)` next to your terminal prompt when your environment is successfully sourced. Alternatively, you can verify if the environment is sourced by running `which python3`. This path should point to the location of your virtual environment.
 
-To run the stencil:
+To run the starter code use:
 
 ```
 python3 -m segmentation [--help] [--world WORLD] [--agent-one AGENT_ID] [--agent-two AGENT_ID] [--headless] [--render-delay]
+```
+
+To run the provided tests (or ones you created use):
+
+```
+pytest
 ```

@@ -45,7 +45,7 @@ def get_agent(agent_id: AgentId, **kwargs) -> AgentProtocol:
 
 def main() -> None:
     parser = ArgumentParser()
-    parser.add_argument("--world", type=str, default="worlds/simple.world")
+    parser.add_argument("--world", type=str, default="worlds/small.world")
     parser.add_argument("--agent-one", type=AgentId, choices=list(AgentId), default=AgentId.TELEOP)
     parser.add_argument("--agent-two", type=AgentId, choices=list(AgentId), default=AgentId.TELEOP)
     parser.add_argument("--headless", action="store_true")
