@@ -47,8 +47,9 @@ fi
 
 "$VENV_DIR/bin/python" -m pip install --upgrade pip >/dev/null
 
-"$VENV_DIR/bin/python" -m pip install -e . >/dev/null
-echo "Installed dependencies from pyproject.toml"
+"$VENV_DIR/bin/python" -m pip install -r requirements.txt >/dev/null
+pip install -e . >/dev/null
+echo "Installed dependencies from requirements.txt"
 
 echo "Using interpreter: $("$PYTHON_BIN" --version)"
 echo "To activate: source \"$VENV_DIR/bin/activate\""

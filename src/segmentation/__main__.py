@@ -11,7 +11,7 @@ from segmentation_core.agents import AgentProtocol, ChaserBot, SlothBot, RandomB
 from segmentation.agents import BFSAgent, DFSAgent, DynamicAStarAgent, StaticAStarAgent, TeleopAgent
 from segmentation.renderer import render
 
-class AgentId(Enum, str):
+class AgentId(str, Enum):
     BFS           = "bfs"
     DFS           = "dfs"
     CHASER        = "chaser"

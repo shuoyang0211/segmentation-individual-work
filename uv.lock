@@ -99,10 +99,22 @@ source = { editable = "." }
 dependencies = [
     { name = "pygame" },
     { name = "pytest" },
+    { name = "segmentation-core" },
 ]
 
 [package.metadata]
 requires-dist = [
     { name = "pygame", specifier = ">=2.6.1" },
     { name = "pytest", specifier = ">=8.4.1" },
+    { name = "segmentation-core", specifier = "==0.1.*", index = "https://harvard-cs182-f25.github.io/segmentation/wheels/" },
+]
+
+[[package]]
+name = "segmentation-core"
+version = "0.1.1"
+source = { registry = "https://harvard-cs182-f25.github.io/segmentation/wheels/" }
+wheels = [
+    { url = "https://harvard-cs182-f25.github.io/segmentation/wheels/segmentation-core/segmentation_core-0.1.1-cp310-abi3-macosx_10_12_x86_64.macosx_11_0_arm64.macosx_10_12_universal2.whl", hash = "sha256:73a723780e4a8559a0b2ae94d395fcadf917642ae416249cae70864aed689e1a" },
+    { url = "https://harvard-cs182-f25.github.io/segmentation/wheels/segmentation-core/segmentation_core-0.1.1-cp310-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:9dc404f5a6c308427eafc3bd7da7a7a154a49bc6d66da3c38d26c42cea453bd8" },
+    { url = "https://harvard-cs182-f25.github.io/segmentation/wheels/segmentation-core/segmentation_core-0.1.1-cp310-abi3-win_amd64.whl", hash = "sha256:90e94ee926e9800fef9861051e90a87f36ee13209dfbee09d285e2c7587ef2df" },
 ]

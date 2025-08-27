@@ -5,6 +5,7 @@ requires-python = ">=3.11"
 dependencies = [
     "pygame>=2.6.1",
     "pytest>=8.4.1",
+    "segmentation_core==0.1.*",
 ]
 
 [project.scripts]
@@ -12,3 +13,12 @@ segmentation = "segmentation.__main__:main"
 
 [tool.uv]
 package = true
+
+[tool.uv.sources]
+segmentation-core = { index = "course" }    # hyphen (PEP 503 normalized)
+
+[[tool.uv.index]]
+name = "course"
+url = "https://harvard-cs182-f25.github.io/segmentation/wheels/"
+format = "simple"
+explicit = true
