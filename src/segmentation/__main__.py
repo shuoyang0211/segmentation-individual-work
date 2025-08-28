@@ -14,6 +14,7 @@ from segmentation_core.agents import (
     RandomBot,
     VoronoiBot,
     TreeBot,
+    SnakeBot,
 )
 from segmentation.agents import (
     BFSAgent,
@@ -36,6 +37,7 @@ class AgentId(str, Enum):
     TREE = "tree"
     VORONOI = "voronoi"
     SLOTH = "sloth"
+    SNAKE = "snake"
 
 
 AGENT_REGISTRY: dict[AgentId, Callable[..., AgentProtocol]] = {
@@ -49,6 +51,7 @@ AGENT_REGISTRY: dict[AgentId, Callable[..., AgentProtocol]] = {
     AgentId.TREE: TreeBot,
     AgentId.VORONOI: VoronoiBot,
     AgentId.SLOTH: SlothBot,
+    AgentId.SNAKE: SnakeBot,
 }
 
 

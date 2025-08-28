@@ -6,7 +6,7 @@ from tests.utils import game_loop
 
 def test_path_length():
     """
-    Verifies that the path taken by the BFS agent is the shortest path from the
+    Verifies that the path taken by the A* agent is the shortest path from the
     agent's starting position to the SlothBot's starting position.
     """
 
