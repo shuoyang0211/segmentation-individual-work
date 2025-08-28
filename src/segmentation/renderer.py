@@ -1,28 +1,15 @@
 import pygame
 import pygame.freetype as ft
-from typing import List, Tuple
 
-# Your game engine types:
 from segmentation_core.engine import GameState, Player
 
 
 class Renderer:
-    """
-    Usage:
-        renderer = SegmentationBoardRenderer(initial_board_size=(20, 15))
-        # inside your game loop:
-        unhandled = renderer.render(game_state)
-        # forward 'unhandled' to your teleop agent if you want it to read keys
-    """
-
-    # ---------- Style / layout constants ----------
-    # Window & sizing
     DEFAULT_MIN_W = 1024
     DEFAULT_MIN_H = 720
-    MIN_CELL_PX   = 16
+    MIN_CELL_PX   = 8
     MAX_CELL_PX   = 128
 
-    # HUD
     HUD_H         = 72
     HUD_MARGIN    = 16
     CARD_GAP      = 16
@@ -53,8 +40,11 @@ class Renderer:
     TILE_BG = (40, 40, 48)
     WALL    = (90, 90, 90)
 
-    P1 = (220, 90, 70)   # red
-    P2 = (70, 120, 220)  # blue
+    P1 = (220, 90, 70)
+    P2 = (70, 120, 220)
+
+    P1_DARK = (140, 20, 10)
+    P2_DARK = (20, 60, 140)
 
     CLAIM_A = (220, 90, 70, 80)
     CLAIM_B = (70, 120, 220, 80)
@@ -63,10 +53,9 @@ class Renderer:
 
     def __init__(
         self,
-        initial_board_size: Tuple[int, int] = (20, 15),
-        window_title: str = "Segmentation – Board",
+        initial_board_size: tuple[int, int] = (20, 15),
+        window_title: str = "Segmentation",
     ) -> None:
-        """Initialize pygame, window, fonts, and base sizing immediately."""
         if not pygame.get_init():
             pygame.init()
         pygame.display.set_caption(window_title)
@@ -79,10 +68,9 @@ class Renderer:
         self._font: ft.Font = ft.Font(None, 24)
         self._font_small: ft.Font = ft.Font(None, 18)
 
-        self._last_board_size: Tuple[int, int] = (self._board_w0, self._board_h0)
+        self._last_board_size: tuple[int, int] = (self._board_w0, self._board_h0)
 
-    # ---------- Init / sizing helpers ----------
-    def _desktop_size(self) -> Tuple[int, int]:
+    def _desktop_size(self) -> tuple[int, int]:
         info = pygame.display.Info()
         return info.current_w, info.current_h
 
@@ -95,7 +83,6 @@ class Renderer:
         return max(self.MIN_CELL_PX, min(self.MAX_CELL_PX, min(cell_w, cell_h)))
 
     def _create_fitted_window(self, board_w: int, board_h: int) -> pygame.Surface:
-        """Create & return a window sized to fit the grid, clamped to desktop."""
         desk_w, desk_h = self._desktop_size()
         max_w = int(desk_w * 0.98)
         max_h = int(desk_h * 0.98)
@@ -106,13 +93,10 @@ class Renderer:
         )
         return pygame.display.set_mode((win_w, win_h), pygame.RESIZABLE)
 
-    # ---------- Layout helpers ----------
-    def _board_origin(self, board_w: int, board_h: int) -> Tuple[int, int]:
-        """Center the grid inside the current window, under the HUD, honoring grid pads."""
+    def _board_origin(self, board_w: int, board_h: int) -> tuple[int, int]:
         win_w, win_h = self._screen.get_size()
         grid_w = board_w * self._tile
         grid_h = board_h * self._tile
-        # Horizontal center in window
         x = (win_w - grid_w) // 2
         avail_h = win_h - self.HUD_H - self.GRID_TOP_PAD - self.GRID_BOTTOM_PAD
         y = self.HUD_H + self.GRID_TOP_PAD + max(0, (avail_h - grid_h) // 2)
@@ -122,13 +106,11 @@ class Renderer:
         ox, oy = self._board_origin(board_w, board_h)
         return pygame.Rect(ox + x * self._tile, oy + y * self._tile, self._tile, self._tile)
 
-    # ---------- Text helpers ----------
     def _render_text(self, font: ft.Font, text: str, color) -> pygame.Surface:
         surf, _ = font.render(text, color)
         return surf
 
     def _ellipsize(self, font: ft.Font, text: str, max_w: int, color=TEXT) -> pygame.Surface:
-        """Render text, truncating with an ellipsis to fit within max_w."""
         if max_w <= 0:
             surf, _ = font.render("…", color)
             return surf
@@ -141,7 +123,22 @@ class Renderer:
             base = base[:-1]
         return font.render((base + ell) if base else ell, color)[0]
 
-    # ---------- Drawing ----------
+    def _max_tile_that_fits(self, board_w: int, board_h: int) -> int:
+        win_w, win_h = self._screen.get_size()
+        avail_w = win_w
+        avail_h = win_h - self.HUD_H - self.GRID_TOP_PAD - self.GRID_BOTTOM_PAD
+        if board_w <= 0 or board_h <= 0:
+            return self._tile
+        t_w = avail_w // board_w
+        t_h = avail_h // board_h
+        t = min(t_w, t_h)
+        return max(self.MIN_CELL_PX, min(self.MAX_CELL_PX, t))
+
+    def _ensure_grid_fits(self, board_w: int, board_h: int) -> None:
+        fit = self._max_tile_that_fits(board_w, board_h)
+        if self._tile > fit:
+            self._tile = fit
+
     def _draw_grid(self, board_w: int, board_h: int) -> None:
         self._screen.fill(self.BG)
         ox, oy = self._board_origin(board_w, board_h)
@@ -177,11 +174,15 @@ class Renderer:
         pad = max(4, self._tile // 6)
         rx, ry = p1_pos
         rr = self._cell_rect(rx, ry, board_w, board_h).inflate(-2 * pad, -2 * pad)
-        pygame.draw.rect(self._screen, self.P1, rr, border_radius=6)
+        rr_outline = rr.inflate(2, 2)
+        pygame.draw.rect(self._screen, (255, 255, 255), rr_outline, border_radius=6)
+        pygame.draw.rect(self._screen, self.P1_DARK, rr, border_radius=6)
 
         bx, by = p2_pos
         br = self._cell_rect(bx, by, board_w, board_h).inflate(-2 * pad, -2 * pad)
-        pygame.draw.rect(self._screen, self.P2, br, border_radius=6)
+        br_outline = br.inflate(2, 2)
+        pygame.draw.rect(self._screen, (255, 255, 255), br_outline, border_radius=6)
+        pygame.draw.rect(self._screen, self.P2_DARK, br, border_radius=6)
 
     def _draw_claims(self, p1_claims, p2_claims, board_w: int, board_h: int) -> None:
         for x, y in p1_claims:
@@ -196,7 +197,6 @@ class Renderer:
             self._screen.blit(s, r.topleft)
 
     def _draw_trails(self, p1_trail, p2_trail, board_w: int, board_h: int) -> None:
-        """Always-visible trails; radius scales with tile and never collapses."""
         radius = max(4, int(self._tile * 0.33))
         for x, y in p1_trail:
             r = self._cell_rect(x, y, board_w, board_h)
@@ -308,7 +308,6 @@ class Renderer:
                 score_x = max(score_x, min_x)
                 self._screen.blit(name_s,  (name_x,  name_y))
                 self._screen.blit(score_s, (score_x, score_y))
-                # Chip at top-left
                 if active and chip_surf is not None:
                     chip_rect = pygame.Rect(0, 0, chip_w, chip_h)
                     chip_rect.top  = rect.top + self.CARD_PAD_Y - 2
@@ -324,45 +323,56 @@ class Renderer:
             "Player 2",
             str(p2_score),
             not turn_p1,
-            align_left=(False if not rows_stacked else True),  # stacked: align both left
+            align_left=(False if not rows_stacked else True),
         )
 
-    # ---------- Event handling ----------
-    def _handle_events(self, board_w: int, board_h: int) -> List[pygame.event.Event]:
-        """
-        Handle window/zoom/quit. Return unhandled events so callers (e.g., teleop) can process keys.
-        """
-        unhandled: List[pygame.event.Event] = []
+    def _draw_winner_popup(self, game_state: GameState) -> None:
+        winner = game_state.winner
+        if not winner:
+            return
+        overlay = pygame.Surface(self._screen.get_size(), pygame.SRCALPHA)
+        overlay.fill((0, 0, 0, 160))
+        self._screen.blit(overlay, (0, 0))
+        if winner == Player.PLAYER_ONE:
+            color = self.P1
+            title = "Player 1 Wins!"
+        else: # winner == Player.PLAYER_TWO
+            color = self.P2
+            title = "Player 2 Wins!"
+        p1_score = len(game_state.player_one.claims)
+        p2_score = len(game_state.player_two.claims)
+        big_font = ft.Font(None, 48)
+        mid_font = ft.Font(None, 28)
+        title_surf, _ = big_font.render(title, self.TEXT)
+        score_text = f"{p1_score} - {p2_score}"
+        score_surf, _ = mid_font.render(score_text, self.TEXT)
+        pad_x = 28
+        pad_y = 22
+        gap = 12
+        box_w = max(title_surf.get_width(), score_surf.get_width()) + 2 * pad_x
+        box_h = title_surf.get_height() + gap + score_surf.get_height() + 2 * pad_y
+        win_w, win_h = self._screen.get_size()
+        box = pygame.Rect((win_w - box_w) // 2, (win_h - box_h) // 2, box_w, box_h)
+        pygame.draw.rect(self._screen, (45, 45, 55), box, border_radius=14)
+        strip = pygame.Rect(box.left, box.top, box.w, 6)
+        pygame.draw.rect(self._screen, color, strip, border_radius=3)
+        self._screen.blit(title_surf, (box.centerx - title_surf.get_width() // 2, box.top + pad_y))
+        self._screen.blit(score_surf, (box.centerx - score_surf.get_width() // 2, box.bottom - pad_y - score_surf.get_height()))
+
+    def _handle_events(self, board_w: int, board_h: int):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 raise SystemExit
             elif event.type == pygame.VIDEORESIZE:
-                # keep within desktop bounds, then recenter via origin
                 desk_w, desk_h = self._desktop_size()
                 new_w = min(max(event.w, self.DEFAULT_MIN_W), int(desk_w * 0.98))
                 new_h = min(max(event.h, self.DEFAULT_MIN_H), int(desk_h * 0.98))
                 self._screen = pygame.display.set_mode((new_w, new_h), pygame.RESIZABLE)
-            elif event.type == pygame.KEYDOWN:
-                # Zoom keys only; leave gameplay keys for the caller.
-                if event.key in (pygame.K_PLUS, pygame.K_EQUALS):
-                    if self._tile < self.MAX_CELL_PX:
-                        self._tile = min(self.MAX_CELL_PX, self._tile + 4)
-                elif event.key in (pygame.K_MINUS, pygame.K_UNDERSCORE):
-                    if self._tile > self.MIN_CELL_PX:
-                        self._tile = max(self.MIN_CELL_PX, self._tile - 4)
-                else:
-                    unhandled.append(event)
-            else:
-                unhandled.append(event)
-        return unhandled
+                self._ensure_grid_fits(board_w, board_h)
+                self._tile = self._max_tile_that_fits(board_w, board_h)
 
-    # ---------- Public API ----------
-    def render(self, game_state: GameState) -> List[pygame.event.Event]:
-        """
-        Draw the board + HUD. Returns a list of unhandled pygame events so your
-        teleop agent can read them without fighting the renderer.
-        """
+    def render(self, game_state: GameState):
         board_w = game_state.board.width
         board_h = game_state.board.height
 
@@ -370,7 +380,8 @@ class Renderer:
             self._screen = self._create_fitted_window(board_w, board_h)
             self._last_board_size = (board_w, board_h)
 
-        unhandled = self._handle_events(board_w, board_h)
+        self._handle_events(board_w, board_h)
+        self._ensure_grid_fits(board_w, board_h)
 
         self._draw_grid(board_w, board_h)
         self._draw_claims(game_state.player_one.claims, game_state.player_two.claims, board_w, board_h)
@@ -378,6 +389,6 @@ class Renderer:
         self._draw_players(game_state.player_one.position, game_state.player_two.position, board_w, board_h)
         self._draw_walls(game_state.board.walls, board_w, board_h)
         self._draw_hud(game_state)
+        self._draw_winner_popup(game_state)
 
         pygame.display.flip()
-        return unhandled

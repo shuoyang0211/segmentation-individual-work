@@ -101,8 +101,8 @@ def main() -> None:
     else:
         renderer.render(game_state)
 
-    input("Press enter to exit...")
-
+    while True:
+        renderer.render(game_state)
 
 if __name__ == "__main__":
     main()

@@ -142,7 +142,7 @@ name = "segmentation-core"
 version = "0.1.2"
 source = { registry = "https://harvard-cs182-f25.github.io/segmentation/wheels/" }
 wheels = [
-    { url = "https://harvard-cs182-f25.github.io/segmentation/wheels/segmentation-core/segmentation_core-0.1.2-cp310-abi3-macosx_10_12_x86_64.macosx_11_0_arm64.macosx_10_12_universal2.whl", hash = "sha256:788b0a5f918f223e695e0bd3e42bf6dacbcf17e6bc861f5bb9e35260f006c735" },
-    { url = "https://harvard-cs182-f25.github.io/segmentation/wheels/segmentation-core/segmentation_core-0.1.2-cp310-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:cc0761baac9c7711c69e9188897dd472228fb08b135d1f088c2a83821b29f29f" },
-    { url = "https://harvard-cs182-f25.github.io/segmentation/wheels/segmentation-core/segmentation_core-0.1.2-cp310-abi3-win_amd64.whl", hash = "sha256:c5e5a32e38ad5dc5f4d8eeb8fdc31dbd68a2b3a76019f6ba295b323a89a71757" },
+    { url = "https://harvard-cs182-f25.github.io/segmentation/wheels/segmentation-core/segmentation_core-0.1.2-cp310-abi3-macosx_10_12_x86_64.macosx_11_0_arm64.macosx_10_12_universal2.whl", hash = "sha256:92148de5f493b1d0aab7f2d7f96cdf0ee3134d60ed89769e06b602b9ecd09682" },
+    { url = "https://harvard-cs182-f25.github.io/segmentation/wheels/segmentation-core/segmentation_core-0.1.2-cp310-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:55e9ff5da748193b52b7f543fd965b713a5d8114fe8a23774cdb6433dab140ee" },
+    { url = "https://harvard-cs182-f25.github.io/segmentation/wheels/segmentation-core/segmentation_core-0.1.2-cp310-abi3-win_amd64.whl", hash = "sha256:da3a1bb6a8cd5c5e53203ba955d2d8ba96ccbd974ba01b282875c502e23a9372" },
 ]
