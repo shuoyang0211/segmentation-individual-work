@@ -139,6 +139,30 @@ uv sync
 
 This should install an appropriate Python version (3.13) and all the project's dependencies including `pytest`.
 
+### Selecting your Python Interpreter
+
+Using typed Python can highly improve your programming (and especially your debugging experience). To enable type checking in VSCode:
+
+-   Open Settings (`CTRL`/`CMD` + `,`)
+-   Search for `Type Checking Mode`
+-   Set the mode to your desired level of strictness (`standard` is a good default!)
+
+<center>
+    <img src="docs/imgs/type_checking.png" width="1000"/>
+</center>
+
+To ensure that all the type stubs are resolved for your installed dependencies, you have to select the correct Python interpreter. To do so:
+
+-   Open the Command Pallette (`CTRL`/`CMD` + `SHIFT` + `P`)
+-   Type and select `Python: Select Interpreter`
+-   Choose the virtual environment located in the stencil directory.
+
+<center>
+    <img src="docs/imgs/interpreter_selection.png" width="1000"/>
+</center>
+
+For this to be correctly detected, be sure that the opened folder in VSCode is your cloned Github repository!
+
 #### Running the code
 
 To run the starter code use:
