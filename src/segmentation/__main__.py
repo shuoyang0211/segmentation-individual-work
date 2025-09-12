@@ -81,6 +81,8 @@ def main() -> None:
     game_state = GameState(args.world)
     renderer = Renderer()
 
+    print(game_state.board.get_tile(2, 12))
+
     while game_state.winner is None:
         if args.headless:
             print_centered(str(game_state))

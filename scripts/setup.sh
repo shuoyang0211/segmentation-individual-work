@@ -1,5 +1,4 @@
-#!/bin/bash
-set -euo pipefail
+#!/usr/env/bash
 
 VENV_DIR="${1:-.venv}"
 
@@ -27,8 +26,6 @@ if ! "$PYTHON_BIN" -c 'import sys; raise SystemExit(0 if sys.version_info >= (3,
   exit 1
 fi
 
-FOUND_VER="$("$PYTHON_BIN" -c 'import sys; print(".".join(map(str, sys.version_info[:3])))')"
-
 if "$PYTHON_BIN" -c 'import sys; raise SystemExit(0 if sys.version_info[1] < 11 else 1)'; then
   echo "Warning: Python $FOUND_VER < 3.11 detected. Some typing features might not work and may need to be removed to run the stencil. " >&2
 fi
@@ -48,9 +45,9 @@ fi
 "$VENV_DIR/bin/python" -m pip install --upgrade pip >/dev/null
 
 "$VENV_DIR/bin/python" -m pip install -r requirements.txt >/dev/null
-pip install -e . >/dev/null
+"$VENV_DIR/bin/python" -m pip install -e . >/dev/null
 echo "Installed dependencies from requirements.txt"
 
 echo "Using interpreter: $("$PYTHON_BIN" --version)"
-echo "To activate: source \"$VENV_DIR/bin/activate\""
-echo "To deactivate: deactivate\""
+echo "To activate: source \"$VENV_DIR/bin/activate\"
+echo "To deactivate: deactivate\"
