@@ -20,7 +20,7 @@ In particular, for these assignments you are tasked to develop an agent who is a
 
 ### World Structure
 
-The world is represented as a $W \times H$ discrete grid with $W$ columns and $H$ rows. Tiles in the grid are 0-indexed with the origin at the top-left corner of the grid, increasing column index going to the right, and increasing row index going down. For example, in the following grid the dark red square is located in tile (2, 12).
+The world is represented as a $W \times H$ discrete grid with $W$ columns and $H$ rows. Tiles in the grid are 0-indexed with the origin at the top-left corner of the grid, increasing column index going to the right, and increasing row index going down. We denote a position in the grid as an $(x, y)$ pair, where $x$ is the column index and $y$ is the row index. For example, in the following grid the dark red square is located in tile (2, 12).
 
 <div align="center">
     <img src="docs/imgs/position.png" alt="drawing" width="500"/>
