@@ -12,8 +12,6 @@ from segmentation_core.agents import (
     ChaserBot,
     SlothBot,
     RandomBot,
-    VoronoiBot,
-    TreeBot,
     SnakeBot,
 )
 from segmentation.agents import (
@@ -48,8 +46,6 @@ AGENT_REGISTRY: dict[AgentId, Callable[..., AgentProtocol]] = {
     AgentId.RANDOM: RandomBot,
     AgentId.STATIC_ASTAR: StaticAStarAgent,
     AgentId.TELEOP: TeleopAgent,
-    AgentId.TREE: TreeBot,
-    AgentId.VORONOI: VoronoiBot,
     AgentId.SLOTH: SlothBot,
     AgentId.SNAKE: SnakeBot,
 }
@@ -105,6 +101,7 @@ def main() -> None:
 
     while True:
         renderer.render(game_state)
+
 
 if __name__ == "__main__":
     main()

@@ -1,0 +1,54 @@
+class Tile:
+    r"""
+    Represents the state of a tile on the board.
+    Each tile can have multiple states, represented as bitflags.
+    The one execption is a wall, which should be the only flag set if it is present.
+
+    Walls are represented by the highest bit being set (0b1000_0000).
+    Trails are represented by the lowest bit being set (0b0000_0001).
+    Claims are represented by the third lowest bit being set (0b0000_0100).
+    Players are represented by the fifth lowest bit being set (0b0001_0000).
+
+    Whether PLAYER1 or PLAYER2 owns a trail, claim, or player is represented by the second,
+    fourth, or sixth lowest bit being set (0b0000_0010, 0b0000_1000, or 0b0010_0000).
+    If the bit is set, PLAYER1 owns it. If it is not set, PLAYER2 owns it.
+    """
+    def is_wall(self) -> builtins.bool:
+        r"""
+        Checks if the tile is a wall.
+        """
+
+    def trail(self) -> typing.Optional[Player]:
+        r"""
+        Returns the player who owns the trail on the tile, if there is one.
+        Otherwise, returns None.
+
+        Returns:
+          - `Player` if there is a trail owned by the player.
+          - `None`   if there is no trail.
+        """
+
+    def claim(self) -> typing.Optional[Player]:
+        r"""
+        Returns the player who owns the claim on the tile, if there is one.
+        Otherwise, returns None.
+
+        Returns:
+         - `Player` if there is a claim owned by the player.
+         - `None`   if there is no claim.
+        """
+
+    def player(self) -> typing.Optional[Player]:
+        r"""
+        Returns the player who owns the player on the tile, if there is one.
+        Otherwise, returns None.
+
+        Returns:
+        - `Player` if there is a player owned by the player.
+        - `None`   if there is no player.
+        """
+
+    def clone(self) -> Tile:
+        r"""
+        Returns a clone of the tile.
+        """

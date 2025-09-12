@@ -23,7 +23,7 @@ In particular, for these assignments you are tasked to develop an agent who is a
 The world is represented as a $W \times H$ discrete grid with $W$ columns and $H$ rows. Tiles in the grid are 0-indexed with the origin at the top-left corner of the grid, increasing column index going to the right, and increasing row index going down. For example, in the following grid the dark red square is located in tile (2, 12).
 
 <center>
-    <img src="docs/position.png" alt="drawing" width="500"/>
+    <img src="docs/img/position.png" alt="drawing" width="500"/>
 
 Player one and player two represented as dark red and blue rounded squares, respectively. Their associated claims are shown as transparent squares of the appropriate color. Trails are represented as circles of the appropriate color. Walls are shown as dark grey rounded squares.
 
@@ -58,8 +58,8 @@ Each of these actions attempts to move the agent in the appropriate direction (o
 As an agent moves onto tiles not currently in their claim they leave a trail behind them. When an agent moves into their claim again they "complete their trail" and claim all of the cells enclosed by their trail and claim.
 
 <center>
-    <img src="docs/pre-complete.png" alt="drawing" width="500"/>
-    <img src="docs/complete.png" alt="drawing" width="500"/>
+    <img src="docs/img/pre-complete.png" alt="drawing" width="500"/>
+    <img src="docs/img/complete.png" alt="drawing" width="500"/>
 </center>
 
 ### Eliminating Agents
@@ -82,7 +82,7 @@ All of the code that you will be responsible for belongs here. In general, refra
 
 Adding additional external dependencies is not allowed; however, feel free to import any built-in Python module.
 
-As you work through this assignment you'll find useful the exports from the `segmentation_core` package which contains all of the game logic for this assignment. All of the classes, methods, and functions are documented and can be viewed in your IDE, by looking at the type stubs located in the package (`CTRL`/`CMD`-click on the package name in VSCode), or by using the `help` command in the Python REPL.
+As you work through this assignment you'll find useful the exports from the `segmentation_core` package which contains all of the game logic for this assignment. All of the classes, methods, and functions are documented and can be viewed in your IDE, by looking at the type stubs located in the package (`CTRL`/`CMD`-click on the package name in VSCode), or by using the `help` command in the Python REPL. Alternatively, the doc comments have been replicated and placed in the `docs` folder of this repository.
 
 If you have any questions about what things do/how things work please feel free to post a question on [Ed](https://edstem.org/us/courses/82550/discussion)!
 

@@ -38,9 +38,9 @@ import pygame
 import pygame.freetype as ft
 
 
-
 TOKEN_RE = re.compile(r"([A-Z])(\d+)")
 ALLOWED_TILES = {"E", "W", "A", "B"}
+
 
 def parse_dimensions(dim: str) -> Tuple[int, int]:
     dim = dim.strip().lower().replace(" ", "")
@@ -60,17 +60,19 @@ def rle_decode_row(line: str, width: int, row_idx: int) -> List[str]:
     for m in TOKEN_RE.finditer(line.strip()):
         t, n_str = m.groups()
         if t not in ALLOWED_TILES:
-            raise ValueError(f"Unknown tile '{t}' on row {row_idx+1}")
+            raise ValueError(f"Unknown tile '{t}' on row {row_idx + 1}")
         n = int(n_str)
         if t in ("A", "B") and n != 1:
-            raise ValueError(f"Player tile '{t}' count must be 1 on row {row_idx+1}")
+            raise ValueError(f"Player tile '{t}' count must be 1 on row {row_idx + 1}")
         tiles.extend([t] * n)
         pos = m.end()
     if pos != len(line.strip()):
-        raise ValueError(f"Invalid token(s) on row {row_idx+1}: '{line[pos:].strip()}'")
+        raise ValueError(
+            f"Invalid token(s) on row {row_idx + 1}: '{line[pos:].strip()}'"
+        )
     if len(tiles) != width:
         raise ValueError(
-            f"Width mismatch on row {row_idx+1}: expected {width}, got {len(tiles)}"
+            f"Width mismatch on row {row_idx + 1}: expected {width}, got {len(tiles)}"
         )
     return tiles
 
@@ -124,6 +126,7 @@ def save_board(path: str, board: List[List[str]]) -> None:
         for r in range(height):
             f.write(rle_encode_row(board[r]) + "\n")
 
+
 BG = (30, 30, 36)
 GRID = (60, 60, 72)
 GRID_LIGHT = (80, 80, 96)
@@ -167,6 +170,7 @@ SCROLL_TRACK = (50, 50, 60)
 SCROLL_THUMB = (120, 120, 140)
 SCROLL_SPEED = 60  # pixels per wheel tick
 
+
 def auto_cell_size(width: int, height: int, panel_w: int = 220) -> int:
     width = max(1, min(100, width))
     height = max(1, min(100, height))
@@ -177,10 +181,12 @@ def auto_cell_size(width: int, height: int, panel_w: int = 220) -> int:
     cell = max(MIN_CELL_PX, min(MAX_CELL_PX, min(cell_w, cell_h)))
     return cell
 
+
 def clamp(v: int, lo: int, hi: int) -> int:
     if hi < lo:
         return 0
     return max(lo, min(hi, v))
+
 
 class Editor:
     def __init__(
@@ -201,7 +207,11 @@ class Editor:
         self.width = width
         self.height = height
         self.panel_w = 250
-        self.cell = auto_cell_size(width, height, self.panel_w) if int(cell_size) <= 0 else max(MIN_CELL_PX, min(MAX_CELL_PX, int(cell_size)))
+        self.cell = (
+            auto_cell_size(width, height, self.panel_w)
+            if int(cell_size) <= 0
+            else max(MIN_CELL_PX, min(MAX_CELL_PX, int(cell_size)))
+        )
         self.out_path = out_path
         self.load_path = load_path
         self.show_grid = show_grid
@@ -230,7 +240,9 @@ class Editor:
         self.win_w = max(self.width * self.cell + self.panel_w, DEFAULT_MIN_W)
         self.win_h = max(self.height * self.cell, DEFAULT_MIN_H)
         self._recompute_layout()
-        self.screen = pygame.display.set_mode((self.win_w, self.win_h), pygame.RESIZABLE)
+        self.screen = pygame.display.set_mode(
+            (self.win_w, self.win_h), pygame.RESIZABLE
+        )
 
         self.clock = pygame.time.Clock()
         self.message: Optional[str] = None
@@ -262,7 +274,7 @@ class Editor:
         grid_w = self.width * self.cell
         grid_h = self.height * self.cell
 
-        base_vx = (0 if self.palette_right else self.panel_w)
+        base_vx = 0 if self.palette_right else self.panel_w
         base_vy = 0
         base_vw = self.win_w - self.panel_w
         base_vh = self.win_h
@@ -300,29 +312,46 @@ class Editor:
 
         h_track = v_track = h_thumb = v_thumb = None
         if need_h:
-            h_track = pygame.Rect(viewport.x, viewport.y + viewport.h, viewport.w, SCROLL_THICK)
+            h_track = pygame.Rect(
+                viewport.x, viewport.y + viewport.h, viewport.w, SCROLL_THICK
+            )
             ratio = viewport.w / grid_w
             thumb_w = max(SCROLL_MIN_THUMB, int(viewport.w * ratio))
             free = viewport.w - thumb_w
-            thumb_x = viewport.x if max_sx == 0 else viewport.x + int(free * (self.scroll_x / max_sx))
+            thumb_x = (
+                viewport.x
+                if max_sx == 0
+                else viewport.x + int(free * (self.scroll_x / max_sx))
+            )
             h_thumb = pygame.Rect(thumb_x, h_track.y, thumb_w, SCROLL_THICK)
 
         if need_v:
-            v_track = pygame.Rect(viewport.x + viewport.w, viewport.y, SCROLL_THICK, viewport.h)
+            v_track = pygame.Rect(
+                viewport.x + viewport.w, viewport.y, SCROLL_THICK, viewport.h
+            )
             ratio = viewport.h / grid_h
             thumb_h = max(SCROLL_MIN_THUMB, int(viewport.h * ratio))
             free = viewport.h - thumb_h
-            thumb_y = viewport.y if max_sy == 0 else viewport.y + int(free * (self.scroll_y / max_sy))
+            thumb_y = (
+                viewport.y
+                if max_sy == 0
+                else viewport.y + int(free * (self.scroll_y / max_sy))
+            )
             v_thumb = pygame.Rect(v_track.x, thumb_y, SCROLL_THICK, thumb_h)
 
         metrics = {
-            "grid_w": grid_w, "grid_h": grid_h,
+            "grid_w": grid_w,
+            "grid_h": grid_h,
             "viewport": viewport,
             "grid_origin": (gx, gy),
-            "need_h": need_h, "need_v": need_v,
-            "max_scroll_x": max_sx, "max_scroll_y": max_sy,
-            "h_track": h_track, "v_track": v_track,
-            "h_thumb": h_thumb, "v_thumb": v_thumb,
+            "need_h": need_h,
+            "need_v": need_v,
+            "max_scroll_x": max_sx,
+            "max_scroll_y": max_sy,
+            "h_track": h_track,
+            "v_track": v_track,
+            "h_thumb": h_thumb,
+            "v_thumb": v_thumb,
         }
         self._metrics = metrics
         return metrics
@@ -353,7 +382,9 @@ class Editor:
         self.message = text
         self.message_timer = int(seconds * 60)
 
-    def _render_surface(self, font: ft.Font, text: str, color: Tuple[int, int, int]) -> pygame.Surface:
+    def _render_surface(
+        self, font: ft.Font, text: str, color: Tuple[int, int, int]
+    ) -> pygame.Surface:
         surf, _ = font.render(text, color)
         return surf
 
@@ -389,7 +420,9 @@ class Editor:
             pygame.draw.rect(surface, SCROLL_THUMB, m["v_thumb"], border_radius=4)
         # corner box when both scrollbars exist
         if m["need_h"] and m["need_v"]:
-            corner = pygame.Rect(m["v_track"].x, m["h_track"].y, SCROLL_THICK, SCROLL_THICK)
+            corner = pygame.Rect(
+                m["v_track"].x, m["h_track"].y, SCROLL_THICK, SCROLL_THICK
+            )
             pygame.draw.rect(surface, SCROLL_TRACK, corner)
 
     def draw_grid(self, surface: pygame.Surface) -> None:
@@ -401,8 +434,12 @@ class Editor:
         if m["need_h"] or m["need_v"]:
             start_c = self.scroll_x // self.cell
             start_r = self.scroll_y // self.cell
-            end_c = min(self.width, (self.scroll_x + viewport.w + self.cell - 1) // self.cell)
-            end_r = min(self.height, (self.scroll_y + viewport.h + self.cell - 1) // self.cell)
+            end_c = min(
+                self.width, (self.scroll_x + viewport.w + self.cell - 1) // self.cell
+            )
+            end_r = min(
+                self.height, (self.scroll_y + viewport.h + self.cell - 1) // self.cell
+            )
         else:
             start_c, start_r = 0, 0
             end_c, end_r = self.width, self.height
@@ -429,7 +466,13 @@ class Editor:
                     col, w = GRID_5, 2 if self.cell >= 20 else 1
                 else:
                     col, w = GRID, 1
-                pygame.draw.line(surface, col, (gx + (start_c * self.cell - self.scroll_x), y), (gx + (end_c * self.cell - self.scroll_x), y), w)
+                pygame.draw.line(
+                    surface,
+                    col,
+                    (gx + (start_c * self.cell - self.scroll_x), y),
+                    (gx + (end_c * self.cell - self.scroll_x), y),
+                    w,
+                )
 
             # Vertical lines
             first_vc = start_c
@@ -442,7 +485,13 @@ class Editor:
                     col, w = GRID_5, 2 if self.cell >= 20 else 1
                 else:
                     col, w = GRID, 1
-                pygame.draw.line(surface, col, (x, gy + (start_r * self.cell - self.scroll_y)), (x, gy + (end_r * self.cell - self.scroll_y)), w)
+                pygame.draw.line(
+                    surface,
+                    col,
+                    (x, gy + (start_r * self.cell - self.scroll_y)),
+                    (x, gy + (end_r * self.cell - self.scroll_y)),
+                    w,
+                )
 
         # Hover highlight
         mx, my = pygame.mouse.get_pos()
@@ -451,7 +500,9 @@ class Editor:
             r, c = cell
             px = gx + (c * self.cell - self.scroll_x)
             py = gy + (r * self.cell - self.scroll_y)
-            pygame.draw.rect(surface, GRID_LIGHT, (px, py, self.cell, self.cell), width=2)
+            pygame.draw.rect(
+                surface, GRID_LIGHT, (px, py, self.cell, self.cell), width=2
+            )
 
         # Scrollbars
         self._draw_scrollbars(surface, m)
@@ -467,11 +518,21 @@ class Editor:
         btn_w = self.panel_w - 2 * PANEL_PAD
         start_y = PANEL_PAD + title_surf.get_height() + BTN_SPACING
 
-        tools = [("Empty (E)", "E"), ("Wall (W)", "W"), ("Player 1 (A)", "A"), ("Player 2 (B)", "B")]
+        tools = [
+            ("Empty (E)", "E"),
+            ("Wall (W)", "W"),
+            ("Player 1 (A)", "A"),
+            ("Player 2 (B)", "B"),
+        ]
         for i, (label, token) in enumerate(tools):
-            rect = pygame.Rect(panel.left + PANEL_PAD, start_y + i * (BTN_HEIGHT + BTN_SPACING), btn_w, BTN_HEIGHT)
+            rect = pygame.Rect(
+                panel.left + PANEL_PAD,
+                start_y + i * (BTN_HEIGHT + BTN_SPACING),
+                btn_w,
+                BTN_HEIGHT,
+            )
             mouse_over = rect.collidepoint(pygame.mouse.get_pos())
-            active = (self.current_tool == token)
+            active = self.current_tool == token
             bg = BTN_BG_ACTIVE if active else (BTN_BG_HOVER if mouse_over else BTN_BG)
             pygame.draw.rect(surface, bg, rect, border_radius=8)
 
@@ -486,9 +547,15 @@ class Editor:
             if label_surf.get_width() > max_label_w:
                 ell = "…"
                 base = label
-                while base and self._render_surface(self.font, base + ell, TEXT).get_width() > max_label_w:
+                while (
+                    base
+                    and self._render_surface(self.font, base + ell, TEXT).get_width()
+                    > max_label_w
+                ):
                     base = base[:-1]
-                label_surf = self._render_surface(self.font, (base + ell) if base else ell, TEXT)
+                label_surf = self._render_surface(
+                    self.font, (base + ell) if base else ell, TEXT
+                )
             surface.blit(label_surf, (lx, ly))
 
             if mouse_over and pygame.mouse.get_pressed()[0]:
@@ -512,15 +579,27 @@ class Editor:
             y_cursor += ls.get_height() + 2
 
         hint_surf = self._render_surface(self.font_small, "Press H for help", TEXT)
-        surface.blit(hint_surf, (panel.left + PANEL_PAD, self.win_h - PANEL_PAD - hint_surf.get_height()))
+        surface.blit(
+            hint_surf,
+            (panel.left + PANEL_PAD, self.win_h - PANEL_PAD - hint_surf.get_height()),
+        )
 
         if self.message and self.message_timer > 0:
-            msg_surf = self._render_surface(self.font_small, self.message, (255, 200, 200))
+            msg_surf = self._render_surface(
+                self.font_small, self.message, (255, 200, 200)
+            )
             msg_w = msg_surf.get_width() + 2 * MSG_PAD_X
             msg_h = msg_surf.get_height() + 2 * MSG_PAD_Y
-            msg_rect = pygame.Rect(panel.left + PANEL_PAD, self.win_h - PANEL_PAD - hint_surf.get_height() - BTN_SPACING - msg_h, msg_w, msg_h)
+            msg_rect = pygame.Rect(
+                panel.left + PANEL_PAD,
+                self.win_h - PANEL_PAD - hint_surf.get_height() - BTN_SPACING - msg_h,
+                msg_w,
+                msg_h,
+            )
             pygame.draw.rect(surface, (60, 30, 30), msg_rect, border_radius=6)
-            surface.blit(msg_surf, (msg_rect.left + MSG_PAD_X, msg_rect.top + MSG_PAD_Y))
+            surface.blit(
+                msg_surf, (msg_rect.left + MSG_PAD_X, msg_rect.top + MSG_PAD_Y)
+            )
 
     def draw_help(self, surface: pygame.Surface) -> None:
         overlay = pygame.Surface((self.win_w, self.win_h), pygame.SRCALPHA)
@@ -538,7 +617,9 @@ class Editor:
             "Saving requires exactly one 'A' and one 'B'.",
         ]
 
-        line_surfs = [self._render_surface(self.font, ln, (255, 255, 255)) for ln in lines]
+        line_surfs = [
+            self._render_surface(self.font, ln, (255, 255, 255)) for ln in lines
+        ]
         max_w = max(s.get_width() for s in line_surfs)
         total_h = sum(s.get_height() for s in line_surfs) + (len(line_surfs) - 1) * 6
 
@@ -547,7 +628,9 @@ class Editor:
         box_x = (self.win_w - box_w) // 2
         box_y = (self.win_h - box_h) // 2
 
-        pygame.draw.rect(surface, (50, 50, 60), (box_x, box_y, box_w, box_h), border_radius=12)
+        pygame.draw.rect(
+            surface, (50, 50, 60), (box_x, box_y, box_w, box_h), border_radius=12
+        )
 
         y = box_y + HELP_PAD
         for s in line_surfs:
@@ -559,20 +642,28 @@ class Editor:
         m = self._metrics
         if not m:
             return
-        if self._drag_kind == 'h' and m["h_track"]:
+        if self._drag_kind == "h" and m["h_track"]:
             thumb = m["h_thumb"]
             track = m["h_track"]
-            new_x = clamp(event.pos[0] - self._drag_offset, track.x, track.right - thumb.w)
+            new_x = clamp(
+                event.pos[0] - self._drag_offset, track.x, track.right - thumb.w
+            )
             thumb.x = new_x
             free = track.w - thumb.w
-            self.scroll_x = 0 if free == 0 else int((new_x - track.x) * m["max_scroll_x"] / free)
-        elif self._drag_kind == 'v' and m["v_track"]:
+            self.scroll_x = (
+                0 if free == 0 else int((new_x - track.x) * m["max_scroll_x"] / free)
+            )
+        elif self._drag_kind == "v" and m["v_track"]:
             thumb = m["v_thumb"]
             track = m["v_track"]
-            new_y = clamp(event.pos[1] - self._drag_offset, track.y, track.bottom - thumb.h)
+            new_y = clamp(
+                event.pos[1] - self._drag_offset, track.y, track.bottom - thumb.h
+            )
             thumb.y = new_y
             free = track.h - thumb.h
-            self.scroll_y = 0 if free == 0 else int((new_y - track.y) * m["max_scroll_y"] / free)
+            self.scroll_y = (
+                0 if free == 0 else int((new_y - track.y) * m["max_scroll_y"] / free)
+            )
 
     def run(self) -> None:
         running = True
@@ -587,7 +678,9 @@ class Editor:
                     self.win_w, self.win_h = new_w, new_h
                     self._recompute_layout()
                     if (new_w, new_h) != (event.w, event.h):
-                        self.screen = pygame.display.set_mode((self.win_w, self.win_h), pygame.RESIZABLE)
+                        self.screen = pygame.display.set_mode(
+                            (self.win_w, self.win_h), pygame.RESIZABLE
+                        )
                 elif event.type == pygame.MOUSEWHEEL:
                     mods = pygame.key.get_mods()
                     horiz = (mods & pygame.KMOD_SHIFT) or (getattr(event, "x", 0) != 0)
@@ -595,29 +688,59 @@ class Editor:
                         dx = getattr(event, "x", 0)
                         if dx == 0:
                             dx = event.y  # shift+wheel
-                        self.scroll_x = clamp(self.scroll_x - dx * SCROLL_SPEED, 0, self._metrics.get("max_scroll_x", 0))
+                        self.scroll_x = clamp(
+                            self.scroll_x - dx * SCROLL_SPEED,
+                            0,
+                            self._metrics.get("max_scroll_x", 0),
+                        )
                     else:
-                        self.scroll_y = clamp(self.scroll_y - event.y * SCROLL_SPEED, 0, self._metrics.get("max_scroll_y", 0))
+                        self.scroll_y = clamp(
+                            self.scroll_y - event.y * SCROLL_SPEED,
+                            0,
+                            self._metrics.get("max_scroll_y", 0),
+                        )
                 elif event.type == pygame.MOUSEBUTTONDOWN:
                     if self.help_visible:
                         self.help_visible = False
                     m = self._metrics or self._compute_metrics()
                     if event.button in (1,):
                         # Scrollbar hit-testing first
-                        if m["need_h"] and m["h_thumb"] and m["h_thumb"].collidepoint(event.pos):
-                            self._drag_kind = 'h'
+                        if (
+                            m["need_h"]
+                            and m["h_thumb"]
+                            and m["h_thumb"].collidepoint(event.pos)
+                        ):
+                            self._drag_kind = "h"
                             self._drag_offset = event.pos[0] - m["h_thumb"].x
                             continue
-                        if m["need_v"] and m["v_thumb"] and m["v_thumb"].collidepoint(event.pos):
-                            self._drag_kind = 'v'
+                        if (
+                            m["need_v"]
+                            and m["v_thumb"]
+                            and m["v_thumb"].collidepoint(event.pos)
+                        ):
+                            self._drag_kind = "v"
                             self._drag_offset = event.pos[1] - m["v_thumb"].y
                             continue
                         # Click in tracks to jump
-                        if m["need_h"] and m["h_track"] and m["h_track"].collidepoint(event.pos) and not m["h_thumb"].collidepoint(event.pos):
-                            rel = (event.pos[0] - m["h_track"].x) / max(1, m["h_track"].w)
+                        if (
+                            m["need_h"]
+                            and m["h_track"]
+                            and m["h_track"].collidepoint(event.pos)
+                            and not m["h_thumb"].collidepoint(event.pos)
+                        ):
+                            rel = (event.pos[0] - m["h_track"].x) / max(
+                                1, m["h_track"].w
+                            )
                             self.scroll_x = int(rel * m["max_scroll_x"])
-                        elif m["need_v"] and m["v_track"] and m["v_track"].collidepoint(event.pos) and not m["v_thumb"].collidepoint(event.pos):
-                            rel = (event.pos[1] - m["v_track"].y) / max(1, m["v_track"].h)
+                        elif (
+                            m["need_v"]
+                            and m["v_track"]
+                            and m["v_track"].collidepoint(event.pos)
+                            and not m["v_thumb"].collidepoint(event.pos)
+                        ):
+                            rel = (event.pos[1] - m["v_track"].y) / max(
+                                1, m["v_track"].h
+                            )
                             self.scroll_y = int(rel * m["max_scroll_y"])
                         else:
                             # Painting
@@ -688,7 +811,11 @@ class Editor:
                         if self.help_visible:
                             self.help_visible = False
                         try:
-                            path = self.out_path or self.load_path or f"board_{self.width}x{self.height}.board"
+                            path = (
+                                self.out_path
+                                or self.load_path
+                                or f"board_{self.width}x{self.height}.board"
+                            )
                             save_board(path, self.board)
                             self.show_msg(f"Saved: {path}", seconds=2.5)
                         except Exception as ex:
@@ -711,14 +838,38 @@ class Editor:
 
 
 def build_arg_parser() -> argparse.ArgumentParser:
-    p = argparse.ArgumentParser(description="Pygame board editor for Rust RLE board files.")
+    p = argparse.ArgumentParser(
+        description="Pygame board editor for Rust RLE board files."
+    )
     group = p.add_mutually_exclusive_group(required=True)
-    group.add_argument("--load", type=str, help="Path to an existing board file to load and edit.")
-    group.add_argument("--size", type=str, help="Create a new blank board with size WIDTHxHEIGHT (e.g., 20x15).")
-    p.add_argument("--cell", type=int, default=0, help="Cell size in pixels (16..128). 0 = auto based on board size.")
-    p.add_argument("--out", type=str, default=None, help="Save path used when pressing 'S'. If omitted, will save to --load path or a default name.")
-    p.add_argument("--no-grid", action="store_true", help="Start with grid lines hidden.")
-    p.add_argument("--palette-right", action="store_true", help="Place the tool palette on the right instead of the left.")
+    group.add_argument(
+        "--load", type=str, help="Path to an existing board file to load and edit."
+    )
+    group.add_argument(
+        "--size",
+        type=str,
+        help="Create a new blank board with size WIDTHxHEIGHT (e.g., 20x15).",
+    )
+    p.add_argument(
+        "--cell",
+        type=int,
+        default=0,
+        help="Cell size in pixels (16..128). 0 = auto based on board size.",
+    )
+    p.add_argument(
+        "--out",
+        type=str,
+        default=None,
+        help="Save path used when pressing 'S'. If omitted, will save to --load path or a default name.",
+    )
+    p.add_argument(
+        "--no-grid", action="store_true", help="Start with grid lines hidden."
+    )
+    p.add_argument(
+        "--palette-right",
+        action="store_true",
+        help="Place the tool palette on the right instead of the left.",
+    )
     p.add_argument("--title", type=str, default="Board Editor", help="Window title.")
     return p
 
@@ -754,6 +905,7 @@ def main():
         )
 
     editor.run()
+
 
 if __name__ == "__main__":
     main()

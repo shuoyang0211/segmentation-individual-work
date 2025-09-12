@@ -7,38 +7,38 @@ from segmentation_core.engine import GameState, Player
 class Renderer:
     DEFAULT_MIN_W = 1024
     DEFAULT_MIN_H = 720
-    MIN_CELL_PX   = 8
-    MAX_CELL_PX   = 128
+    MIN_CELL_PX = 8
+    MAX_CELL_PX = 128
 
-    HUD_H         = 72
-    HUD_MARGIN    = 16
-    CARD_GAP      = 16
-    CARD_PAD_X    = 12
-    CARD_PAD_Y    = 12
+    HUD_H = 72
+    HUD_MARGIN = 16
+    CARD_GAP = 16
+    CARD_PAD_X = 12
+    CARD_PAD_Y = 12
     NAME_SCORE_GAP = -4
-    CARD_MIN_W    = 220
-    CARD_MAX_W    = 340
-    STRIP_W       = 6
-    SWATCH_SIZE   = 28
-    SWATCH_GAP    = 14
+    CARD_MIN_W = 220
+    CARD_MAX_W = 340
+    STRIP_W = 6
+    SWATCH_SIZE = 28
+    SWATCH_GAP = 14
 
-    GRID_TOP_PAD    = 16
+    GRID_TOP_PAD = 16
     GRID_BOTTOM_PAD = 16
 
-    TURN_PAD_X  = 10
-    TURN_PAD_Y  = 6
-    TURN_BG     = (60, 55, 30)
+    TURN_PAD_X = 10
+    TURN_PAD_Y = 6
+    TURN_BG = (60, 55, 30)
 
-    BG       = (30, 30, 36)
+    BG = (30, 30, 36)
     PANEL_BG = (18, 18, 22)
-    TEXT     = (230, 230, 235)
+    TEXT = (230, 230, 235)
 
-    GRID    = (60, 60, 72)
-    GRID_5  = (110, 110, 130)
+    GRID = (60, 60, 72)
+    GRID_5 = (110, 110, 130)
     GRID_10 = (160, 160, 180)
 
     TILE_BG = (40, 40, 48)
-    WALL    = (90, 90, 90)
+    WALL = (90, 90, 90)
 
     P1 = (220, 90, 70)
     P2 = (70, 120, 220)
@@ -63,7 +63,9 @@ class Renderer:
         self._board_w0, self._board_h0 = initial_board_size
 
         self._tile: int = self._auto_cell_size(self._board_w0, self._board_h0)
-        self._screen: pygame.Surface = self._create_fitted_window(self._board_w0, self._board_h0)
+        self._screen: pygame.Surface = self._create_fitted_window(
+            self._board_w0, self._board_h0
+        )
 
         self._font: ft.Font = ft.Font(None, 24)
         self._font_small: ft.Font = ft.Font(None, 18)
@@ -77,7 +79,9 @@ class Renderer:
     def _auto_cell_size(self, board_w: int, board_h: int) -> int:
         desk_w, desk_h = self._desktop_size()
         avail_w = int(desk_w * 0.90)
-        avail_h = int(desk_h * 0.90) - (self.HUD_H + self.GRID_TOP_PAD + self.GRID_BOTTOM_PAD)
+        avail_h = int(desk_h * 0.90) - (
+            self.HUD_H + self.GRID_TOP_PAD + self.GRID_BOTTOM_PAD
+        )
         cell_w = avail_w // max(1, board_w)
         cell_h = avail_h // max(1, board_h)
         return max(self.MIN_CELL_PX, min(self.MAX_CELL_PX, min(cell_w, cell_h)))
@@ -88,7 +92,13 @@ class Renderer:
         max_h = int(desk_h * 0.98)
         win_w = min(max(self.DEFAULT_MIN_W, board_w * self._tile), max_w)
         win_h = min(
-            max(self.DEFAULT_MIN_H, self.HUD_H + self.GRID_TOP_PAD + board_h * self._tile + self.GRID_BOTTOM_PAD),
+            max(
+                self.DEFAULT_MIN_H,
+                self.HUD_H
+                + self.GRID_TOP_PAD
+                + board_h * self._tile
+                + self.GRID_BOTTOM_PAD,
+            ),
             max_h,
         )
         return pygame.display.set_mode((win_w, win_h), pygame.RESIZABLE)
@@ -104,13 +114,17 @@ class Renderer:
 
     def _cell_rect(self, x: int, y: int, board_w: int, board_h: int) -> pygame.Rect:
         ox, oy = self._board_origin(board_w, board_h)
-        return pygame.Rect(ox + x * self._tile, oy + y * self._tile, self._tile, self._tile)
+        return pygame.Rect(
+            ox + x * self._tile, oy + y * self._tile, self._tile, self._tile
+        )
 
     def _render_text(self, font: ft.Font, text: str, color) -> pygame.Surface:
         surf, _ = font.render(text, color)
         return surf
 
-    def _ellipsize(self, font: ft.Font, text: str, max_w: int, color=TEXT) -> pygame.Surface:
+    def _ellipsize(
+        self, font: ft.Font, text: str, max_w: int, color=TEXT
+    ) -> pygame.Surface:
         if max_w <= 0:
             surf, _ = font.render("…", color)
             return surf
@@ -145,7 +159,9 @@ class Renderer:
 
         for y in range(board_h):
             for x in range(board_w):
-                r = pygame.Rect(ox + x * self._tile, oy + y * self._tile, self._tile, self._tile)
+                r = pygame.Rect(
+                    ox + x * self._tile, oy + y * self._tile, self._tile, self._tile
+                )
                 pygame.draw.rect(self._screen, self.TILE_BG, r)
 
         gw = board_w * self._tile
@@ -223,12 +239,18 @@ class Renderer:
         two_col_target = min(self.CARD_MAX_W, (avail_w - self.CARD_GAP) // 2)
         two_col_ok = two_col_target >= self.CARD_MIN_W
 
-        name_h  = self._font.get_sized_height(24)
+        name_h = self._font.get_sized_height(24)
         score_h = self._font.get_sized_height(24)
-        chip_h  = self._font_small.get_sized_height(18) + 2 * self.TURN_PAD_Y
+        chip_h = self._font_small.get_sized_height(18) + 2 * self.TURN_PAD_Y
         content_min_h = max(
             self.SWATCH_SIZE + 2 * self.CARD_PAD_Y,
-            (self.CARD_PAD_Y + name_h + self.NAME_SCORE_GAP + score_h + self.CARD_PAD_Y),
+            (
+                self.CARD_PAD_Y
+                + name_h
+                + self.NAME_SCORE_GAP
+                + score_h
+                + self.CARD_PAD_Y
+            ),
             chip_h + 2 * self.CARD_PAD_Y,
         )
 
@@ -236,25 +258,38 @@ class Renderer:
             card_w = two_col_target
             card_h = max(content_min_h, self.HUD_H - 18)
             y = (hud_rect.h - card_h) // 2
-            left_rect  = pygame.Rect(self.HUD_MARGIN, y, card_w, card_h)
-            right_rect = pygame.Rect(hud_rect.right - self.HUD_MARGIN - card_w, y, card_w, card_h)
+            left_rect = pygame.Rect(self.HUD_MARGIN, y, card_w, card_h)
+            right_rect = pygame.Rect(
+                hud_rect.right - self.HUD_MARGIN - card_w, y, card_w, card_h
+            )
             rows_stacked = False
         else:
             card_w = max(self.CARD_MIN_W, min(self.CARD_MAX_W, avail_w))
             card_h = max(content_min_h, self.HUD_H // 2 - 8)
-            top_y  = (hud_rect.h - (card_h * 2 + self.CARD_GAP)) // 2
-            left_rect  = pygame.Rect((hud_rect.w - card_w)//2, top_y, card_w, card_h)
-            right_rect = pygame.Rect(left_rect.x, left_rect.bottom + self.CARD_GAP, card_w, card_h)
+            top_y = (hud_rect.h - (card_h * 2 + self.CARD_GAP)) // 2
+            left_rect = pygame.Rect((hud_rect.w - card_w) // 2, top_y, card_w, card_h)
+            right_rect = pygame.Rect(
+                left_rect.x, left_rect.bottom + self.CARD_GAP, card_w, card_h
+            )
             rows_stacked = True
 
-        def draw_card(rect: pygame.Rect, color, name: str, score: str, active: bool, align_left: bool):
+        def draw_card(
+            rect: pygame.Rect,
+            color,
+            name: str,
+            score: str,
+            active: bool,
+            align_left: bool,
+        ):
             bg = (45, 45, 55) if not active else (90, 90, 110)
             pygame.draw.rect(self._screen, bg, rect, border_radius=12)
 
             strip = (
                 pygame.Rect(rect.left, rect.top, self.STRIP_W, rect.h)
                 if align_left
-                else pygame.Rect(rect.right - self.STRIP_W, rect.top, self.STRIP_W, rect.h)
+                else pygame.Rect(
+                    rect.right - self.STRIP_W, rect.top, self.STRIP_W, rect.h
+                )
             )
             pygame.draw.rect(self._screen, color, strip, border_radius=6)
 
@@ -277,46 +312,67 @@ class Renderer:
             if align_left:
                 text_x = sw.right + self.SWATCH_GAP
                 chip_reserve_right = (self.CARD_PAD_X + chip_w) if active else 0
-                max_text_right = rect.right - self.STRIP_W - chip_reserve_right - self.CARD_PAD_X
+                max_text_right = (
+                    rect.right - self.STRIP_W - chip_reserve_right - self.CARD_PAD_X
+                )
                 max_w = max(0, max_text_right - text_x)
             else:
                 chip_reserve_left = (self.CARD_PAD_X + chip_w) if active else 0
-                max_text_left = rect.left + self.STRIP_W + chip_reserve_left + self.CARD_PAD_X
+                max_text_left = (
+                    rect.left + self.STRIP_W + chip_reserve_left + self.CARD_PAD_X
+                )
                 max_w = max(0, (sw.left - self.SWATCH_GAP) - max_text_left)
 
-            name_s  = self._ellipsize(self._font, name,  max_w, self.TEXT)
+            name_s = self._ellipsize(self._font, name, max_w, self.TEXT)
             score_s = self._ellipsize(self._font, score, max_w, self.TEXT)
 
-            name_y  = rect.top + self.CARD_PAD_Y
+            name_y = rect.top + self.CARD_PAD_Y
             score_y = rect.bottom - self.CARD_PAD_Y - score_s.get_height()
 
             if align_left:
-                self._screen.blit(name_s,  (text_x, name_y))  # type: ignore
+                self._screen.blit(name_s, (text_x, name_y))  # type: ignore
                 self._screen.blit(score_s, (text_x, score_y))  # type: ignore
                 if active and chip_surf is not None:
                     chip_rect = pygame.Rect(0, 0, chip_w, chip_h)
-                    chip_rect.top   = rect.top + self.CARD_PAD_Y - 2
+                    chip_rect.top = rect.top + self.CARD_PAD_Y - 2
                     chip_rect.right = rect.right - self.STRIP_W - self.CARD_PAD_X
-                    pygame.draw.rect(self._screen, self.TURN_BG, chip_rect, border_radius=8)
-                    chip_pos = (chip_rect.left + self.TURN_PAD_X, chip_rect.top + self.TURN_PAD_Y)
+                    pygame.draw.rect(
+                        self._screen, self.TURN_BG, chip_rect, border_radius=8
+                    )
+                    chip_pos = (
+                        chip_rect.left + self.TURN_PAD_X,
+                        chip_rect.top + self.TURN_PAD_Y,
+                    )
                     self._screen.blit(chip_surf, chip_pos)
             else:
-                name_x  = (sw.left - self.SWATCH_GAP) - name_s.get_width()
+                name_x = (sw.left - self.SWATCH_GAP) - name_s.get_width()
                 score_x = (sw.left - self.SWATCH_GAP) - score_s.get_width()
-                min_x = rect.left + self.STRIP_W + self.CARD_PAD_X + (chip_w + self.CARD_PAD_X if active else 0)
-                name_x  = max(name_x,  min_x)
+                min_x = (
+                    rect.left
+                    + self.STRIP_W
+                    + self.CARD_PAD_X
+                    + (chip_w + self.CARD_PAD_X if active else 0)
+                )
+                name_x = max(name_x, min_x)
                 score_x = max(score_x, min_x)
-                self._screen.blit(name_s,  (name_x,  name_y))
+                self._screen.blit(name_s, (name_x, name_y))
                 self._screen.blit(score_s, (score_x, score_y))
                 if active and chip_surf is not None:
                     chip_rect = pygame.Rect(0, 0, chip_w, chip_h)
-                    chip_rect.top  = rect.top + self.CARD_PAD_Y - 2
+                    chip_rect.top = rect.top + self.CARD_PAD_Y - 2
                     chip_rect.left = rect.left + self.STRIP_W + self.CARD_PAD_X
-                    pygame.draw.rect(self._screen, self.TURN_BG, chip_rect, border_radius=8)
-                    chip_pos = (chip_rect.left + self.TURN_PAD_X, chip_rect.top + self.TURN_PAD_Y)
+                    pygame.draw.rect(
+                        self._screen, self.TURN_BG, chip_rect, border_radius=8
+                    )
+                    chip_pos = (
+                        chip_rect.left + self.TURN_PAD_X,
+                        chip_rect.top + self.TURN_PAD_Y,
+                    )
                     self._screen.blit(chip_surf, chip_pos)
 
-        draw_card(left_rect,  self.P1, "Player 1", str(p1_score),  turn_p1,     align_left=True)
+        draw_card(
+            left_rect, self.P1, "Player 1", str(p1_score), turn_p1, align_left=True
+        )
         draw_card(
             right_rect,
             self.P2,
@@ -336,7 +392,7 @@ class Renderer:
         if winner == Player.PLAYER_ONE:
             color = self.P1
             title = "Player 1 Wins!"
-        else: # winner == Player.PLAYER_TWO
+        else:  # winner == Player.PLAYER_TWO
             color = self.P2
             title = "Player 2 Wins!"
         p1_score = len(game_state.player_one.claims)
@@ -356,8 +412,16 @@ class Renderer:
         pygame.draw.rect(self._screen, (45, 45, 55), box, border_radius=14)
         strip = pygame.Rect(box.left, box.top, box.w, 6)
         pygame.draw.rect(self._screen, color, strip, border_radius=3)
-        self._screen.blit(title_surf, (box.centerx - title_surf.get_width() // 2, box.top + pad_y))
-        self._screen.blit(score_surf, (box.centerx - score_surf.get_width() // 2, box.bottom - pad_y - score_surf.get_height()))
+        self._screen.blit(
+            title_surf, (box.centerx - title_surf.get_width() // 2, box.top + pad_y)
+        )
+        self._screen.blit(
+            score_surf,
+            (
+                box.centerx - score_surf.get_width() // 2,
+                box.bottom - pad_y - score_surf.get_height(),
+            ),
+        )
 
     def _handle_events(self, board_w: int, board_h: int):
         for event in pygame.event.get():
@@ -384,9 +448,18 @@ class Renderer:
         self._ensure_grid_fits(board_w, board_h)
 
         self._draw_grid(board_w, board_h)
-        self._draw_claims(game_state.player_one.claims, game_state.player_two.claims, board_w, board_h)
-        self._draw_trails(game_state.player_one.trail, game_state.player_two.trail, board_w, board_h)
-        self._draw_players(game_state.player_one.position, game_state.player_two.position, board_w, board_h)
+        self._draw_claims(
+            game_state.player_one.claims, game_state.player_two.claims, board_w, board_h
+        )
+        self._draw_trails(
+            game_state.player_one.trail, game_state.player_two.trail, board_w, board_h
+        )
+        self._draw_players(
+            game_state.player_one.position,
+            game_state.player_two.position,
+            board_w,
+            board_h,
+        )
         self._draw_walls(game_state.board.walls, board_w, board_h)
         self._draw_hud(game_state)
         self._draw_winner_popup(game_state)
