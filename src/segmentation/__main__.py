@@ -33,7 +33,6 @@ class AgentId(str, Enum):
     STATIC_ASTAR = "static_astar"
     TELEOP = "teleop"
     TREE = "tree"
-    VORONOI = "voronoi"
     SLOTH = "sloth"
     SNAKE = "snake"
 
@@ -61,23 +60,23 @@ def get_agent(agent_id: AgentId, **kwargs) -> AgentProtocol:
 
 def main() -> None:
     parser = ArgumentParser()
-    parser.add_argument("--world", type=str, default="worlds/small.world")
+    parser.add_argument("--world", type=str, default="worlds/small.world", help="Path to world file to load")
     parser.add_argument(
-        "--agent-one", type=AgentId, choices=list(AgentId), default=AgentId.TELEOP
+        "--agent-one", type=AgentId, choices=list(AgentId), default=AgentId.TELEOP,
+        help="Which agent to use for player one"
     )
     parser.add_argument(
-        "--agent-two", type=AgentId, choices=list(AgentId), default=AgentId.TELEOP
+        "--agent-two", type=AgentId, choices=list(AgentId), default=AgentId.TELEOP,
+        help="Which agent to use for player two"
     )
-    parser.add_argument("--headless", action="store_true")
-    parser.add_argument("--render-delay", type=float, default=0.0)
+    parser.add_argument("--headless", action="store_true", help="Render board to terminal instead of a GUI")
+    parser.add_argument("--render-delay", type=float, default=0.0, help="Delay between frames (in seconds). Useful when running two autonomous agents against each other.")
     args = parser.parse_args()
 
     agent_one = get_agent(args.agent_one, side=Player.PLAYER_ONE)
     agent_two = get_agent(args.agent_two, side=Player.PLAYER_TWO)
     game_state = GameState(args.world)
     renderer = Renderer()
-
-    print(game_state.board.get_tile(2, 12))
 
     while game_state.winner is None:
         if args.headless:
