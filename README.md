@@ -22,12 +22,12 @@ In particular, for these assignments you are tasked to develop an agent who is a
 
 The world is represented as a $W \times H$ discrete grid with $W$ columns and $H$ rows. Tiles in the grid are 0-indexed with the origin at the top-left corner of the grid, increasing column index going to the right, and increasing row index going down. For example, in the following grid the dark red square is located in tile (2, 12).
 
-<center>
+<div align="center">
     <img src="docs/imgs/position.png" alt="drawing" width="500"/>
 
 Player one and player two represented as dark red and blue rounded squares, respectively. Their associated claims are shown as transparent squares of the appropriate color. Trails are represented as circles of the appropriate color. Walls are shown as dark grey rounded squares.
 
-</center>
+</div>
 
 Tiles can have one or more of the following attributes which represent their state on the board.
 
@@ -57,10 +57,10 @@ Each of these actions attempts to move the agent in the appropriate direction (o
 
 As an agent moves onto tiles not currently in their claim they leave a trail behind them. When an agent moves into their claim again they "complete their trail" and claim all of the cells enclosed by their trail and claim.
 
-<center>
+<div align="center">
     <img src="docs/imgs/pre-complete.png" alt="drawing" width="500"/>
     <img src="docs/imgs/complete.png" alt="drawing" width="500"/>
-</center>
+</div>
 
 ### Eliminating Agents
 
@@ -147,9 +147,9 @@ Using typed Python can highly improve your programming (and especially your debu
 -   Search for `Type Checking Mode`
 -   Set the mode to your desired level of strictness (`standard` is a good default!)
 
-<center>
+<div align="center">
     <img src="docs/imgs/type_checking.png" width="1000"/>
-</center>
+</div>
 
 To ensure that all the type stubs are resolved for your installed dependencies, you have to select the correct Python interpreter. To do so:
 
@@ -157,9 +157,9 @@ To ensure that all the type stubs are resolved for your installed dependencies, 
 -   Type and select `Python: Select Interpreter`
 -   Choose the virtual environment located in the stencil directory.
 
-<center>
+<div align="center">
     <img src="docs/imgs/interpreter_selection.png" width="1000"/>
-</center>
+</div>
 
 For this to be correctly detected, be sure that the opened folder in VSCode is your cloned Github repository!
 
