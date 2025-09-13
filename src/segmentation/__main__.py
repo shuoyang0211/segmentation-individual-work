@@ -13,6 +13,7 @@ from segmentation_core.agents import (
     SlothBot,
     RandomBot,
     SnakeBot,
+    TreeBot,
 )
 from segmentation.agents import (
     BFSAgent,
@@ -47,6 +48,7 @@ AGENT_REGISTRY: dict[AgentId, Callable[..., AgentProtocol]] = {
     AgentId.TELEOP: TeleopAgent,
     AgentId.SLOTH: SlothBot,
     AgentId.SNAKE: SnakeBot,
+    AgentId.TREE: TreeBot,
 }
 
 
