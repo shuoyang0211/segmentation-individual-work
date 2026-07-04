@@ -1,0 +1,105 @@
+class GameState:
+    def __new__(cls, path:builtins.str) -> GameState:
+        r"""
+        Creates a new board from a file with the specified filename.
+        The first line of the file should be the dimensions of the board in the format "[width]x[height]".
+        Each subsequent line should represent a row of the board in run-length encoding format.
+        EMPTY tiles are represented by "E", WALL tiles by "W", PLAYER1 tiles by "A", and PLAYER2 tiles by "B".
+        The player is spawned in the center of their claim, which is a 3x3 area around their starting tile.
+        If the file is malformed or does not contain the required information, an error is returned.
+
+        Parameters:
+           - `filename` (`str`): The path to the file containing the board configuration.
+
+        Returns:
+           - `GameState`: A new `GameState` instance initialized with the data from the file.
+
+        Errors:
+          - `Io` if there was an I/O error reading the file. (ex. permissions)
+          - `EmptyFile` if the file is empty.
+          - `InvalidDimensionsFormat` if the dimensions line is not in the correct format.
+          - `InvalidDimension` if the width or height is not a valid usize.
+          - `HeightMismatch` if the number of rows in the file does not match the specified height.
+          - `WidthMismatch` if the number of columns in a row does not match the specified width.
+          - `InvalidTileCountFormat` if the tile count is not a valid usize.
+          - `InvalidTileCount` if multiple players are specified in a single tile.
+          - `UnknownTileType` if an unknown tile type is encountered.
+          - `MultiplePlayer` if multiple starting positions are found for a player.
+          - `MissingPlayer` if no starting position is found for a player.
+        """
+
+    r"""
+    Represents the game board and holds the bulk of the game state/logic.
+    The board is initialized from a file and contains the dimensions, board layout, and initial player starting positions.
+    """
+    @property
+    def board(self) -> Board:
+        r"""
+        The board associated with the game state.
+        """
+
+    @property
+    def player_one(self) -> PlayerState:
+        r"""
+        The state of Player 1.
+        """
+
+    @property
+    def player_two(self) -> PlayerState:
+        r"""
+        The state of Player 2.
+        """
+
+    @property
+    def active_player(self) -> Player:
+        r"""
+        The player whose turn it is.
+        """
+
+    @property
+    def winner(self) -> typing.Optional[Player]:
+        r"""
+        The player who has won the game, if there is one. Otherwise, None
+        """
+
+    def get_player_state(self, player:Player) -> PlayerState:
+        r"""
+        Returns the state of the specified player.
+
+        Parameters:
+           - `player`: The player whose state is to be retrieved.
+
+        Returns:
+           - `PlayerState`: The state of the specified player.
+        """
+
+    def transition(self, action:Action) -> GameState:
+        r"""
+        Transitions the board state based on the action taken by the active player. This
+        function DOES NOT mutate the current board state in-place.
+
+        A player can take one of five actions: Up, Down, Left, Right, or Stay. `GameState`s that are
+        already in a terminal state (i.e. have a winner) will not be changed.
+
+        Attempting to move into a wall or out-of-bounds will result in the player staying in place and the turn
+        to be passed to the other player.
+
+        Otherwise, game checks are performed in the following order:
+            1.  If the active player moves onto the tile that the other player is on, the active player wins.
+            2.  If the active player moves onto a tile that is part of a trail, the trail's owner loses.
+            3.  (a) If the active player moves onto a tile that they have claimed, the area enclosed by their
+                trail and claim is filled as their claim. If the other player is in this area, the other
+                player loses.
+        .        (b) Otherwise, the active player's trail is extended to include their new position.
+            4. If the active player has claimed more than half of the board, they win.
+
+         Following these checks, the player's position is updated, and the turn is passed to the other player.
+
+         Parameters:
+            - `action` (`Action`): The action taken by the active player.
+
+         Returns:
+            - `GameState`: A new `GameState` instance representing the state of the game after the action has been applied.
+        """
+
+    def clone(self) -> GameState: ...

@@ -1,0 +1,29 @@
+class PlayerState:
+    @property
+    def player(self) -> Player:
+        r"""
+        The player this state belongs to.
+        """
+
+    @property
+    def position(self) -> tuple:
+        r"""
+        The current position of the player.
+        """
+
+    @property
+    def claims(self) -> set:
+        r"""
+        The cells claimed by the player as a set of (x, y) tuples.
+        """
+
+    @property
+    def trail(self) -> set:
+        r"""
+        The current trail of the player as a set of (x, y) tuples.
+        """
+
+    def clone(self) -> PlayerState:
+        r"""
+        Returns a clone of the player state.
+        """
