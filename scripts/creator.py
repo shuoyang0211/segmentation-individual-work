@@ -607,14 +607,17 @@ class Editor:
         surface.blit(overlay, (0, 0))
 
         lines = [
-            "Controls:",
-            "  Left click/drag = paint | Right click = erase",
-            "  Tools: [E]mpty, [W]all, [1]/A = Player1, [2]/B = Player2",
-            "  [S] Save   [G] Toggle grid   [+/-] Zoom   [H/?] Toggle help",
-            "  Mouse wheel / drag scrollbars to scroll",
-            "  [Esc]/Q Quit",
             "",
-            "Saving requires exactly one 'A' and one 'B'.",
+            "Controls:",
+            "  [Left click] to paint, [Right click] to erase  ",
+            "",
+            "Tools:",
+            "  [E] Empty, [W] Wall, [1/A] Player 1, [2/B] Player 2  ",
+            "  [S] Save, [G] Toggle grid, [+/-] Zoom in/out  ",
+            "  [H] Show help, [Esc/Q] Quit  ",
+            "",
+            "  Board cannot be saved without both players.  ",
+            "",
         ]
 
         line_surfs = [
@@ -839,38 +842,45 @@ class Editor:
 
 def build_arg_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(
-        description="Pygame board editor for Rust RLE board files."
+        description="Pygame board editor."
     )
     group = p.add_mutually_exclusive_group(required=True)
     group.add_argument(
-        "--load", type=str, help="Path to an existing board file to load and edit."
+        "--load",
+        type=str,
+        help="path to an existing board file to load"
     )
     group.add_argument(
         "--size",
         type=str,
-        help="Create a new blank board with size WIDTHxHEIGHT (e.g., 20x15).",
+        help="dimensions of new empty board, formatted as [WIDTH]x[HEIGHT] (e.g., 20x15)."
     )
     p.add_argument(
         "--cell",
         type=int,
         default=0,
-        help="Cell size in pixels (16..128). 0 = auto based on board size.",
+        help="cell size in pixels (16..128). if omitted, set automatically based on board size"
     )
     p.add_argument(
         "--out",
         type=str,
         default=None,
-        help="Save path used when pressing 'S'. If omitted, will save to --load path or a default name.",
+        help="save path used when pressing 'S'. if omitted, will save to --load path or a default name"
     )
     p.add_argument(
-        "--no-grid", action="store_true", help="Start with grid lines hidden."
+        "--no-grid", action="store_true", help="hide grid lines when editor opens"
     )
     p.add_argument(
         "--palette-right",
         action="store_true",
-        help="Place the tool palette on the right instead of the left.",
+        help="place the tool palette on the right instead of the left"
     )
-    p.add_argument("--title", type=str, default="Board Editor", help="Window title.")
+    p.add_argument(
+        "--title",
+        type=str,
+        default="Board Editor",
+        help="window title"
+    )
     return p
 
 
