@@ -57,27 +57,47 @@ def get_agent(agent_id: AgentId, **kwargs) -> AgentProtocol:
         return AGENT_REGISTRY[agent_id](**kwargs)
     except KeyError:
         choices = ", ".join(a.value for a in AgentId)
-        raise ValueError(f"Unknown agent id: {agent_id!s}. Choices: {choices}")
+        raise ValueError(f"Unknown agent ID: {agent_id!s}. Choices: {choices}")
 
 
 def main() -> None:
     parser = ArgumentParser()
-    parser.add_argument("--world", type=str, default="worlds/small.world", help="Path to world file to load")
     parser.add_argument(
-        "--agent-one", type=AgentId, choices=list(AgentId), default=AgentId.TELEOP,
-        help="Which agent to use for player one"
+        "--world",
+        type=str,
+        default="worlds/small.world",
+        help="path to world file to load"
     )
     parser.add_argument(
-        "--agent-two", type=AgentId, choices=list(AgentId), default=AgentId.TELEOP,
-        help="Which agent to use for player two"
+        "--agent-one",
+        type=AgentId,
+        choices=[a.value for a in AgentId],
+        default=AgentId.TELEOP,
+        help="which agent to use for player one"
     )
-    parser.add_argument("--headless", action="store_true", help="Render board to terminal instead of a GUI")
-    parser.add_argument("--render-delay", type=float, default=0.0, help="Delay between frames (in seconds). Useful when running two autonomous agents against each other.")
+    parser.add_argument(
+        "--agent-two",
+        type=AgentId,
+        choices=[a.value for a in AgentId],
+        default=AgentId.TELEOP,
+        help="which agent to use for player two"
+    )
+    parser.add_argument(
+        "--headless",
+        action="store_true",
+        help="render board to terminal instead of a GUI"
+    )
+    parser.add_argument(
+        "--render-delay",
+        type=float,
+        default=0.02,
+        help="delay between frames (in seconds). useful when running two autonomous agents"
+    )
     args = parser.parse_args()
 
     agent_one = get_agent(args.agent_one, side=Player.PLAYER_ONE)
     agent_two = get_agent(args.agent_two, side=Player.PLAYER_TWO)
-    game_state = GameState(args.world)
+    game_state = GameState(args.world, None)
     renderer = Renderer()
 
     while game_state.winner is None:

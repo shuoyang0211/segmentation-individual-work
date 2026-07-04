@@ -1,4 +1,8 @@
 class PlayerState:
+    r"""
+    Represents the state of a player, including its position, claims, and trail.
+    """
+    
     @property
     def player(self) -> Player:
         r"""

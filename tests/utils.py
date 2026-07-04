@@ -25,7 +25,7 @@ def game_loop(
     agent_one_actions = []
     agent_two = agent_two_class(Player.PLAYER_TWO)
     agent_two_actions = []
-    game_state = GameState(filename)
+    game_state = GameState(filename, None)
 
     while not game_state.winner:
         match game_state.active_player:

@@ -21,11 +21,10 @@ class BFSAgent:
 
     def bfs(self, state: GameState):
         """
-        Task 1: Implement breadth-first search on the game tree to determine a sequence of actions
-        that gets your agent to SlothBot.
+        Task 1: Implement breadth-first search on the game tree to determine a sequence of actions that gets your agent to SlothBot.
 
         Note:
-            - You can assume that SlothBot is stationary and will always be reachable
+            - You can assume that SlothBot is stationary and will always be reachable.
 
         Hint: The `transition` method on `GameState` may be useful to construct and/or traverse the game tree.
         """

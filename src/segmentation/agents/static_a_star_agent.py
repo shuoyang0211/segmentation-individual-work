@@ -23,11 +23,10 @@ class StaticAStarAgent:
 
     def a_star(self, state: GameState, heuristic: Callable[[GameState], float]):
         """
-        Task 3: Implement the A* search algorithm on the game tree to determine a sequence of actions
-        that gets your agent to SlothBot.
+        Task 3: Implement the A* search algorithm on the game tree to determine a sequence of actions that gets your agent to SlothBot.
 
         Note:
-            - You can assume that SlothBot is stationary and will always be reachable
+            - You can assume that SlothBot is stationary and will always be reachable.
         """
         raise NotImplementedError
 
@@ -41,6 +40,6 @@ class StaticAStarAgent:
         Returns:
             Action: The next action to take to move towards SlothBot.
 
-        Task 3: Return the next action to take based on the given game state to get
+        Task 3: Return the next action to take based on the given game state to get your agent to SlothBot.
         """
         raise NotImplementedError

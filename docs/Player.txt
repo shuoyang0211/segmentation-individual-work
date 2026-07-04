@@ -1,4 +1,8 @@
 class Player:
+    r"""
+    Represents one of the two players.
+    """
+    
     PLAYER_ONE: Player = ...
     PLAYER_TWO: Player = ...
 

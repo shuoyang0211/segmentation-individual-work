@@ -1,37 +1,10 @@
 class GameState:
-    def __new__(cls, path:builtins.str) -> GameState:
-        r"""
-        Creates a new board from a file with the specified filename.
-        The first line of the file should be the dimensions of the board in the format "[width]x[height]".
-        Each subsequent line should represent a row of the board in run-length encoding format.
-        EMPTY tiles are represented by "E", WALL tiles by "W", PLAYER1 tiles by "A", and PLAYER2 tiles by "B".
-        The player is spawned in the center of their claim, which is a 3x3 area around their starting tile.
-        If the file is malformed or does not contain the required information, an error is returned.
-
-        Parameters:
-           - `filename` (`str`): The path to the file containing the board configuration.
-
-        Returns:
-           - `GameState`: A new `GameState` instance initialized with the data from the file.
-
-        Errors:
-          - `Io` if there was an I/O error reading the file. (ex. permissions)
-          - `EmptyFile` if the file is empty.
-          - `InvalidDimensionsFormat` if the dimensions line is not in the correct format.
-          - `InvalidDimension` if the width or height is not a valid usize.
-          - `HeightMismatch` if the number of rows in the file does not match the specified height.
-          - `WidthMismatch` if the number of columns in a row does not match the specified width.
-          - `InvalidTileCountFormat` if the tile count is not a valid usize.
-          - `InvalidTileCount` if multiple players are specified in a single tile.
-          - `UnknownTileType` if an unknown tile type is encountered.
-          - `MultiplePlayer` if multiple starting positions are found for a player.
-          - `MissingPlayer` if no starting position is found for a player.
-        """
-
     r"""
-    Represents the game board and holds the bulk of the game state/logic.
-    The board is initialized from a file and contains the dimensions, board layout, and initial player starting positions.
+    Represents the entire game state and holds the bulk of the game logic.
+    The board is initialized from a file containing the dimensions,
+    board layout, and starting positions of each player.
     """
+    
     @property
     def board(self) -> Board:
         r"""
@@ -57,7 +30,7 @@ class GameState:
         """
 
     @property
-    def winner(self) -> typing.Optional[Player]:
+    def winner(self) -> Player | None:
         r"""
         The player who has won the game, if there is one. Otherwise, None
         """
@@ -102,4 +75,7 @@ class GameState:
             - `GameState`: A new `GameState` instance representing the state of the game after the action has been applied.
         """
 
-    def clone(self) -> GameState: ...
+    def clone(self) -> GameState:
+        r"""
+        Returns a clone of the game state.
+        """

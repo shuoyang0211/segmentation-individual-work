@@ -1,12 +1,17 @@
 class Board:
+    r"""
+    Represents the state of the board.
+    Stores the dimensions, board layout, and state of each tile.
+    """
+    
     @property
-    def width(self) -> builtins.int:
+    def width(self) -> int:
         r"""
         Returns the width of the board.
         """
 
     @property
-    def height(self) -> builtins.int:
+    def height(self) -> int:
         r"""
         Returns the height of the board.
         """
@@ -17,7 +22,7 @@ class Board:
         Returns the walls of the board as a set of (x, y) tuples.
         """
 
-    def get_tile(self, x:builtins.int, y:builtins.int) -> typing.Optional[Tile]:
+    def get_tile(self, x:int, y:int) -> Tile | None:
         r"""
         Returns the tile at the given (x, y) position, or None if out of bounds.
 
