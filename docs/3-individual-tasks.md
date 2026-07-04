@@ -15,17 +15,17 @@
 
 Before writing your own policy to play against intelligent agents, you will first defeat a simpler opponent. This initial challenger is `SlothBot`, a naive and lazy agent that always stays in place.
 
-1. In [`src/segmentation/agents/1-dfs_agent.py`](/src/segmentation/agents/1-dfs_agent.py), implement the `dfs` and `get_action` methods so that your agent navigates from its starting position to `SlothBot`'s position, eliminating `SlothBot`.
+1. In [`src/segmentation/agents/dfs_agent.py`](/src/segmentation/agents/dfs_agent.py), implement the `dfs` and `get_action` methods so that your agent navigates from its starting position to `SlothBot`'s position, eliminating `SlothBot`.
 
-2. In [`src/segmentation/agents/2-bfs_agent.py`](/src/segmentation/agents/2-bfs_agent.py), implement the `bfs` and `get_action` methods so that your agent navigates from its starting position to `SlothBot`'s position, eliminating `SlothBot`.
+2. In [`src/segmentation/agents/bfs_agent.py`](/src/segmentation/agents/bfs_agent.py), implement the `bfs` and `get_action` methods so that your agent navigates from its starting position to `SlothBot`'s position, eliminating `SlothBot`.
 
-3. In [`src/segmentation/agents/3-static_a_star_agent.py`](/src/segmentation/agents/3-static_a_star_agent.py), implement the `bfs` and `get_action` methods so that your agent navigates from its starting position to `SlothBot`'s position, eliminating `SlothBot`.
+3. In [`src/segmentation/agents/static_a_star_agent.py`](/src/segmentation/agents/static_a_star_agent.py), implement the `bfs` and `get_action` methods so that your agent navigates from its starting position to `SlothBot`'s position, eliminating `SlothBot`.
 
 <br>
 
 A new competitor enters the scene: `SnakeBot`. Unlike our listless initial foe, `SnakeBot` slithers around the grid, extending its trail as long as possible before switching directions. More precisely, `SnakeBot` chooses a direction at random and continues in that direction until it reaches a wall or its own trail. At this point, `SnakeBot` randomly selects a different direction that won't cause it to immediately lose, stopping if no such direction exists.
 
-4. In [`src/segmentation/agents/4-dynamic_a_star_agent.py`](/src/segmentation/agents/4-dynamic_a_star_agent.py), implement the `get_action` method so that your agent beats `SnakeBot`.
+4. In [`src/segmentation/agents/dynamic_a_star_agent.py`](/src/segmentation/agents/dynamic_a_star_agent.py), implement the `get_action` method so that your agent beats `SnakeBot`.
 
 <!-- <br>
 

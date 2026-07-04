@@ -18,6 +18,8 @@ Before we get started with the game, we will walk through how to install `git` a
 
 ### `git`
 
+### Visu
+
 ### `uv`
 
 #### Installing `uv`
