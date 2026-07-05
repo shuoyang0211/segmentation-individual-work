@@ -93,11 +93,16 @@ def main() -> None:
         default=0.02,
         help="delay between frames (in seconds). useful when running two autonomous agents"
     )
+    parser.add_argument(
+        "--max-iterations",
+        type=int,
+        default=250,
+        help="max number of iterations before declaring a draw. use -1 for no limit")
     args = parser.parse_args()
 
     agent_one = get_agent(args.agent_one, side=Player.PLAYER_ONE)
     agent_two = get_agent(args.agent_two, side=Player.PLAYER_TWO)
-    game_state = GameState(args.world, None)
+    game_state = GameState(args.world, max_iterations=args.max_iterations if args.max_iterations >= 0 else None)
     renderer = Renderer()
 
     while game_state.winner is None:
