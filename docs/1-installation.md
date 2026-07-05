@@ -34,7 +34,7 @@ git --version
 If you see the version printed out, you can move on to configuration. Otherwise, you will need to install Git. If you are on Mac, you should see a popup which will take you through the installation. If no popup appears, you can alternatively execute `xcode-select --install` in your terminal. If you are on Windows, you can download and run a standalone installer from [the official page](https://git-scm.com/install/windows). After installing Git, verify that `git --version` works as intended.
 
 > [!tip]
-> The primary way to access Git is through a piece of software called a *terminal*, also known as a *command-line interface*. If you are on Mac, you can find the `Terminal` app by pressing `Cmd` + `Space`, typing `Terminal`, and pressing `Return`. If you are on Windows, you can find the `Command Prompt` app by pressing the `Windows` key, typing `cmd`, and pressing `Enter`.
+> The primary way to access Git is through a piece of software called a *terminal*, also known as a *command-line interface*. If you are on Mac, you can find the `Terminal` app by opening Spotlight Search (`Cmd` + `Space`), typing `Terminal`, and pressing `Return`. If you are on Windows, you can find the `Command Prompt` app by pressing the `Windows` key, typing `cmd`, and pressing `Enter`.
 
 ### Configuring Git
 
@@ -132,21 +132,25 @@ One major superpower of `uv` is that it automatically manages different versions
 uv sync
 ```
 
-This will install an appropriate Python version (3.13) and all dependencies, including our testing framework `pytest`. You should see a `.venv` folder appear in the Explorer. To run any Python script, you can simply use `uv run <script.py>`, and `uv` will automatically verify that your environment is up-to-date and use your virtual environment. If everything has gone right, then you should be able to execute the following command and see the game!
-
-```sh
-uv run segmentation
-```
+This will install an appropriate Python version (3.13) and all dependencies, including our testing framework `pytest`. You should see a `.venv` folder appear in the Explorer.
 
 ### Selecting your Python interpreter
 
-If you open one of the Python scripts in this repo, you might find that some imported packages aren't recognized. To ensure that all type stubs are resolved for your project's dependencies, you need to select the correct Python interpreter. To do so:
+After executing `uv sync`, you should see a popup in the bottom right asking to select your new environment for your workspace folder. Click `Yes` so that VS Code can resolve your project's dependencies. If VS Code still doesn't recognize some imported packages, you can manually select your Python interpreter as follows.
 
 - Open the Command Palette (`Ctrl`/`Cmd` + `Shift` + `P`).
 - Type and select `Python: Select Interpreter`.
 - Choose your repo's virtual environment. You should see the word `venv`. This will most likely be the interpreter recommended by VS Code.
 
 For your environment to be detected, make sure that your opened folder in VS Code is actually your cloned GitHub repo!
+
+### Using `uv`
+
+To run any Python script, you can now simply use `uv run <script.py>`, and `uv` will automatically verify that your environment is up-to-date and use your virtual environment. If everything has gone right, then you should be able to execute the following command and see the game!
+
+```sh
+uv run segmentation
+```
 
 <figure style="text-align: center;">
     <img src="./imgs/select_interpreter.png" alt="Selecting a Python interpreter" width="600">
