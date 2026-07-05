@@ -16,22 +16,22 @@ from segmentation_core.agents import (
     TreeBot,
 )
 from segmentation.agents import (
-    BFSAgent,
     DFSAgent,
-    DynamicAStarAgent,
-    StaticAStarAgent,
+    BFSAgent,
+    AStarAgent,
+    StudentAgent,
     TeleopAgent,
 )
 from segmentation.renderer import Renderer
 
 
 class AgentId(str, Enum):
+    ASTAR = "astar"
     BFS = "bfs"
     DFS = "dfs"
     CHASER = "chaser"
-    DYNAMIC_ASTAR = "dynamic_astar"
     RANDOM = "random"
-    STATIC_ASTAR = "static_astar"
+    STUDENT = "student"
     TELEOP = "teleop"
     TREE = "tree"
     SLOTH = "sloth"
@@ -39,12 +39,12 @@ class AgentId(str, Enum):
 
 
 AGENT_REGISTRY: dict[AgentId, Callable[..., AgentProtocol]] = {
+    AgentId.ASTAR: AStarAgent,
     AgentId.BFS: BFSAgent,
     AgentId.DFS: DFSAgent,
     AgentId.CHASER: ChaserBot,
-    AgentId.DYNAMIC_ASTAR: DynamicAStarAgent,
     AgentId.RANDOM: RandomBot,
-    AgentId.STATIC_ASTAR: StaticAStarAgent,
+    AgentId.STUDENT: StudentAgent,
     AgentId.TELEOP: TeleopAgent,
     AgentId.SLOTH: SlothBot,
     AgentId.SNAKE: SnakeBot,

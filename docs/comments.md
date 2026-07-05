@@ -15,14 +15,13 @@
 
 This file contains doc comments for the classes defined in `segmentation_core.engine`.
 
-### `Action`
+## `Action`
 
 ```python
 class Action:
     r"""
     Represents a player action.
     """
-
     UP: Action = ...
     DOWN: Action = ...
     LEFT: Action = ...
@@ -30,7 +29,7 @@ class Action:
     STAY: Action = ...
 ```
 
-### `Board`
+## `Board`
 
 ```python
 class Board:
@@ -76,7 +75,7 @@ class Board:
         """
 ```
 
-### `GameState`
+## `GameState`
 
 ```python
 class GameState:
@@ -144,7 +143,7 @@ class GameState:
             3.  (a) If the active player moves onto a tile that they have claimed, the area enclosed by their
                 trail and claim is filled as their claim. If the other player is in this area, the other
                 player loses.
-        .        (b) Otherwise, the active player's trail is extended to include their new position.
+        .       (b) Otherwise, the active player's trail is extended to include their new position.
             4. If the active player has claimed more than half of the board, they win.
 
          Following these checks, the player's position is updated, and the turn is passed to the other player.
@@ -162,14 +161,13 @@ class GameState:
         """
 ```
 
-### `Player`
+## `Player`
 
 ```python
 class Player:
     r"""
     Represents one of the two players.
     """
-    
     PLAYER_ONE: Player = ...
     PLAYER_TWO: Player = ...
 
@@ -183,7 +181,7 @@ class Player:
         """
 ```
 
-### `PlayerState`
+## `PlayerState`
 
 ```python
 class PlayerState:
@@ -221,7 +219,7 @@ class PlayerState:
         """
 ```
 
-### `Tile`
+## `Tile`
 
 ```python
 class Tile:

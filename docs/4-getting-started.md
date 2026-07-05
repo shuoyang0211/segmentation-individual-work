@@ -13,7 +13,7 @@
 
 <br>
 
-Now, you should be ready to start implementing your own agents and testing them out! In this file, we will introduce the various programs which you will need as you complete the assignment. We have also added some more info about using Git, which can save you from a lot of future headaches. Git will be especially useful for the group portion.
+Now, you should be ready to start implementing your own agents and testing them out! In this file, we will introduce the various programs which you will need as you complete the assignment. We have also added some more info about using Git, which can save you from a lot of future headaches while coding. You will also need to push your code with Git before you submit your assignment on Gradescope.
 
 <br>
 
@@ -49,7 +49,7 @@ uv run creator.py [--help] (--load LOAD | --size SIZE) [--cell CELL] [--out OUT]
 
 ### Testing your code
 
-We use [`pytest`](https://docs.pytest.org/en/stable/) to write and run tests for your assignments. To run our provided tests (or your own custom tests), use the following.
+We use [`pytest`](https://docs.pytest.org/en/stable/) to write and run tests for your assignments. `pytest` will automatically discover any files of the form `test_*.py` and `*_test.py`, making it easy to write your own custom tests. To run all TA-provided and custom tests, use the following.
 
 ```sh
 uv run pytest
@@ -63,8 +63,8 @@ uv run pytest
 > 
 > ```sh
 > pytest                      # run all tests (auto-discovery)
-> pytest <custom_tests/>      # run tests under a directory
-> pytest <tests/test_x.py>    # run tests in a file
+> pytest <path/>              # run tests under a directory
+> pytest <path/test_*.py>     # run tests in a file
 > ```
 > 
 > </details>
@@ -113,9 +113,9 @@ uv run pytest
 
 ### Managing versions with Git
 
-[Git](https://git-scm.com/) is actually something called a *distributed version control system*, which is to grossly simplify, a piece of software used by developers to manage different versions of their code. You can learn more about what that means and how to start using it by reading this [amazing introduction](https://cs61.seas.harvard.edu/site/2025/git/) from Prof. Eddie Kohler. You can also find a number of guides online if you want to learn more.
+[Git](https://git-scm.com/) is actually something called a *distributed version control system*, which is to grossly simplify, a piece of software used by developers to manage different versions of their code. You can learn more about what that means and how to start using it by reading this [wonderful introduction](https://cs61.seas.harvard.edu/site/2025/git/) from Harvard professor Eddie Kohler. Here's another [straight-to-the-point guide](https://rogerdudler.github.io/git-guide/) from Roger Dudler. (There are many more guides out there.)
 
-In a nutshell, Git allows you to *commit* snapshots of your project, and the entire history of commits is saved in your repository. Not only does this save your current progress, it also lets you view past versions of your code and revert changes without losing any data. Some commands that are worth looking into as you start the assignment are `status`, `add`, `commit`, `log`, `diff`, `push`, and `pull`. If you only remember one thing about Git, remember to ***commit early and often***!
+In a nutshell, Git allows you to *commit* snapshots of your project, and the entire history of commits is saved in your repository. Not only does this save your current progress, it also lets you view past versions of your code and revert changes without losing any data. As you start the assignment, some commands we encourage you to get comfortable with are `status`, `add`, `commit`, `log`, `diff`, `push`, and `pull`. If you only remember one thing about Git, remember to ***commit early and often***!
 
 ### Common Git workflow
 
@@ -128,15 +128,29 @@ git commit -m "<your message>"  # save a snapshot of your staged changes in your
 git push                        # upload your commits to the remote repo
 ```
 
-This logs all current changes to your project in a new commit, which you and others can view in the remote repository's webpage. Importantly, you should *always* make sure your code is up-to-date with the remote, by `pull`-ing before `push`-ing any new changes. The `pull` command won't matter for the individual portion of the assignment, but it will be necessary for the group portion.
+This logs all current changes to your project in a new commit, which you and others can view in the remote repo's webpage. Importantly, you should *always* make sure your code is up-to-date with the remote, by `pull`-ing before `push`-ing any new changes. The `pull` command won't matter for the individual portion of the assignment, but it will be necessary for the group portion.
 
 ### Group programming with Git
 
-While Git is useful for coding alone (and fetching homework assignments), where Git really shines is when many, many developers need to work together on the same codebase. You will still independently write code in your local repository. However, you can then `pull` changes that other people have made, and `push` changes for others to see. The workflow above is still the gold standard. If you are interested, you can look into the `branch`, `switch`, and `merge` commands.
+While Git is useful for coding alone (and fetching homework assignments), where Git really shines is when many, many developers need to work together on the same codebase. You will still independently write code in your local repo. However, you can then `pull` changes that other people have made, and `push` changes for others to see. The workflow above is still the gold standard. If you are interested, you can look into the `branch`, `switch`, and `merge` commands.
 
 ### Group programming with Live Share
 
 Another way to code with a small group of people is with the [Live Share](vscode:extension/MS-vsliveshare.vsliveshare) extension from Microsoft. This extension lets you share a single development environment with your group members in real time, which can be a convenient alternative if your group plans to code synchronously. Follow the installation and quickstart guides on the extension page to get started.
+
+<br>
+
+## Submitting code to Gradescope
+
+To upload your work to Gradescope, you will need to do the following.
+
+1. Commit and push your submission code to your unique GitHub repo. Don't forget to `add` any new files you created.
+2. Open Gradescope in your browser and select your assignment.
+3. In the popup, select your unique repo. This will likely be at the top of the list.
+4. Select `main` as your branch. This is the default setting.
+5. Click `Upload`! The autograder will now test your code on Gradescope's servers.
+
+If you don’t see your repo in the list, check that your repo's webpage reflects your most recent commit. If not, you may have forgotten to `commit` or `push`. Once the autograder finishes, you will receive an email, and you should be able to see the results in the Gradescope assignment.
 
 <br>
 

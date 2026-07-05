@@ -1,14 +1,16 @@
+from typing import Callable
+
 from segmentation_core.engine import GameState, Action, Player
 
 
-class DynamicAStarAgent:
+class AStarAgent:
     # Name of the agent for leaderboard purposes
     _name: str
     # Which side the agent is on
     _side: Player
 
     def __init__(self, side: Player):
-        self._name = "Dynamic A* Agent"
+        self._name = "A* Agent"
         self._side = side
 
     @property
@@ -19,6 +21,15 @@ class DynamicAStarAgent:
     def side(self) -> Player:
         return self._side
 
+    def a_star(self, state: GameState, heuristic: Callable[[GameState], float]):
+        """
+        Task 3: Implement the A* search algorithm on the game tree to determine a sequence of actions that gets your agent to SlothBot.
+
+        Note:
+            - You can assume that SlothBot is stationary and will always be reachable.
+        """
+        raise NotImplementedError
+
     def get_action(self, state: GameState) -> Action:
         """
         Computes the next action to take based on the given game state.
@@ -27,9 +38,8 @@ class DynamicAStarAgent:
             `state` (`GameState`): The current state of the game.
 
         Returns:
-            Action: The next action to take to move towards SnakeBot.
+            Action: The next action to take to move towards SlothBot.
 
-        Task 4: Return the next action to take based on the given game state to get
-        your agent to eliminate SnakeBot.
+        Task 3: Return the next action to take based on the given game state to get your agent to SlothBot.
         """
         raise NotImplementedError

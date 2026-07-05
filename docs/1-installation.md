@@ -21,7 +21,7 @@ Before we get started with the game, we will walk through how to set up GitHub a
 
 ### Creating a GitHub account
 
-In this class, we will use GitHub Classroom to distribute code and manage submissions to Gradescope. GitHub is a cloud-based platform which stores *repositories*, which are special folders that track the complete history of a project. If you haven't already, you'll want to start by making a [GitHub account](https://github.com/) using your Harvard email.
+In this class, we will use GitHub Classroom to distribute code and manage submissions to Gradescope. GitHub is a cloud-based platform which stores *repositories* (or *repos* for short), which are special folders that track the complete history of a project. If you haven't already, you'll want to start by making a [GitHub account](https://github.com/) using your Harvard email.
 
 ### Installing Git
 
@@ -50,7 +50,7 @@ git config --global user.email "<your email>"
 
 ### Configuring your SSH key
 
-Since GitHub repositories live on remote servers, whenever you make changes to a repository from your local computer, GitHub needs to make sure that you are authorized to access that repository. In other words, you need to prove your identity by connecting your machine to GitHub. The best way to do this is to use an *SSH key*, a secret key that defines your identity, and an *SSH agent*, a program that remembers your identity.
+Since GitHub repositories live on remote servers, whenever you make changes to a repo from your local computer, GitHub needs to make sure that you are authorized to access that repo. In other words, you need to prove your identity by connecting your machine to GitHub. The best way to do this is to use an *SSH key*, a secret key that defines your identity, and an *SSH agent*, a program that remembers your identity.
 
 SSH keys are extremely secure, and more importantly, you won't need to type your password all the time. You can set up your SSH key by following [the official instructions](https://docs.github.com/en/authentication/connecting-to-github-with-ssh) for your operating system. Make sure you test your SSH connection! The whole process is a bit tedious, but once you set it up, you can forget about it. If you are having trouble with this step, please ask for help.
 
@@ -66,7 +66,7 @@ cd CS128        # [c]hanges [d]irectory to CS128
 
 Now, to download the assignment:
 
-1. Open your unique repository link in your browser.
+1. Open your unique repo's webpage in your browser.
 2. On the GitHub page, click the green `Code` button, select `SSH`, and copy the URL.
 3. Open Terminal and navigate into the folder that you want to download the assignment in.
 4. Execute the following command (without the angle brackets `<>`).
@@ -75,7 +75,7 @@ Now, to download the assignment:
 git clone <copied url>
 ```
 
-You should verify that the cloned repository has appeared in your desired folder.
+You should verify that the cloned repo has appeared in your desired folder.
 
 <figure style="text-align: center;">
     <img src="./imgs/cloning_repo.png" alt="Cloning a repository" width="800"/>
@@ -95,7 +95,7 @@ VS Code is notable for its large library of official and community-made extensio
 
 ### Opening your cloned repository
 
-From a new VS Code window, click `Open` and locate your cloned repository. Select `Yes` if you are asked whether you trust the authors of the project. You should now be able to navigate the repository using the Explorer on the left. In the `docs` folder, you'll find the file you're reading right now! We'll start running scripts later. For now, to view rendered Markdown files, right-click a `.md` file and select `Open Preview`.
+From a new VS Code window, click `Open` and locate your cloned repo. Select `Yes` if you are asked whether you trust the authors of the project. You should now be able to navigate the repo using the Explorer on the left. In the `docs` folder, you'll find the file you're reading right now! We'll start running scripts later. For now, to view rendered Markdown files, right-click a `.md` file and select `Open Preview`.
 
 > [!note]
 > VS Code includes an integrated terminal, which you can open by selecting `Terminal > New Terminal` in the app menu bar at the top. Conveniently, this terminal automatically opens inside your project folder, and it lets you keep your terminal in the same window as your code.
@@ -140,13 +140,13 @@ uv run segmentation
 
 ### Selecting your Python interpreter
 
-If you open one of the Python scripts in this repository, you might find that some imported packages aren't recognized. To ensure that all type stubs are resolved for your project's dependencies, you need to select the correct Python interpreter. To do so:
+If you open one of the Python scripts in this repo, you might find that some imported packages aren't recognized. To ensure that all type stubs are resolved for your project's dependencies, you need to select the correct Python interpreter. To do so:
 
 - Open the Command Palette (`Ctrl`/`Cmd` + `Shift` + `P`).
 - Type and select `Python: Select Interpreter`.
 - Choose your repo's virtual environment. You should see the word `venv`. This will most likely be the interpreter recommended by VS Code.
 
-For your environment to be detected, make sure that your opened folder in VS Code is actually your cloned GitHub repository!
+For your environment to be detected, make sure that your opened folder in VS Code is actually your cloned GitHub repo!
 
 <figure style="text-align: center;">
     <img src="./imgs/select_interpreter.png" alt="Selecting a Python interpreter" width="600">
