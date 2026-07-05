@@ -24,7 +24,7 @@ Now, you should be ready to start implementing your own agents and testing them 
 To run the starter code, you can use the following command.
 
 ```sh
-uv run segmentation [--help] [--world WORLD] [--agent-one AGENT_ID] [--agent-two AGENT_ID] [--headless] [--render-delay]
+uv run segmentation [--help] [--world WORLD] [--agent-one AGENT_ID] [--agent-two AGENT_ID] [--headless] [--render-delay RENDER_DELAY] [--max-iterations MAX_ITERATIONS]
 ```
 
 > [!tip]
@@ -41,7 +41,7 @@ uv run segmentation [--help] [--world WORLD] [--agent-one AGENT_ID] [--agent-two
 If you want to try making your own worlds, you can open the board editor GUI by running the following.
 
 ```sh
-uv run creator.py [--help] (--load LOAD | --size SIZE) [--cell CELL] [--out OUT] [--no-grid] [--palette-right] [--title TITLE]
+uv run scripts/creator.py [--help] (--load LOAD | --size SIZE) [--cell CELL] [--out OUT] [--no-grid] [--palette-right] [--title TITLE]
 ```
 
 > [!tip]

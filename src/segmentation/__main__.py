@@ -15,6 +15,7 @@ from segmentation_core.agents import (
     SnakeBot,
     TreeBot,
 )
+from segmentation.renderer import Renderer
 from segmentation.agents import (
     DFSAgent,
     BFSAgent,
@@ -22,7 +23,6 @@ from segmentation.agents import (
     StudentAgent,
     TeleopAgent,
 )
-from segmentation.renderer import Renderer
 
 
 class AgentId(str, Enum):
