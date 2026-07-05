@@ -13,7 +13,7 @@
 
 <br>
 
-Before writing your own policy to play against intelligent agents, you will first defeat a simpler opponent. This initial challenger is `SlothBot`, a naive and lazy agent that always stays in place.
+Before writing your own policy to play against intelligent agents, you will first defeat a simpler opponent. This initial challenger is `SlothBot`, a naive and lazy agent that always stays in place. For your reference, we've provided some pseudocode in `docs/pseudocode.md`.
 
 1. In [`src/segmentation/agents/dfs_agent.py`](/src/segmentation/agents/dfs_agent.py), implement the `dfs` and `get_action` methods so that your agent navigates from its starting position to `SlothBot`'s position, eliminating `SlothBot`.
 

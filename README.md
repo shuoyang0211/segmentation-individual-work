@@ -21,26 +21,35 @@ For this series of assignments, we're especially interested in diving deep into 
     <img src="./docs/imgs/game_preview.gif" alt="Player 1 defeats Player 2." width="400">
 </figure>
 
+<br>
+
 ## Code Structure
 
-This repository contains four major directories of interest.
+This repository contains five major directories of interest.
+
+### `docs`
+
+In addition to the files in this README, we've provided a few handouts for your reference.
+
+- `pseudocode.md` contains high-level pseudocode for some of the algorithms we learned in class.
+- `comments.md` contains some documentation for important classes related to the game.
 
 ### `scripts`
 
-We've created a variety of helpful scripts to aid in the development of your agents.
+We've also created a few helpful scripts to aid in the development of your agents.
 
-- The `creator.py` script provides a simple GUI to edit existing worlds and create new worlds, which you can use to test your agents. Once your project environment is set up, you can run `uv run scripts/creator.py -h` for more details.
+- `creator.py` provides a simple GUI to edit existing worlds and create new worlds, which you can use to test your agents. Once your project environment is set up, you can run `uv run scripts/creator.py -h` for more details.
 
 ### `src`
 
 All code that you will be responsible for belongs here. In particular, you will be implementing various agents that will face off against bots provided by the TAs. In general, refrain from making *destructive* edits to the stencil code to ensure compatibility with the autograder. Adding new files, functions, and methods is encouraged! External third-party dependencies are not allowed, but feel free to import any built-in Python module.
 
-As you work through this assignment, you may want to examine the exports of the `segmentation_core` package, which contains all the game logic for this assignment. You can view documentation for relevant classes, methods, and functions by:
+As you work through this assignment, you may want to examine the exports of the `segmentation_core` package, which contains all the game logic for this assignment. You can view documentation for relevant classes, methods, and functions with the following methods.
 
-- locating their type stubs in the package (in VS Code, you can `Ctrl`/`Cmd`+`Click` on the package itself or on objects like `Player`),
-- or using `help(object)` in a Python REPL (import the package and then call `help` on your desired class, method, or function).
+- Locate and view their type stubs directly in your IDE. These can be found at `.venv/lib/segmentation_core`. Alternatively, if you're using VS Code, you can `Ctrl`/`Cmd` + `Click` on the package itself or on an object like `Player`.
+- Import the package in a Python REPL, and call `help(object)` on your desired class, method, or function.
 
-Some doc comments have also been replicated at `docs/comments.md` for your convenience. If you have any questions about how any part of this assignment works, please feel free to post a question on [Ed](TODO: add new link)!
+Some of these comments have been replicated at `docs/comments.md` for your convenience. If you have any questions about how any part of this assignment works, please feel free to post a question on [Ed](TODO: add new link)!
 
 ### `tests`
 
