@@ -57,7 +57,7 @@ We've provided some simple tests to debug your implementations before submitting
 
 ### `worlds`
 
-All the TA-provided world files used for the local tests are located in this folder. To stay organized, we recommend that you save your custom world files either here or in a new folder.
+All the TA-provided world files used for the local tests are located in this folder. To stay organized, we recommend that you save your custom world files here or in a new subfolder.
 
 <br>
 
