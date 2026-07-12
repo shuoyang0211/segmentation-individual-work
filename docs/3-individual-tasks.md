@@ -28,7 +28,7 @@ Before writing your own policy to play against intelligent agents, you will firs
 
 A new competitor enters the scene: `SnakeBot`. Unlike our listless initial foe, `SnakeBot` slithers around the grid, extending its trail as long as possible before switching directions. More precisely, `SnakeBot` chooses a direction at random and continues in that direction until it reaches a wall or its own trail. At this point, `SnakeBot` randomly selects a different direction that won't cause it to immediately lose, stopping if no such direction exists.
 
-4. In [`src/segmentation/agents/student_agent.py`](/src/segmentation/agents/student_agent.py), implement the `get_action` method so that your agent beats `SnakeBot`. One strategy is to use a dynamic modification of A\* that handles changing environments (see *dynamic A\**). This is only of many possible strategies, so we encourage you to get creative for this part!
+4. In [`src/segmentation/agents/student_agent.py`](/src/segmentation/agents/student_agent.py), implement the `get_action` method so that your agent beats `SnakeBot`. One strategy is to use a dynamic modification of A\* that handles changing environments (see [dynamic A\*](https://en.wikipedia.org/wiki/D*)). This is only of many possible strategies, so we encourage you to get creative for this part!
 
 <br>
 
