@@ -13,7 +13,7 @@
 
 <br>
 
-Before we get started with the game, we will walk through how to set up GitHub and Git, Visual Studio Code, and `uv`, which you will need to fetch and start working on this assignment. We assume that most students will be using VS Code, but other IDEs should be fine. Feel free to skip any steps that you have done before, or post on [Ed](TODO: add new link) if you get stuck.
+Before we get started with the game, we will walk through how to set up GitHub and Git, Visual Studio Code, and `uv`, which you will need to fetch and start working on this assignment. We assume that most students will be using VS Code, but other IDEs should be fine. Feel free to skip any steps that you have done before, or post on [Ed](TODO) if you get stuck.
 
 <br>
 

@@ -49,15 +49,15 @@ As you work through this assignment, you may want to examine the exports of the 
 - Locate and view their type stubs directly in your IDE. These can be found at `.venv/lib/segmentation_core`. Alternatively, if you're using VS Code, you can `Ctrl`/`Cmd` + `Click` on the package itself or on an object like `Player`.
 - Import the package in a Python REPL, and call `help(object)` on your desired class, method, or function.
 
-Some of these comments have been replicated at `docs/comments.md` for your convenience. If you have any questions about how any part of this assignment works, please feel free to post a question on [Ed](TODO: add new link)!
+Some of these comments have been replicated at `docs/comments.md` for your convenience. If you have any questions about how any part of this assignment works, please feel free to post a question on [Ed](TODO)!
 
 ### `tests`
 
-We've provided some simple tests to debug your implementations before submitting to Gradescope. The tests in your handout are a strict subset of those used by our autograder on Gradescope. You can run these local tests by executing `uv run pytest`. We recommend that you write your own tests as well!
+We've provided some simple tests to debug your implementations before submitting to Gradescope. The tests in your handout are a strict subset of those used by our autograder. You can run these local tests by executing `uv run pytest`. We recommend that you write your own tests as well!
 
 ### `worlds`
 
-All the TA-provided world files used for the local tests are located in this folder. In addition to the basic worlds used for testing, we have also provided a number of "expansion" worlds to play around with as you start implementing your own agent. To stay organized, we also recommend that you save your custom world files in this folder.
+All the TA-provided world files used for the local tests are located in this folder. In addition to the worlds used for testing, we have also provided a number of "expansion" worlds to play around with as you start implementing your own agent. To stay organized, we also recommend that you save your custom world files in this folder.
 
 <br>
 
