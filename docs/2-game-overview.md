@@ -61,7 +61,7 @@ Each agent has a set of `claims`, which initially consists of all tiles in a $3 
 <figure style="text-align: center;">
     <img src="./imgs/claiming_tiles.gif" alt="Player 1 completes a trail, claiming a large number of tiles." width="500">
     <figcaption style="font-style: italic;">
-        Claims are shown as shaded tiles, and trails are shown as brightly colored circles, matching their respective players.
+        Claims are shown as shaded tiles, and trails are shown as bright circles, matching the colors of their respective players.
     </figcaption>
 </figure>
 

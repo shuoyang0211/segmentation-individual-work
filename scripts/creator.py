@@ -25,7 +25,7 @@ Controls:
       - G: toggle grid lines
       - +/-: zoom cell size (16..128)
       - H or ?: toggle help overlay
-      - Esc or Q: quit
+      - Esc: quit
 """
 
 from __future__ import annotations
@@ -614,7 +614,7 @@ class Editor:
             "Tools:",
             "  [E] Empty, [W] Wall, [1/A] Player 1, [2/B] Player 2  ",
             "  [S] Save, [G] Toggle grid, [+/-] Zoom in/out  ",
-            "  [H] Show help, [Esc/Q] Quit  ",
+            "  [H] Show help, [Esc] Quit  ",
             "",
             "  Board cannot be saved without both players.  ",
             "",
@@ -776,7 +776,7 @@ class Editor:
                             r, c = cell
                             self.paint_at(r, c, right_click=right)
                 elif event.type == pygame.KEYDOWN:
-                    if event.key in (pygame.K_q, pygame.K_ESCAPE):
+                    if event.key == pygame.K_ESCAPE:
                         running = False
                     elif event.key in (pygame.K_h, pygame.K_QUESTION):
                         self.help_visible = not self.help_visible

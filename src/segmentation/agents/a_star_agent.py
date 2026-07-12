@@ -41,5 +41,8 @@ class AStarAgent:
             Action: The next action to take to move towards SlothBot.
 
         Task 3: Return the next action to take based on the given game state to get your agent to SlothBot.
+
+        Note:
+            - For your final submission to Gradescope, make sure to use squared Euclidean distance as your heuristic function.
         """
         raise NotImplementedError
