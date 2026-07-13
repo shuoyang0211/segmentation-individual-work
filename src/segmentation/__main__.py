@@ -26,7 +26,7 @@ from segmentation.agents import (
 
 
 class AgentId(str, Enum):
-    ASTAR = "astar"
+    A_STAR = "a_star"
     BFS = "bfs"
     DFS = "dfs"
     CHASER = "chaser"
@@ -39,7 +39,7 @@ class AgentId(str, Enum):
 
 
 AGENT_REGISTRY: dict[AgentId, Callable[..., AgentProtocol]] = {
-    AgentId.ASTAR: AStarAgent,
+    AgentId.A_STAR: AStarAgent,
     AgentId.BFS: BFSAgent,
     AgentId.DFS: DFSAgent,
     AgentId.CHASER: ChaserBot,
@@ -96,13 +96,14 @@ def main() -> None:
     parser.add_argument(
         "--max-iterations",
         type=int,
-        default=1000,
-        help="max number of iterations before declaring a draw. use -1 for no limit")
+        default=2500,
+        help="max number of iterations before declaring a draw. use 0 for no limit")
     args = parser.parse_args()
 
     agent_one = get_agent(args.agent_one, side=Player.PLAYER_ONE)
     agent_two = get_agent(args.agent_two, side=Player.PLAYER_TWO)
-    game_state = GameState(args.world, max_iterations=args.max_iterations if args.max_iterations >= 0 else None)
+    max_iterations = 2 * args.max_iterations if args.max_iterations > 0 else None
+    game_state = GameState(args.world, max_iterations)
     renderer = Renderer()
 
     while game_state.winner is None:
