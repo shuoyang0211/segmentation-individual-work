@@ -24,7 +24,7 @@ Controls:
       - S: save (to --out if provided; otherwise to --load path or default name)
       - G: toggle grid lines
       - +/-: zoom cell size (16..128)
-      - H or ?: toggle help overlay
+      - H: toggle help overlay
       - Esc: quit
 """
 
@@ -114,12 +114,6 @@ def load_board(path: str) -> Tuple[List[List[str]], int, int]:
 def save_board(path: str, board: List[List[str]]) -> None:
     height = len(board)
     width = len(board[0]) if height > 0 else 0
-    cnt_a = sum(tile == "A" for row in board for tile in row)
-    cnt_b = sum(tile == "B" for row in board for tile in row)
-    if cnt_a != 1 or cnt_b != 1:
-        raise ValueError(
-            f"Exactly one 'A' and one 'B' required to save (found A={cnt_a}, B={cnt_b})."
-        )
 
     with open(path, "w", encoding="utf-8") as f:
         f.write(f"{width}x{height}\n")
@@ -194,12 +188,12 @@ class Editor:
         width: int,
         height: int,
         board: Optional[List[List[str]]] = None,
-        cell_size: int = 0,
+        load_path: Optional[str] = None,
         out_path: Optional[str] = None,
+        cell_size: int = 0,
         show_grid: bool = True,
         palette_on_right: bool = False,
         window_title: str = "Board Editor",
-        load_path: Optional[str] = None,
     ) -> None:
         pygame.init()
         pygame.display.set_caption(window_title)
@@ -207,13 +201,14 @@ class Editor:
         self.width = width
         self.height = height
         self.panel_w = 250
+
+        self.load_path = load_path
+        self.out_path = out_path
         self.cell = (
             auto_cell_size(width, height, self.panel_w)
             if int(cell_size) <= 0
             else max(MIN_CELL_PX, min(MAX_CELL_PX, int(cell_size)))
         )
-        self.out_path = out_path
-        self.load_path = load_path
         self.show_grid = show_grid
         self.palette_right = palette_on_right
 
@@ -609,14 +604,17 @@ class Editor:
         lines = [
             "",
             "Controls:",
-            "  [Left click] to paint, [Right click] to erase  ",
+            "  [Left click] to paint, [Right click] to erase,  ",
             "",
             "Tools:",
             "  [E] Empty, [W] Wall, [1/A] Player 1, [2/B] Player 2  ",
-            "  [S] Save, [G] Toggle grid, [+/-] Zoom in/out  ",
-            "  [H] Show help, [Esc] Quit  ",
             "",
-            "  Board cannot be saved without both players.  ",
+            "Hotkeys:",
+            "  [S] Save, [G] Toggle grid, [+/-] Zoom in/out,  ",
+            "  [H] Show help, [Backspace] Quit  ",
+            "",
+            "  Note that both players must be placed  ",
+            "  for the world to be playable.  ",
             "",
         ]
 
@@ -817,7 +815,7 @@ class Editor:
                             path = (
                                 self.out_path
                                 or self.load_path
-                                or f"board_{self.width}x{self.height}.board"
+                                or f"board_{self.width}x{self.height}.world"
                             )
                             save_board(path, self.board)
                             self.show_msg(f"Saved: {path}", seconds=2.5)
@@ -856,16 +854,16 @@ def build_arg_parser() -> argparse.ArgumentParser:
         help="dimensions of new empty board, formatted as [WIDTH]x[HEIGHT] (e.g., 20x15)."
     )
     p.add_argument(
-        "--cell",
-        type=int,
-        default=0,
-        help="cell size in pixels (16..128). if omitted, set automatically based on board size"
-    )
-    p.add_argument(
         "--out",
         type=str,
         default=None,
         help="save path used when pressing 'S'. if omitted, will save to --load path or a default name"
+    )
+    p.add_argument(
+        "--cell",
+        type=int,
+        default=0,
+        help="cell size in pixels (16..128). if omitted, set automatically based on board size"
     )
     p.add_argument(
         "--no-grid", action="store_true", help="hide grid lines when editor opens"
@@ -893,12 +891,12 @@ def main():
             w,
             h,
             board=board,
-            cell_size=args.cell,
+            load_path=args.load,
             out_path=args.out,
+            cell_size=args.cell,
             show_grid=not args.no_grid,
             palette_on_right=args.palette_right,
             window_title=args.title,
-            load_path=args.load,
         )
     else:
         w, h = parse_dimensions(args.size)
@@ -907,8 +905,8 @@ def main():
             w,
             h,
             board=board,
-            cell_size=args.cell,
             out_path=args.out,
+            cell_size=args.cell,
             show_grid=not args.no_grid,
             palette_on_right=args.palette_right,
             window_title=args.title,
