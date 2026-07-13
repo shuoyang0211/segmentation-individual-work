@@ -96,7 +96,7 @@ def main() -> None:
     parser.add_argument(
         "--max-iterations",
         type=int,
-        default=250,
+        default=1000,
         help="max number of iterations before declaring a draw. use -1 for no limit")
     args = parser.parse_args()
 
