@@ -146,7 +146,7 @@ If you don't see this popup, you can manually select your Python interpreter as 
 
 - Open the Command Palette (`Ctrl`/`Cmd` + `Shift` + `P`).
 - Type and select `Python: Select Interpreter`.
-- Choose your repo's virtual environment. You should see the word `venv`. This will most likely be the interpreter recommended by VS Code.
+- Choose your repo's virtual environment. This will most likely be the interpreter recommended by VS Code.
 
 <figure style="text-align: center;">
     <img src="./imgs/select_interpreter.png" alt="Selecting a Python interpreter" width="500">
