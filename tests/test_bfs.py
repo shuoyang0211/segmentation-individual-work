@@ -19,28 +19,28 @@ def test_basic_worlds():
     assert game_loop("worlds/large.world", SlothBot, BFSAgent)[0] == Player.PLAYER_TWO
 
 
-def test_path_length():
+def test_path_worlds():
     """
     Verifies that the BFS agent takes an optimal path to SlothBot's starting position.
     """
 
     winner_dead_end, p1_acts_dead_end, _ = game_loop(
-        "worlds/path_tests/dead_end.world", BFSAgent, SlothBot
+        "worlds/paths/dead_end.world", BFSAgent, SlothBot
     )
     winner_detour, p1_acts_detour, _ = game_loop(
-        "worlds/path_tests/detour.world", BFSAgent, SlothBot
+        "worlds/paths/detour.world", BFSAgent, SlothBot
     )
     winner_jail, p1_acts_jail, _ = game_loop(
-        "worlds/path_tests/jail.world", BFSAgent, SlothBot
+        "worlds/paths/jail.world", BFSAgent, SlothBot
     )
     winner_labrynth, p1_acts_labrynth, _ = game_loop(
-        "worlds/path_tests/labrynth.world", BFSAgent, SlothBot
+        "worlds/paths/labrynth.world", BFSAgent, SlothBot
     )
     winner_square_loop, p1_acts_square_loop, _ = game_loop(
-        "worlds/path_tests/square_loop.world", BFSAgent, SlothBot
+        "worlds/paths/square_loop.world", BFSAgent, SlothBot
     )
     winner_vortex, p1_acts_vortex, _ = game_loop(
-        "worlds/path_tests/vortex.world", BFSAgent, SlothBot
+        "worlds/paths/vortex.world", BFSAgent, SlothBot
     )
 
     assert winner_dead_end == Player.PLAYER_ONE and len(p1_acts_dead_end) == 63

@@ -57,7 +57,7 @@ We've provided some simple tests to debug your implementations before submitting
 
 ### `worlds`
 
-All the TA-provided world files used for the local tests are located in this folder. In addition to the worlds used for testing, we have also provided a number of "expansion" worlds to play around with as you start implementing your own agent. To stay organized, we also recommend that you save your custom world files in this folder.
+All the TA-provided world files used for the local tests are located in this folder. In addition to some basic worlds and "path" worlds used for testing, we have also provided a number of "expansion" worlds to play around with as you implement your own agent. To stay organized, we recommend that you save your custom world files in this folder.
 
 <br>
 
