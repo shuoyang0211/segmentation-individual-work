@@ -25,7 +25,7 @@ Controls:
       - G: toggle grid lines
       - +/-: zoom cell size (16..128)
       - H: toggle help overlay
-      - Esc: quit
+      - Backspace: quit
 """
 
 from __future__ import annotations
@@ -774,7 +774,7 @@ class Editor:
                             r, c = cell
                             self.paint_at(r, c, right_click=right)
                 elif event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_ESCAPE:
+                    if event.key == pygame.K_BACKSPACE:
                         running = False
                     elif event.key in (pygame.K_h, pygame.K_QUESTION):
                         self.help_visible = not self.help_visible
