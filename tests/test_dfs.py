@@ -4,26 +4,17 @@ from segmentation.agents import DFSAgent
 from tests.utils import game_loop
 
 
-def test_small_world_winner():
+def test_basic_worlds():
     """
     Verifies that the DFS agent is able to reach SlothBot to win the game.
     """
+
     assert game_loop("worlds/small.world", DFSAgent, SlothBot)[0] == Player.PLAYER_ONE
     assert game_loop("worlds/small.world", SlothBot, DFSAgent)[0] == Player.PLAYER_TWO
 
-
-def test_medium_world_winner():
-    """
-    Verifies that the DFS agent is able to reach SlothBot to win the game.
-    """
     assert game_loop("worlds/medium.world", DFSAgent, SlothBot)[0] == Player.PLAYER_ONE
     assert game_loop("worlds/medium.world", SlothBot, DFSAgent)[0] == Player.PLAYER_TWO
 
-
-def test_large_world_winner():
-    """
-    Verifies that the DFS agent is able to reach SlothBot to win the game.
-    """
     assert game_loop("worlds/large.world", DFSAgent, SlothBot)[0] == Player.PLAYER_ONE
     assert game_loop("worlds/large.world", SlothBot, DFSAgent)[0] == Player.PLAYER_TWO
 
@@ -34,22 +25,22 @@ def test_path_length():
     """
 
     winner_dead_end, p1_acts_dead_end, _ = game_loop(
-        "worlds/testing/dead_end.world", DFSAgent, SlothBot
+        "worlds/path_tests/dead_end.world", DFSAgent, SlothBot
     )
     winner_detour, p1_acts_detour, _ = game_loop(
-        "worlds/testing/detour.world", DFSAgent, SlothBot
+        "worlds/path_tests/detour.world", DFSAgent, SlothBot
     )
     winner_jail, _, _ = game_loop(
-        "worlds/testing/jail.world", DFSAgent, SlothBot
+        "worlds/path_tests/jail.world", DFSAgent, SlothBot
     )
     winner_labrynth, _, _ = game_loop(
-        "worlds/testing/labrynth.world", DFSAgent, SlothBot
+        "worlds/path_tests/labrynth.world", DFSAgent, SlothBot
     )
     winner_square_loop, p1_acts_square_loop, _ = game_loop(
-        "worlds/testing/square_loop.world", DFSAgent, SlothBot
+        "worlds/path_tests/square_loop.world", DFSAgent, SlothBot
     )
     winner_vortex, p1_acts_vortex, _ = game_loop(
-        "worlds/testing/vortex.world", DFSAgent, SlothBot
+        "worlds/path_tests/vortex.world", DFSAgent, SlothBot
     )
 
     assert winner_dead_end == Player.PLAYER_ONE and len(p1_acts_dead_end) == 63
