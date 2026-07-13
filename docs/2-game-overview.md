@@ -8,7 +8,7 @@
 
 # Game Overview
 
-| [`README`](/README.md#cs182-individual-programming-assignment-1-segmentation) | [`Installation`](/docs/1-installation.md#installation) | [`Game Overview`] | [`Individual Tasks`](/docs/3-individual-tasks.md#individual-tasks) | [`Getting Started`](/docs/4-getting-started.md#getting-started) |
+| [`README`](/README.md#cs182-individual-programming-assignment-1-segmentation) | [`Installation`](/docs/1-installation.md#installation) | [`Game Overview`] | [`Getting Started`](/docs/3-getting-started.md#getting-started) | [`Individual Tasks`](/docs/4-individual-tasks.md#tasks) |
 | :---: | :---: | :---: | :---: | :---: |
 
 <br>
@@ -93,5 +93,5 @@ A player wins if either their agent has claimed a majority of available tiles or
 
 ---
 
-| [← `Installation`](/docs/1-installation.md#installation) | [`Back to top`](#game-overview) | [`Individual Tasks` →](/docs/3-individual-tasks.md#individual-tasks) |
+| [← `Installation`](/docs/1-installation.md#installation) | [`Back to top`](#game-overview) | [`Getting Started` →](/docs/3-getting-started.md#getting-started) |
 | :--- | :---: | ---: |

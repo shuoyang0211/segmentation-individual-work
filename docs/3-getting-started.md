@@ -8,7 +8,7 @@
 
 # Getting Started
 
-| [`README`](/README.md#cs182-individual-programming-assignment-1-segmentation) | [`Installation`](/docs/1-installation.md#installation) | [`Game Overview`](/docs/2-game-overview.md#game-overview) | [`Individual Tasks`](/docs/3-individual-tasks.md#individual-tasks) | [`Getting Started`] |
+| [`README`](/README.md#cs182-individual-programming-assignment-1-segmentation) | [`Installation`](/docs/1-installation.md#installation) | [`Game Overview`](/docs/2-game-overview.md#game-overview) | [`Getting Started`] | [`Individual Tasks`](/docs/4-individual-tasks.md#individual-tasks) |
 | :---: | :---: | :---: | :---: | :---: |
 
 <br>
@@ -156,5 +156,5 @@ If you don’t see your repo in the list, check that your repo's webpage reflect
 
 ---
 
-| [<- `Individual Tasks`](/docs/3-individual-tasks.md#individual-tasks) | [`Back to top`](#getting-started) |
-| :--- | :---: |
+| [<- `Game Overview`](/docs/2-game-overview.md#game-overview) | [`Back to top`](#individual-tasks) | [`Individual Tasks` ->](/docs/4-individual-tasks.md#individual-tasks) |
+| :--- | :---: | ---: |

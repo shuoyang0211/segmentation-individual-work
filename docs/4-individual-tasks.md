@@ -8,7 +8,7 @@
 
 # Individual Tasks
 
-| [`README`](/README.md#cs182-individual-programming-assignment-1-segmentation) | [`Installation`](/docs/1-installation.md#installation) | [`Game Overview`](/docs/2-game-overview.md#game-overview) | [`Individual Tasks`] | [`Getting Started`](/docs/4-getting-started.md#getting-started) |
+| [`README`](/README.md#cs182-individual-programming-assignment-1-segmentation) | [`Installation`](/docs/1-installation.md#installation) | [`Game Overview`](/docs/2-game-overview.md#game-overview) | [`Getting Started`](/docs/3-getting-started.md#getting-started) | [`Individual Tasks`] |
 | :---: | :---: | :---: | :---: | :---: |
 
 <br>
@@ -34,5 +34,5 @@ A new competitor enters the scene: `SnakeBot`. Unlike our listless initial foe, 
 
 ---
 
-| [<- `Game Overview`](/docs/2-game-overview.md#game-overview) | [`Back to top`](#individual-tasks) | [`Getting Started` ->](/docs/4-getting-started.md#getting-started) |
-| :--- | :---: | ---: |
+| [<- `Getting Started`](/docs/3-getting-started) | [`Back to top`](#individual-tasks) |
+| :--- | :---: |

@@ -8,7 +8,7 @@
 
 # Installation
 
-| [`README`](/README.md#cs182-individual-programming-assignment-1-segmentation) | [`Installation`] | [`Game Overview`](/docs/2-game-overview.md#game-overview) | [`Individual Tasks`](/docs/3-individual-tasks.md#individual-tasks) | [`Getting Started`](/docs/4-getting-started.md#getting-started) |
+| [`README`](/README.md#cs182-individual-programming-assignment-1-segmentation) | [`Installation`] | [`Game Overview`](/docs/2-game-overview.md#game-overview) | [`Getting Started`](/docs/3-getting-started.md#getting-started) | [`Individual Tasks`](/docs/4-individual-tasks.md#tasks) |
 | :---: | :---: | :---: | :---: | :---: |
 
 <br>
