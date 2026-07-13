@@ -136,13 +136,23 @@ This will install an appropriate Python version (3.13) and all dependencies, inc
 
 ### Selecting your Python interpreter
 
-After executing `uv sync`, you should see a popup in the bottom right asking to select your new environment for your workspace folder. Click `Yes` so that VS Code can resolve your project's dependencies. If VS Code still doesn't recognize some imported packages, you can manually select your Python interpreter as follows.
+After executing `uv sync`, you might see a popup in the bottom right like the following. Click `Yes` so that VS Code can resolve your project's dependencies.
+
+<figure style="text-align: center;">
+    <img src="./imgs/new_venv_popup.png" alt="New virtual environment popup" width="400">
+</figure>
+
+If you don't see this popup, you can manually select your Python interpreter as follows.
 
 - Open the Command Palette (`Ctrl`/`Cmd` + `Shift` + `P`).
 - Type and select `Python: Select Interpreter`.
 - Choose your repo's virtual environment. You should see the word `venv`. This will most likely be the interpreter recommended by VS Code.
 
-For your environment to be detected, make sure that your opened folder in VS Code is actually your cloned GitHub repo!
+<figure style="text-align: center;">
+    <img src="./imgs/select_interpreter.png" alt="Selecting a Python interpreter" width="500">
+</figure>
+
+For your environment to be detected, make sure that your opened folder in VS Code is indeed your cloned repo!
 
 ### Using `uv`
 
@@ -151,10 +161,6 @@ To run any Python script, you can now simply use `uv run <script.py>`, and `uv` 
 ```sh
 uv run segmentation
 ```
-
-<figure style="text-align: center;">
-    <img src="./imgs/select_interpreter.png" alt="Selecting a Python interpreter" width="600">
-</figure>
 
 <br>
 
