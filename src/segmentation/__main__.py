@@ -15,23 +15,23 @@ from segmentation_core.agents import (
     SnakeBot,
     TreeBot,
 )
+from segmentation.renderer import Renderer
 from segmentation.agents import (
-    BFSAgent,
     DFSAgent,
-    DynamicAStarAgent,
-    StaticAStarAgent,
+    BFSAgent,
+    AStarAgent,
+    StudentAgent,
     TeleopAgent,
 )
-from segmentation.renderer import Renderer
 
 
 class AgentId(str, Enum):
+    A_STAR = "a_star"
     BFS = "bfs"
     DFS = "dfs"
     CHASER = "chaser"
-    DYNAMIC_ASTAR = "dynamic_astar"
     RANDOM = "random"
-    STATIC_ASTAR = "static_astar"
+    STUDENT = "student"
     TELEOP = "teleop"
     TREE = "tree"
     SLOTH = "sloth"
@@ -39,12 +39,12 @@ class AgentId(str, Enum):
 
 
 AGENT_REGISTRY: dict[AgentId, Callable[..., AgentProtocol]] = {
+    AgentId.A_STAR: AStarAgent,
     AgentId.BFS: BFSAgent,
     AgentId.DFS: DFSAgent,
     AgentId.CHASER: ChaserBot,
-    AgentId.DYNAMIC_ASTAR: DynamicAStarAgent,
     AgentId.RANDOM: RandomBot,
-    AgentId.STATIC_ASTAR: StaticAStarAgent,
+    AgentId.STUDENT: StudentAgent,
     AgentId.TELEOP: TeleopAgent,
     AgentId.SLOTH: SlothBot,
     AgentId.SNAKE: SnakeBot,
@@ -57,27 +57,53 @@ def get_agent(agent_id: AgentId, **kwargs) -> AgentProtocol:
         return AGENT_REGISTRY[agent_id](**kwargs)
     except KeyError:
         choices = ", ".join(a.value for a in AgentId)
-        raise ValueError(f"Unknown agent id: {agent_id!s}. Choices: {choices}")
+        raise ValueError(f"Unknown agent ID: {agent_id!s}. Choices: {choices}")
 
 
 def main() -> None:
     parser = ArgumentParser()
-    parser.add_argument("--world", type=str, default="worlds/small.world", help="Path to world file to load")
     parser.add_argument(
-        "--agent-one", type=AgentId, choices=list(AgentId), default=AgentId.TELEOP,
-        help="Which agent to use for player one"
+        "--world",
+        type=str,
+        default="worlds/small.world",
+        help="path to world file to load"
     )
     parser.add_argument(
-        "--agent-two", type=AgentId, choices=list(AgentId), default=AgentId.TELEOP,
-        help="Which agent to use for player two"
+        "--agent-one",
+        type=AgentId,
+        choices=[a.value for a in AgentId],
+        default=AgentId.TELEOP,
+        help="which agent to use for player one"
     )
-    parser.add_argument("--headless", action="store_true", help="Render board to terminal instead of a GUI")
-    parser.add_argument("--render-delay", type=float, default=0.0, help="Delay between frames (in seconds). Useful when running two autonomous agents against each other.")
+    parser.add_argument(
+        "--agent-two",
+        type=AgentId,
+        choices=[a.value for a in AgentId],
+        default=AgentId.TELEOP,
+        help="which agent to use for player two"
+    )
+    parser.add_argument(
+        "--headless",
+        action="store_true",
+        help="render board to terminal instead of a GUI"
+    )
+    parser.add_argument(
+        "--render-delay",
+        type=float,
+        default=0.02,
+        help="delay between frames (in seconds). useful when running two autonomous agents"
+    )
+    parser.add_argument(
+        "--max-iterations",
+        type=int,
+        default=2500,
+        help="max number of iterations before declaring a draw. use 0 for no limit")
     args = parser.parse_args()
 
     agent_one = get_agent(args.agent_one, side=Player.PLAYER_ONE)
     agent_two = get_agent(args.agent_two, side=Player.PLAYER_TWO)
-    game_state = GameState(args.world)
+    max_iterations = 2 * args.max_iterations if args.max_iterations > 0 else None
+    game_state = GameState(args.world, max_iterations)
     renderer = Renderer()
 
     while game_state.winner is None:
