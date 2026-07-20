@@ -113,7 +113,7 @@ uv run pytest
 
 ### Managing versions with Git
 
-[Git](https://git-scm.com/) is actually something called a *distributed version control system*, which is to grossly simplify, a piece of software used by developers to manage different versions of their code. You can learn more about what that means and how to start using it by reading this [wonderful introduction](https://cs61.seas.harvard.edu/site/2025/git/) from Harvard professor Eddie Kohler. Here's another [straight-to-the-point guide](https://rogerdudler.github.io/git-guide/) from Roger Dudler. (There are many more guides out there.)
+[Git](https://git-scm.com/) is actually a *distributed version control system*, which is to grossly simplify, a piece of software used by developers to manage different versions of their code. You can learn more about what that means and how to start using it by reading this [wonderful introduction](https://cs61.seas.harvard.edu/site/2025/git/) from Harvard professor Eddie Kohler. Here's another [straight-to-the-point guide](https://rogerdudler.github.io/git-guide/) from Roger Dudler. (There are many more guides out there.)
 
 In a nutshell, Git allows you to *commit* snapshots of your project, and the entire history of commits is saved in your repository. Not only does this save your current progress, it also lets you view past versions of your code and revert changes without losing any data. As you start the assignment, some commands we encourage you to get comfortable with are `status`, `add`, `commit`, `log`, `diff`, `push`, and `pull`. If you only remember one thing about Git, remember to ***commit early and often***!
 
