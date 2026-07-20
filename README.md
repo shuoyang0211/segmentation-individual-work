@@ -29,7 +29,7 @@ This repository contains five major directories of interest.
 
 ### `docs/`
 
-In addition to the files in this README, we've provided a few handouts for your reference.
+In addition to the files in this `README`, we've provided a few handouts for your reference.
 
 - `comments.md` contains documentation for important classes related to the game.
 - `pseudocode.md` contains high-level pseudocode for some of the algorithms we learned in class.
