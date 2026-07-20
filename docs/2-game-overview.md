@@ -1,14 +1,14 @@
 <!--
 ========================================================================================================================
 
-    This is a Markdown file. If you are using VS Code, right-click this file and select "Open Preview" to render it!
-    
+    This is a Markdown file. If you're using VS Code, right-click the filename and select "Open Preview" to render it!
+
 ========================================================================================================================
 -->
 
 # Game Overview
 
-| [`README`](/README.md#cs182-individual-programming-assignment-1-segmentation) | [`Installation`](/docs/1-installation.md#installation) | [`Game Overview`] | [`Getting Started`](/docs/3-getting-started.md#getting-started) | [`Individual Tasks`](/docs/4-individual-tasks.md#tasks) |
+| [`README`](/README.md#cs-1820-individual-programming-assignment-1-segmentation) | [`Installation`](/docs/1-installation.md#installation) | [`Game Overview`] | [`Getting Started`](/docs/3-getting-started.md#getting-started) | [`Individual Tasks`](/docs/4-individual-tasks.md#tasks) |
 | :---: | :---: | :---: | :---: | :---: |
 
 <br>

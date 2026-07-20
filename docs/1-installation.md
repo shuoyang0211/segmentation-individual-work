@@ -1,14 +1,14 @@
 <!--
 ========================================================================================================================
 
-    This is a Markdown file. If you are using VS Code, right-click this file and select "Open Preview" to render it!
-    
+    This is a Markdown file. If you're using VS Code, right-click the filename and select "Open Preview" to render it!
+
 ========================================================================================================================
 -->
 
 # Installation
 
-| [`README`](/README.md#cs182-individual-programming-assignment-1-segmentation) | [`Installation`] | [`Game Overview`](/docs/2-game-overview.md#game-overview) | [`Getting Started`](/docs/3-getting-started.md#getting-started) | [`Individual Tasks`](/docs/4-individual-tasks.md#tasks) |
+| [`README`](/README.md#cs-1820-individual-programming-assignment-1-segmentation) | [`Installation`] | [`Game Overview`](/docs/2-game-overview.md#game-overview) | [`Getting Started`](/docs/3-getting-started.md#getting-started) | [`Individual Tasks`](/docs/4-individual-tasks.md#tasks) |
 | :---: | :---: | :---: | :---: | :---: |
 
 <br>
@@ -166,5 +166,5 @@ uv run segmentation
 
 ---
 
-| [<- `README`](/README.md#cs182-individual-programming-assignment-1-segmentation) | [`Back to top`](#installation) | [`Game Overview` ->](/docs/2-game-overview.md#game-overview) |
+| [<- `README`](/README.md#cs-1820-individual-programming-assignment-1-segmentation) | [`Back to top`](#installation) | [`Game Overview` ->](/docs/2-game-overview.md#game-overview) |
 | :--- | :---: | ---: |

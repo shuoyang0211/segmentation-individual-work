@@ -1,8 +1,8 @@
 <!--
 ========================================================================================================================
 
-    This is a Markdown file. If you are using VS Code, right-click this file and select "Open Preview" to render it!
-    
+    This is a Markdown file. If you're using VS Code, right-click the filename and select "Open Preview" to render it!
+
 ========================================================================================================================
 -->
 

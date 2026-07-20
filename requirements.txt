@@ -1,4 +1,0 @@
---extra-index-url https://harvard-cs182-f25.github.io/segmentation/wheels/
-pygame>=2.6.1,
-pytest>=8.4.1,
-segmentation-core==0.1.*,

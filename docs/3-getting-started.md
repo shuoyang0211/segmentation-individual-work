@@ -1,14 +1,14 @@
 <!--
 ========================================================================================================================
 
-    This is a Markdown file. If you are using VS Code, right-click this file and select "Open Preview" to render it!
-    
+    This is a Markdown file. If you're using VS Code, right-click the filename and select "Open Preview" to render it!
+
 ========================================================================================================================
 -->
 
 # Getting Started
 
-| [`README`](/README.md#cs182-individual-programming-assignment-1-segmentation) | [`Installation`](/docs/1-installation.md#installation) | [`Game Overview`](/docs/2-game-overview.md#game-overview) | [`Getting Started`] | [`Individual Tasks`](/docs/4-individual-tasks.md#individual-tasks) |
+| [`README`](/README.md#cs-1820-individual-programming-assignment-1-segmentation) | [`Installation`](/docs/1-installation.md#installation) | [`Game Overview`](/docs/2-game-overview.md#game-overview) | [`Getting Started`] | [`Individual Tasks`](/docs/4-individual-tasks.md#individual-tasks) |
 | :---: | :---: | :---: | :---: | :---: |
 
 <br>
@@ -140,7 +140,7 @@ Another way to code with a small group of people is with the [Live Share](vscode
 
 <br>
 
-## Submitting code to Gradescope
+## Submitting to Gradescope
 
 To upload your work to Gradescope, you will need to do the following.
 
