@@ -156,7 +156,7 @@ For your environment to be detected, make sure that your opened folder in VS Cod
 
 ### Using `uv`
 
-To run any Python script, you can now simply use `uv run <script.py>`, and `uv` will automatically verify that your environment is up-to-date and use your virtual environment. If everything has gone right, then you should be able to execute the following command and see the game!
+To run any Python script, you can now simply use `uv run <your-script>`, and `uv` will automatically verify that your virtual environment is up-to-date and run your script using this environment. If everything has gone right, then you should be able to execute the following command and see the game!
 
 ```sh
 uv run segmentation
