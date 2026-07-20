@@ -124,7 +124,7 @@ The following is the most common Git workflow.
 ```sh
 git pull                        # fetch changes in the remote repo and merge them into your local repo
 git add .                       # begin tracking new files and stage all changes in your local repo
-git commit -m "<your message>"  # save a snapshot of your staged changes in your local repo history
+git commit -m "<your-message>"  # save a snapshot of your staged changes in your local repo history
 git push                        # upload your commits to the remote repo
 ```
 

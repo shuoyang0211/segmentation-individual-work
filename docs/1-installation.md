@@ -41,8 +41,8 @@ If you see the version printed out, you can move on to configuration. Otherwise,
 You'll also want to tell Git your name and email. Then, anyone who pulls your code from GitHub will know that you wrote it. Ideally, you should use your real name and your Harvard email. Execute the following two commands in your terminal.
 
 ```sh
-git config --global user.name "<your name>"
-git config --global user.email "<your email>"
+git config --global user.name "<your-name>"
+git config --global user.email "<your-email>"
 ```
 
 > [!tip]
@@ -72,7 +72,7 @@ Now, to download the assignment:
 4. Execute the following command (without the angle brackets `<>`).
 
 ```sh
-git clone <copied url>
+git clone <copied-url>
 ```
 
 You should verify that the cloned repo has appeared in your desired folder.
