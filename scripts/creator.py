@@ -815,7 +815,7 @@ class Editor:
                             path = (
                                 self.out_path
                                 or self.load_path
-                                or f"board_{self.width}x{self.height}.world"
+                                or f"worlds/board_{self.width}x{self.height}.world"
                             )
                             save_board(path, self.board)
                             self.show_msg(f"Saved: {path}", seconds=2.5)
