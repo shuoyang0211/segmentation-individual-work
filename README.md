@@ -15,7 +15,7 @@
 
 Welcome to the CS 1820 Arcade! Over the course of the semester, we'll be taking a deeper dive into many of the topics covered in lecture through individual and group programming assignments. In particular, we will apply the knowledge you've learned in class to plan and train agents for games.
 
-For this series of assignments, you'll be implementing various agents for a two-player turn-based strategy game. We're especially interested in diving deep into the topic of adversarial search. To get started, we have split this `README` into a series of Markdown files, which you can navigate through at the top. We highly recommend reading through the entire assignment and the stencil code before you start writing code.
+For this series of assignments, you'll be implementing various agents for a two-player turn-based strategy game. We're especially interested in diving deep into the topic of adversarial search. To get started, we have split this `README` into a series of Markdown files, which you can navigate through at the top. We highly recommend reading through the entire assignment and the stencil code before you start working.
 
 <figure style="text-align: center;">
     <img src="./docs/imgs/game_preview.gif" alt="Player 1 defeats Player 2." width="400">
