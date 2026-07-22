@@ -2,11 +2,10 @@ from __future__ import annotations
 
 from argparse import ArgumentParser
 from enum import Enum
-from time import sleep
 from typing import Callable
 
-from segmentation_core import print_centered
-from segmentation_core.engine import GameState, Player
+from segmentation_core import run
+from segmentation_core.engine import Player
 from segmentation_core.agents import (
     AgentProtocol,
     ChaserBot,
@@ -15,13 +14,11 @@ from segmentation_core.agents import (
     SnakeBot,
     TreeBot,
 )
-from segmentation.renderer import Renderer
 from segmentation.agents import (
     DFSAgent,
     BFSAgent,
     AStarAgent,
     StudentAgent,
-    TeleopAgent,
 )
 
 
@@ -45,7 +42,6 @@ AGENT_REGISTRY: dict[AgentId, Callable[..., AgentProtocol]] = {
     AgentId.CHASER: ChaserBot,
     AgentId.RANDOM: RandomBot,
     AgentId.STUDENT: StudentAgent,
-    AgentId.TELEOP: TeleopAgent,
     AgentId.SLOTH: SlothBot,
     AgentId.SNAKE: SnakeBot,
     AgentId.TREE: TreeBot,
@@ -60,74 +56,78 @@ def get_agent(agent_id: AgentId, **kwargs) -> AgentProtocol:
         raise ValueError(f"Unknown agent ID: {agent_id!s}. Choices: {choices}")
 
 
+def resolve_agent(agent_id: AgentId, side: Player, headless: bool) -> AgentProtocol | str:
+    """Like `get_agent`, but handles teleop, which isn't a constructible AgentProtocol object.
+
+    Teleop is driven by Bevy's own keyboard input inside the GUI window, so it's passed
+    through to `run` as the literal string "teleop" rather than an agent instance.
+    """
+    if agent_id == AgentId.TELEOP:
+        if headless:
+            raise ValueError("the teleop agent requires the GUI; rerun without --headless")
+        return "teleop"
+    return get_agent(agent_id, side=side)
+
+
 def main() -> None:
     parser = ArgumentParser()
     parser.add_argument(
         "--world",
         type=str,
         default="worlds/small.world",
-        help="path to world file to load"
+        help="path to world file to load",
     )
     parser.add_argument(
         "--agent-one",
         type=AgentId,
         choices=[a.value for a in AgentId],
         default=AgentId.TELEOP,
-        help="which agent to use for player one"
+        help="which agent to use for player one",
     )
     parser.add_argument(
         "--agent-two",
         type=AgentId,
         choices=[a.value for a in AgentId],
         default=AgentId.TELEOP,
-        help="which agent to use for player two"
+        help="which agent to use for player two",
     )
     parser.add_argument(
         "--headless",
         action="store_true",
-        help="render board to terminal instead of a GUI"
+        help="render board to terminal instead of a GUI",
+    )
+    parser.add_argument(
+        "--marching-squares",
+        action="store_true",
+        help="render walls and claimed territory as smoothed blobs instead of flat tiles",
     )
     parser.add_argument(
         "--render-delay",
-        type=float,
-        default=0.02,
-        help="delay between frames (in seconds). useful when running two autonomous agents"
+        type=int,
+        default=20,
+        help="delay between frames (in seconds). useful when running two autonomous agents",
     )
     parser.add_argument(
         "--max-iterations",
         type=int,
         default=2500,
-        help="max number of iterations before declaring a draw. use 0 for no limit")
+        help="max number of iterations before declaring a draw. use 0 for no limit",
+    )
     args = parser.parse_args()
 
-    agent_one = get_agent(args.agent_one, side=Player.PLAYER_ONE)
-    agent_two = get_agent(args.agent_two, side=Player.PLAYER_TWO)
+    agent_one = resolve_agent(args.agent_one, Player.PLAYER_ONE, args.headless)
+    agent_two = resolve_agent(args.agent_two, Player.PLAYER_TWO, args.headless)
     max_iterations = 2 * args.max_iterations if args.max_iterations > 0 else None
-    game_state = GameState(args.world, max_iterations)
-    renderer = Renderer()
 
-    while game_state.winner is None:
-        if args.headless:
-            print_centered(str(game_state))
-        else:
-            renderer.render(game_state)
-
-        active_agent = (
-            agent_one if game_state.active_player == Player.PLAYER_ONE else agent_two
-        )
-        action = active_agent.get_action(game_state)
-        game_state = game_state.transition(action)
-
-        sleep(args.render_delay)
-
-    print(f"Winner: {game_state.winner}")
-    if args.headless:
-        print_centered(str(game_state))
-    else:
-        renderer.render(game_state)
-
-    while True:
-        renderer.render(game_state)
+    run(
+        args.world,
+        agent_one,
+        agent_two,
+        max_iterations,
+        args.render_delay,
+        args.headless,
+        args.marching_squares,
+    )
 
 
 if __name__ == "__main__":

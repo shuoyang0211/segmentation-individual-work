@@ -2,7 +2,7 @@
 ========================================================================================================================
 
     This is a Markdown file. If you are using VS Code, right-click this file and select "Open Preview" to render it!
-    
+
 ========================================================================================================================
 -->
 
@@ -29,11 +29,11 @@ uv run segmentation [--help] [--world WORLD] [--agent-one AGENT_ID] [--agent-two
 
 > [!tip]
 > The items in square brackets `[]` are optional arguments called *flags*, which allow you to modify the program's behavior. The capitalized phrases are custom inputs. For example, if you want to play with a keyboard-controlled agent against your BFS agent, you can run the following.
-> 
+>
 > ```sh
 > uv run segmentation --agent-one teleop --agent-two bfs
 > ```
-> 
+>
 > You can read about what each flag does by running with the `--help` flag, or its shorthand `-h`.
 
 ### Viewing and editing worlds
@@ -41,7 +41,7 @@ uv run segmentation [--help] [--world WORLD] [--agent-one AGENT_ID] [--agent-two
 If you want to try making your own worlds, you can open the board editor GUI by running the following.
 
 ```sh
-uv run scripts/creator.py [--help] (--load LOAD | --size SIZE) [--cell CELL] [--out OUT] [--no-grid] [--palette-right] [--title TITLE]
+uv run scripts/creator.py [--help] (--load LOAD | --size SIZE) [--out OUT]
 ```
 
 > [!tip]
@@ -60,17 +60,17 @@ uv run pytest
 `pytest` comes with a *ton* of flags to help you test and debug your code. Here, we have listed only a few flags that you may find useful.
 
 > <details><summary><b>Selecting tests</b></summary>
-> 
+>
 > ```sh
 > pytest                      # run all tests (auto-discovery)
 > pytest <path/>              # run tests under a directory
 > pytest <path/test_*.py>     # run tests in a file
 > ```
-> 
+>
 > </details>
 
 > <details><summary><b>Failure control</b></summary>
-> 
+>
 > ```sh
 > pytest -x                   # stop after first failure
 > pytest --maxfail=3          # stop after 3 failures
@@ -78,11 +78,11 @@ uv run pytest
 > pytest --ff                 # run previous failures first, then the rest
 > pytest --sw                 # stepwise (stop on first fail, resume next time)
 > ```
-> 
+>
 > </details>
 
 > <details><summary><b>Adjusting the output</b></summary>
-> 
+>
 > ```sh
 > pytest -q                   # quiet (less output)
 > pytest -v                   # verbose (show each test)
@@ -94,17 +94,17 @@ uv run pytest
 > pytest --tb=line            # one-line tracebacks
 > pytest --durations=10       # show 10 slowest tests
 > ```
-> 
+>
 > </details>
 
 > <details><summary><b>Common flag combinations</b></summary>
-> 
+>
 > ```sh
 > pytest -x -vv -rA --tb=short    # fail fast with max verbosity and condensed traces
 > pytest --lf -s -vv              # rerun only what failed last time, and show prints
 > pytest -s > <output.txt>        # redirect prints to a file for readability
 > ```
-> 
+>
 > </details>
 
 <br>

@@ -2,7 +2,7 @@
 ========================================================================================================================
 
     This is a Markdown file. If you are using VS Code, right-click this file and select "Open Preview" to render it!
-    
+
 ========================================================================================================================
 -->
 
@@ -37,7 +37,7 @@ class Board:
     Represents the state of the board.
     Stores the dimensions, board layout, and state of each tile.
     """
-    
+
     @property
     def width(self) -> int:
         r"""
@@ -84,7 +84,7 @@ class GameState:
     The board is initialized from a file containing the dimensions,
     board layout, and starting positions of each player.
     """
-    
+
     @property
     def board(self) -> Board:
         r"""
@@ -188,7 +188,7 @@ class PlayerState:
     r"""
     Represents the state of a player, including its position, claims, and trail.
     """
-    
+
     @property
     def player(self) -> Player:
         r"""
@@ -227,7 +227,7 @@ class Tile:
     Represents the state of a tile on the board.
     If a tile is not a wall, it can either be empty or contain one or more of a player's trail, a player's claim, and a player themself.
     """
-    
+
     def is_wall(self) -> bool:
         r"""
         Checks if the tile is a wall.
