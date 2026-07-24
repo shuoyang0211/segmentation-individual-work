@@ -122,10 +122,17 @@ In a nutshell, Git allows you to *commit* snapshots of your project, and the ent
 The following is the most common Git workflow.
 
 ```sh
-git pull                        # fetch changes in the remote repo and merge them into your local repo
-git add .                       # begin tracking new files and stage all changes in your local repo
-git commit -m "<your-message>"  # save a snapshot of your staged changes in your local repo history
-git push                        # upload your commits to the remote repo
+# fetch changes from the remote repo and merge them into your local repo
+git pull
+
+# begin tracking new files and stage all changes to tracked files
+git add .
+
+# save a snapshot of your staged changes to your local repo history
+git commit -m "<your-message>"
+
+# upload your commits to the remote repo
+git push
 ```
 
 This logs all current changes to your project in a new commit, which you and others can view in the remote repo's webpage. Importantly, you should *always* make sure your code is up-to-date with the remote, by `pull`-ing before `push`-ing any new changes. The `pull` command won't matter for the individual portion of the assignment, but it will be necessary for the group portion.
@@ -156,5 +163,5 @@ If you don’t see your repo in the list, check that your repo's webpage reflect
 
 ---
 
-| [<- `Game Overview`](/docs/2-game-overview.md#game-overview) | [`Back to top`](#individual-tasks) | [`Individual Tasks` ->](/docs/4-individual-tasks.md#individual-tasks) |
+| [<- `Game Overview`](/docs/2-game-overview.md#game-overview) | [`Back to top`](#getting-started) | [`Individual Tasks` ->](/docs/4-individual-tasks.md#individual-tasks) |
 | :--- | :---: | ---: |
