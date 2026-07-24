@@ -24,7 +24,7 @@ Now, you should be ready to start implementing your own agents and testing them 
 To run the starter code, you can use the following command.
 
 ```sh
-uv run segmentation [--help] [--world WORLD] [--agent-one AGENT_ID] [--agent-two AGENT_ID] [--headless] [--render-delay RENDER_DELAY] [--max-iterations MAX_ITERATIONS]
+uv run segmentation [--help] [--world WORLD] [--agent-one AGENT_ID] [--agent-two AGENT_ID] [--headless] [--marching-squares] [--render-delay RENDER_DELAY] [--max-iterations MAX_ITERATIONS]
 ```
 
 > [!tip]
