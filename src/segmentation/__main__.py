@@ -110,14 +110,14 @@ def main() -> None:
     parser.add_argument(
         "--max-iterations",
         type=int,
-        default=2500,
-        help="max number of iterations before declaring a draw. use 0 for no limit",
+        default=0,
+        help="max number of turns before declaring a draw. use 0 for no limit",
     )
     args = parser.parse_args()
 
     agent_one = resolve_agent(args.agent_one, Player.PLAYER_ONE, args.headless)
     agent_two = resolve_agent(args.agent_two, Player.PLAYER_TWO, args.headless)
-    max_iterations = 2 * args.max_iterations if args.max_iterations > 0 else None
+    max_iterations = args.max_iterations if args.max_iterations > 0 else None
 
     run(
         args.world,

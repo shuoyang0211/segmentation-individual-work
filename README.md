@@ -18,7 +18,7 @@ Welcome to the CS 1820 Arcade! Over the course of the semester, we'll be taking 
 For this series of assignments, you'll be implementing various agents for a two-player turn-based strategy game. We're especially interested in diving deep into the topic of adversarial search. To get started, we have split this `README` into a series of Markdown files, which you can navigate through at the top. We highly recommend reading through the entire assignment and the stencil code before you start working.
 
 <figure style="text-align: center;">
-    <img src="./docs/imgs/game_preview.gif" alt="Player 1 defeats Player 2." width="400">
+    <img src="./docs/imgs/game_preview.webp" alt="Player 1 defeats Player 2." width="600">
 </figure>
 
 <br>

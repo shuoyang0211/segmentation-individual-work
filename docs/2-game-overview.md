@@ -59,7 +59,7 @@ Each action attempts to move the agent in the corresponding direction, except fo
 Each agent has a set of `claims`, which initially consists of all tiles in a $3 \times 3$ radius, excluding walls. As an agent moves onto tiles outside its claims, the agent leaves a `trail` behind itself. Once an agent moves back into its claims, it *completes its trail*, claiming all tiles on and enclosed by this trail. Note that this can include the enemy's claims!
 
 <figure style="text-align: center;">
-    <img src="./imgs/claiming_tiles.gif" alt="Player 1 completes a trail, claiming a large number of tiles." width="500">
+    <img src="./imgs/claiming_tiles.webp" alt="Player 1 completes a trail, claiming a large number of tiles." width="500">
     <figcaption style="font-style: italic;">
         Claims are shown as shaded tiles, and trails are shown as bright circles, matching the colors of their respective players.
     </figcaption>
@@ -69,7 +69,7 @@ Each agent has a set of `claims`, which initially consists of all tiles in a $3 
 
 ## Eliminating Agents
 
-An agent can be eliminated in one of the following ways:
+Agents can be eliminated in the following ways:
 
 1. If an agent moves into the opposing agent's trail, the latter is eliminated.
 2. If an agent moves into its own trail, it is eliminated.
@@ -80,10 +80,16 @@ An agent can be eliminated in one of the following ways:
 
 ## Winning the Game
 
-A player wins if either their agent has claimed a majority of available tiles or the opposing agent has been eliminated.
+A player wins if one of the following occurs:
+
+1. The opposing player's agent is eliminated.
+2. Their agent claims a majority of non-wall tiles.
+3. The number of turns left reaches zero, and the player's agent has claimed more tiles.
+
+In the event of a tie, a winner is chosen at random.
 
 <figure style="text-align: center;">
-    <img src="./imgs/winning_the_game.gif" alt="Player 1 moves into the trail of player 2, eliminating the latter and winning the game." width="500">
+    <img src="./imgs/winning_the_game.webp" alt="Player 1 moves into the trail of player 2, eliminating the latter and winning the game." width="500">
     <figcaption style="font-style: italic;">
         “Move swift as the Wind and closely-formed as the Wood. Attack like the Fire and be still as the Mountain.” —Sun Tzu
     </figcaption>
