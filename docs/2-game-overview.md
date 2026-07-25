@@ -32,7 +32,7 @@ For both the individual and group portions of the assignment, you'll be playing 
 In this game, the world is represented by a discrete grid with $W$ columns and $H$ rows. Tiles in this grid are zero-indexed, with the origin at the top-left corner. We denote positions in the grid as $(x, y)$ pairs, where $x$ is the column index and $y$ is the row index. For example, in the following grid, player 1 is located at $(2, 12)$. Each world is specified by its width and height, the positions of all walls, and the initial positions of each player.
 
 <figure style="text-align: center;">
-    <img src="./imgs/world_structure.png" alt="Initial position" width="500">
+    <img src="./assets/world_structure.png" alt="Initial position" width="500">
     <figcaption style="font-style: italic;">
         Player 1 and player 2 are represented as dark red and dark blue rounded squares, respectively. Walls are shown as gray rounded squares.
     </figcaption>
@@ -59,7 +59,7 @@ Each action attempts to move the agent in the corresponding direction, except fo
 Each agent has a set of `claims`, which initially consists of all tiles in a $3 \times 3$ radius, excluding walls. As an agent moves onto tiles outside its claims, the agent leaves a `trail` behind itself. Once an agent moves back into its claims, it *completes its trail*, claiming all tiles on and enclosed by this trail. Note that this can include the enemy's claims!
 
 <figure style="text-align: center;">
-    <img src="./imgs/claiming_tiles.webp" alt="Player 1 completes a trail, claiming a large number of tiles." width="500">
+    <img src="./assets/claiming_tiles.webp" alt="Player 1 completes a trail, claiming a large number of tiles." width="500">
     <figcaption style="font-style: italic;">
         Claims are shown as shaded tiles, and trails are shown as bright circles, matching the colors of their respective players.
     </figcaption>
@@ -89,7 +89,7 @@ A player wins if one of the following occurs:
 In the event of a tie, a winner is chosen at random.
 
 <figure style="text-align: center;">
-    <img src="./imgs/winning_the_game.webp" alt="Player 1 moves into the trail of player 2, eliminating the latter and winning the game." width="500">
+    <img src="./assets/winning_the_game.webp" alt="Player 1 moves into the trail of player 2, eliminating the latter and winning the game." width="500">
     <figcaption style="font-style: italic;">
         “Move swift as the Wind and closely-formed as the Wood. Attack like the Fire and be still as the Mountain.” —Sun Tzu
     </figcaption>
