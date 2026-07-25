@@ -163,5 +163,5 @@ If you don’t see your repo in the list, check that your repo's webpage reflect
 
 ---
 
-| [<- `Game Overview`](/docs/2-game-overview.md#game-overview) | [`Back to top`](#getting-started) | [`Individual Tasks` ->](/docs/4-individual-tasks.md#individual-tasks) |
+| [← `Game Overview`](/docs/2-game-overview.md#game-overview) | [`Back to top`](#getting-started) | [`Individual Tasks` →](/docs/4-individual-tasks.md#individual-tasks) |
 | :--- | :---: | ---: |

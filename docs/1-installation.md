@@ -166,5 +166,5 @@ uv run segmentation
 
 ---
 
-| [<- `README`](/README.md#cs-1820-individual-programming-assignment-1-segmentation) | [`Back to top`](#installation) | [`Game Overview` ->](/docs/2-game-overview.md#game-overview) |
+| [← `README`](/README.md#cs-1820-individual-programming-assignment-1-segmentation) | [`Back to top`](#installation) | [`Game Overview` →](/docs/2-game-overview.md#game-overview) |
 | :--- | :---: | ---: |

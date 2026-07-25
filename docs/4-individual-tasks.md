@@ -34,5 +34,5 @@ A new competitor enters the scene: `SnakeBot`. Unlike our lazier first foe, `Sna
 
 ---
 
-| [<- `Getting Started`](/docs/3-getting-started) | [`Back to top`](#individual-tasks) |
+| [← `Getting Started`](/docs/3-getting-started) | [`Back to top`](#individual-tasks) |
 | :--- | :---: |
