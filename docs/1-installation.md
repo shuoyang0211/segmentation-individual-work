@@ -56,12 +56,12 @@ SSH keys are extremely secure, and more importantly, you won't need to type your
 
 ### Cloning your repository
 
-Now that you have GitHub and Git set up, you can download the assignment onto your computer. First, you will need to choose a folder to download it in. We suggest creating a `CS182` folder inside your `Desktop` folder, which can store all your assignments. In a new Terminal window, you can execute the commands below to create and navigate into this folder.
+With GitHub and Git set up, you can now download the assignment onto your computer. First, you will need to choose a folder to download it in. We suggest creating a `cs1820` folder (e.g., inside your `Desktop` folder) to store your assignments. In a new Terminal window, you can execute the commands below to create and navigate into this folder.
 
 ```sh
 cd Desktop      # [c]hanges [d]irectory to Desktop
-mkdir CS128     # [mk]es a new [dir]ectory called CS128 inside Desktop
-cd CS128        # [c]hanges [d]irectory to CS128
+mkdir cs1820    # [mk]es a new [dir]ectory called cs1820 inside Desktop
+cd cs1820       # [c]hanges [d]irectory to cs1820
 ```
 
 Now, to download the assignment:
