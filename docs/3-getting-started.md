@@ -1,14 +1,14 @@
 <!--
 ========================================================================================================================
 
-    This is a Markdown file. If you are using VS Code, right-click this file and select "Open Preview" to render it!
+    This is a Markdown file. If you're using VS Code, right-click the filename and select "Open Preview" to render it!
 
 ========================================================================================================================
 -->
 
 # Getting Started
 
-| [`README`](/README.md#cs182-individual-programming-assignment-1-segmentation) | [`Installation`](/docs/1-installation.md#installation) | [`Game Overview`](/docs/2-game-overview.md#game-overview) | [`Getting Started`] | [`Individual Tasks`](/docs/4-individual-tasks.md#individual-tasks) |
+| [`README`](/README.md#cs-1820-individual-programming-assignment-1-segmentation) | [`Installation`](/docs/1-installation.md#installation) | [`Game Overview`](/docs/2-game-overview.md#game-overview) | [`Getting Started`] | [`Individual Tasks`](/docs/4-individual-tasks.md#individual-tasks) |
 | :---: | :---: | :---: | :---: | :---: |
 
 <br>
@@ -24,7 +24,7 @@ Now, you should be ready to start implementing your own agents and testing them 
 To run the starter code, you can use the following command.
 
 ```sh
-uv run segmentation [--help] [--world WORLD] [--agent-one AGENT_ID] [--agent-two AGENT_ID] [--headless] [--render-delay RENDER_DELAY] [--max-iterations MAX_ITERATIONS]
+uv run segmentation [--help] [--world WORLD] [--agent-one AGENT_ID] [--agent-two AGENT_ID] [--headless] [--marching-squares] [--render-delay RENDER_DELAY] [--max-iterations MAX_ITERATIONS]
 ```
 
 > [!tip]
@@ -113,7 +113,7 @@ uv run pytest
 
 ### Managing versions with Git
 
-[Git](https://git-scm.com/) is actually something called a *distributed version control system*, which is to grossly simplify, a piece of software used by developers to manage different versions of their code. You can learn more about what that means and how to start using it by reading this [wonderful introduction](https://cs61.seas.harvard.edu/site/2025/git/) from Harvard professor Eddie Kohler. Here's another [straight-to-the-point guide](https://rogerdudler.github.io/git-guide/) from Roger Dudler. (There are many more guides out there.)
+[Git](https://git-scm.com/) is actually a *distributed version control system*, which is to grossly simplify, a piece of software used by developers to manage different versions of their code. You can learn more about what that means and how to start using it by reading this [wonderful introduction](https://cs61.seas.harvard.edu/site/2025/git/) from Harvard professor Eddie Kohler. Here's another [straight-to-the-point guide](https://rogerdudler.github.io/git-guide/) from Roger Dudler. (There are many more guides out there.)
 
 In a nutshell, Git allows you to *commit* snapshots of your project, and the entire history of commits is saved in your repository. Not only does this save your current progress, it also lets you view past versions of your code and revert changes without losing any data. As you start the assignment, some commands we encourage you to get comfortable with are `status`, `add`, `commit`, `log`, `diff`, `push`, and `pull`. If you only remember one thing about Git, remember to ***commit early and often***!
 
@@ -122,10 +122,17 @@ In a nutshell, Git allows you to *commit* snapshots of your project, and the ent
 The following is the most common Git workflow.
 
 ```sh
-git pull                        # fetch changes in the remote repo and merge them into your local repo
-git add .                       # begin tracking new files and stage all changes in your local repo
-git commit -m "<your message>"  # save a snapshot of your staged changes in your local repo history
-git push                        # upload your commits to the remote repo
+# fetch changes from the remote repo and merge them into your local repo
+git pull
+
+# begin tracking new files and stage all changes to tracked files
+git add .
+
+# save a snapshot of your staged changes to your local repo history
+git commit -m "<your-message>"
+
+# upload your commits to the remote repo
+git push
 ```
 
 This logs all current changes to your project in a new commit, which you and others can view in the remote repo's webpage. Importantly, you should *always* make sure your code is up-to-date with the remote, by `pull`-ing before `push`-ing any new changes. The `pull` command won't matter for the individual portion of the assignment, but it will be necessary for the group portion.
@@ -140,7 +147,7 @@ Another way to code with a small group of people is with the [Live Share](vscode
 
 <br>
 
-## Submitting code to Gradescope
+## Submitting to Gradescope
 
 To upload your work to Gradescope, you will need to do the following.
 
@@ -156,5 +163,5 @@ If you don’t see your repo in the list, check that your repo's webpage reflect
 
 ---
 
-| [<- `Game Overview`](/docs/2-game-overview.md#game-overview) | [`Back to top`](#individual-tasks) | [`Individual Tasks` ->](/docs/4-individual-tasks.md#individual-tasks) |
+| [<- `Game Overview`](/docs/2-game-overview.md#game-overview) | [`Back to top`](#getting-started) | [`Individual Tasks` ->](/docs/4-individual-tasks.md#individual-tasks) |
 | :--- | :---: | ---: |

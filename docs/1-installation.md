@@ -1,14 +1,14 @@
 <!--
 ========================================================================================================================
 
-    This is a Markdown file. If you are using VS Code, right-click this file and select "Open Preview" to render it!
+    This is a Markdown file. If you're using VS Code, right-click the filename and select "Open Preview" to render it!
 
 ========================================================================================================================
 -->
 
 # Installation
 
-| [`README`](/README.md#cs182-individual-programming-assignment-1-segmentation) | [`Installation`] | [`Game Overview`](/docs/2-game-overview.md#game-overview) | [`Getting Started`](/docs/3-getting-started.md#getting-started) | [`Individual Tasks`](/docs/4-individual-tasks.md#tasks) |
+| [`README`](/README.md#cs-1820-individual-programming-assignment-1-segmentation) | [`Installation`] | [`Game Overview`](/docs/2-game-overview.md#game-overview) | [`Getting Started`](/docs/3-getting-started.md#getting-started) | [`Individual Tasks`](/docs/4-individual-tasks.md#tasks) |
 | :---: | :---: | :---: | :---: | :---: |
 
 <br>
@@ -41,8 +41,8 @@ If you see the version printed out, you can move on to configuration. Otherwise,
 You'll also want to tell Git your name and email. Then, anyone who pulls your code from GitHub will know that you wrote it. Ideally, you should use your real name and your Harvard email. Execute the following two commands in your terminal.
 
 ```sh
-git config --global user.name "<your name>"
-git config --global user.email "<your email>"
+git config --global user.name "<your-name>"
+git config --global user.email "<your-email>"
 ```
 
 > [!tip]
@@ -72,13 +72,13 @@ Now, to download the assignment:
 4. Execute the following command (without the angle brackets `<>`).
 
 ```sh
-git clone <copied url>
+git clone <copied-url>
 ```
 
 You should verify that the cloned repo has appeared in your desired folder.
 
 <figure style="text-align: center;">
-    <img src="./imgs/cloning_repo.png" alt="Cloning a repository" width="800"/>
+    <img src="./assets/cloning_repo.png" alt="Cloning a repository" width="800"/>
 </figure>
 
 <br>
@@ -109,7 +109,7 @@ This step is optional, but we recommend that you enable typed Python. By letting
 - Set it to your desired level of strictness. (We recommend `standard` as a good default.)
 
 <figure style="text-align: center;">
-    <img src="./imgs/type_checking.png" alt="Type Checking Mode" width="700"/>
+    <img src="./assets/type_checking.png" alt="Type Checking Mode" width="700"/>
 </figure>
 
 <br>
@@ -139,7 +139,7 @@ This will install an appropriate Python version (3.13) and all dependencies, inc
 After executing `uv sync`, you might see a popup in the bottom right like the following. Click `Yes` so that VS Code can resolve your project's dependencies.
 
 <figure style="text-align: center;">
-    <img src="./imgs/new_venv_popup.png" alt="New virtual environment popup" width="400">
+    <img src="./assets/new_venv_popup.png" alt="New virtual environment popup" width="400">
 </figure>
 
 If you don't see this popup, you can manually select your Python interpreter as follows.
@@ -149,14 +149,14 @@ If you don't see this popup, you can manually select your Python interpreter as 
 - Choose your repo's virtual environment. This will most likely be the interpreter recommended by VS Code.
 
 <figure style="text-align: center;">
-    <img src="./imgs/select_interpreter.png" alt="Selecting a Python interpreter" width="500">
+    <img src="./assets/select_interpreter.png" alt="Selecting a Python interpreter" width="500">
 </figure>
 
 For your environment to be detected, make sure that your opened folder in VS Code is indeed your cloned repo!
 
 ### Using `uv`
 
-To run any Python script, you can now simply use `uv run <script.py>`, and `uv` will automatically verify that your environment is up-to-date and use your virtual environment. If everything has gone right, then you should be able to execute the following command and see the game!
+To run any Python script, you can now simply use `uv run <your-script>`, and `uv` will automatically verify that your virtual environment is up-to-date and run your script using this environment. If everything has gone right, then you should be able to execute the following command and see the game!
 
 ```sh
 uv run segmentation
@@ -166,5 +166,5 @@ uv run segmentation
 
 ---
 
-| [<- `README`](/README.md#cs182-individual-programming-assignment-1-segmentation) | [`Back to top`](#installation) | [`Game Overview` ->](/docs/2-game-overview.md#game-overview) |
+| [<- `README`](/README.md#cs-1820-individual-programming-assignment-1-segmentation) | [`Back to top`](#installation) | [`Game Overview` ->](/docs/2-game-overview.md#game-overview) |
 | :--- | :---: | ---: |

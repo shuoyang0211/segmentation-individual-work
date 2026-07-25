@@ -1,14 +1,14 @@
 <!--
 ========================================================================================================================
 
-    This is a Markdown file. If you are using VS Code, right-click this file and select "Open Preview" to render it!
+    This is a Markdown file. If you're using VS Code, right-click the filename and select "Open Preview" to render it!
 
 ========================================================================================================================
 -->
 
 # Game Overview
 
-| [`README`](/README.md#cs182-individual-programming-assignment-1-segmentation) | [`Installation`](/docs/1-installation.md#installation) | [`Game Overview`] | [`Getting Started`](/docs/3-getting-started.md#getting-started) | [`Individual Tasks`](/docs/4-individual-tasks.md#tasks) |
+| [`README`](/README.md#cs-1820-individual-programming-assignment-1-segmentation) | [`Installation`](/docs/1-installation.md#installation) | [`Game Overview`] | [`Getting Started`](/docs/3-getting-started.md#getting-started) | [`Individual Tasks`](/docs/4-individual-tasks.md#tasks) |
 | :---: | :---: | :---: | :---: | :---: |
 
 <br>
@@ -32,7 +32,7 @@ For both the individual and group portions of the assignment, you'll be playing 
 In this game, the world is represented by a discrete grid with $W$ columns and $H$ rows. Tiles in this grid are zero-indexed, with the origin at the top-left corner. We denote positions in the grid as $(x, y)$ pairs, where $x$ is the column index and $y$ is the row index. For example, in the following grid, player 1 is located at $(2, 12)$. Each world is specified by its width and height, the positions of all walls, and the initial positions of each player.
 
 <figure style="text-align: center;">
-    <img src="./imgs/world_structure.png" alt="Initial position" width="500">
+    <img src="./assets/world_structure.png" alt="Initial position" width="500">
     <figcaption style="font-style: italic;">
         Player 1 and player 2 are represented as dark red and dark blue rounded squares, respectively. Walls are shown as gray rounded squares.
     </figcaption>
@@ -59,7 +59,7 @@ Each action attempts to move the agent in the corresponding direction, except fo
 Each agent has a set of `claims`, which initially consists of all tiles in a $3 \times 3$ radius, excluding walls. As an agent moves onto tiles outside its claims, the agent leaves a `trail` behind itself. Once an agent moves back into its claims, it *completes its trail*, claiming all tiles on and enclosed by this trail. Note that this can include the enemy's claims!
 
 <figure style="text-align: center;">
-    <img src="./imgs/claiming_tiles.gif" alt="Player 1 completes a trail, claiming a large number of tiles." width="500">
+    <img src="./assets/claiming_tiles.webp" alt="Player 1 completes a trail, claiming a large number of tiles." width="500">
     <figcaption style="font-style: italic;">
         Claims are shown as shaded tiles, and trails are shown as bright circles, matching the colors of their respective players.
     </figcaption>
@@ -69,7 +69,7 @@ Each agent has a set of `claims`, which initially consists of all tiles in a $3 
 
 ## Eliminating Agents
 
-An agent can be eliminated in one of the following ways:
+Agents can be eliminated in the following ways:
 
 1. If an agent moves into the opposing agent's trail, the latter is eliminated.
 2. If an agent moves into its own trail, it is eliminated.
@@ -80,10 +80,16 @@ An agent can be eliminated in one of the following ways:
 
 ## Winning the Game
 
-A player wins if either their agent has claimed a majority of available tiles or the opposing agent has been eliminated.
+A player wins if one of the following occurs:
+
+1. The opposing player's agent is eliminated.
+2. Their agent claims a majority of non-wall tiles.
+3. The number of turns left reaches zero, and the player's agent has claimed more tiles.
+
+In the event of a tie, a winner is chosen at random.
 
 <figure style="text-align: center;">
-    <img src="./imgs/winning_the_game.gif" alt="Player 1 moves into the trail of player 2, eliminating the latter and winning the game." width="500">
+    <img src="./assets/winning_the_game.webp" alt="Player 1 moves into the trail of player 2, eliminating the latter and winning the game." width="500">
     <figcaption style="font-style: italic;">
         “Move swift as the Wind and closely-formed as the Wood. Attack like the Fire and be still as the Mountain.” —Sun Tzu
     </figcaption>

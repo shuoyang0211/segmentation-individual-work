@@ -30,7 +30,7 @@ from __future__ import annotations
 
 import argparse
 
-from segmentation_core import run_editor
+from segmentation_core._core import run_editor
 
 
 def build_arg_parser() -> argparse.ArgumentParser:
