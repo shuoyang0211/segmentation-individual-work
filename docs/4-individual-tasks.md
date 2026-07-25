@@ -13,7 +13,7 @@
 
 <br>
 
-Before writing your own policy to play against intelligent agents, you will first defeat a simpler opponent. This initial challenger is `SlothBot`, a naive and lazy agent that always stays in place. For your reference, we've provided some pseudocode in `docs/pseudocode.md`.
+Before writing your own policy against smarter agents, you will first use some classic search algorithms to defeat a simpler opponent. Your initial challenger is `SlothBot`, a naive agent that always stays in place. To check that your agents have the expected behavior, you can run our provided tests (or run your own tests!) with `pytest`. We've also provided some pseudocode in `docs/pseudocode.md`.
 
 1. In [`src/segmentation/agents/dfs_agent.py`](/src/segmentation/agents/dfs_agent.py), implement the `dfs` and `get_action` methods so that your agent navigates from its starting position to `SlothBot`'s position, eliminating `SlothBot`.
 
@@ -26,9 +26,9 @@ Before writing your own policy to play against intelligent agents, you will firs
 
 <br>
 
-A new competitor enters the scene: `SnakeBot`. Unlike our listless initial foe, `SnakeBot` slithers around the grid, extending its trail as long as possible before switching directions. More precisely, `SnakeBot` chooses a direction at random and continues in that direction until it reaches a wall or its own trail. At this point, `SnakeBot` randomly selects a different direction that won't cause it to immediately lose, stopping if no such direction exists.
+A new competitor enters the scene: `SnakeBot`. Unlike our lazier first foe, `SnakeBot` slithers around the grid, extending its trail as long as possible before switching directions. More precisely, `SnakeBot` chooses a direction at random and continues in that direction until it reaches a wall or its own trail. At this point, `SnakeBot` randomly selects a different direction that won't cause it to immediately lose, stopping if no such direction exists.
 
-4. In [`src/segmentation/agents/student_agent.py`](/src/segmentation/agents/student_agent.py), implement the `get_action` method so that your agent beats `SnakeBot`. One strategy is to use a dynamic modification of A\* that handles changing environments (see [dynamic A\*](https://en.wikipedia.org/wiki/D*)). This is only of many possible strategies, so we encourage you to get creative for this part!
+1. In [`src/segmentation/agents/student_agent.py`](/src/segmentation/agents/student_agent.py), implement the `get_action` method so that your agent beats `SnakeBot`. One strategy is to use a dynamic modification of A\* that handles changing environments (see [dynamic A\*](https://en.wikipedia.org/wiki/D*)). This is only of many possible strategies, so we encourage you to get creative for this part!
 
 <br>
 
