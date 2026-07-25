@@ -63,5 +63,5 @@ All the TA-provided world files used for the local tests are located in this fol
 
 ---
 
-| [`Back to top`](#cs-1820-individual-programming-assignment-1-segmentation) | [`Installation` ->](/docs/1-installation.md#installation) |
+| [`Back to top`](#cs-1820-individual-programming-assignment-1-segmentation) | [`Installation` →](/docs/1-installation.md#installation) |
 | :---: | ---: |
