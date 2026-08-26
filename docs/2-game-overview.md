@@ -8,7 +8,7 @@
 
 # Game Overview
 
-| [`README`](/README.md#cs-1820-individual-programming-assignment-1-segmentation) | [`Installation`](/docs/1-installation.md#installation) | [`Game Overview`] | [`Getting Started`](/docs/3-getting-started.md#getting-started) | [`Individual Tasks`](/docs/4-individual-tasks.md#tasks) |
+| [`README`](../README.md#cs-1820-individual-programming-assignment-1-segmentation) | [`Installation`](1-installation.md#installation) | [`Game Overview`] | [`Getting Started`](3-getting-started.md#getting-started) | [`Individual Tasks`](4-individual-tasks.md#individual-tasks) |
 | :---: | :---: | :---: | :---: | :---: |
 
 <br>
@@ -99,5 +99,5 @@ In the event of a tie, a winner is chosen at random.
 
 ---
 
-| [← `Installation`](/docs/1-installation.md#installation) | [`Back to top`](#game-overview) | [`Getting Started` →](/docs/3-getting-started.md#getting-started) |
+| [← `Installation`](1-installation.md#installation) | [`Back to top`](#game-overview) | [`Getting Started` →](3-getting-started.md#getting-started) |
 | :--- | :---: | ---: |

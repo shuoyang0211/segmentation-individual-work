@@ -8,7 +8,7 @@
 
 # Installation
 
-| [`README`](/README.md#cs-1820-individual-programming-assignment-1-segmentation) | [`Installation`] | [`Game Overview`](/docs/2-game-overview.md#game-overview) | [`Getting Started`](/docs/3-getting-started.md#getting-started) | [`Individual Tasks`](/docs/4-individual-tasks.md#tasks) |
+| [`README`](../README.md#cs-1820-individual-programming-assignment-1-segmentation) | [`Installation`] | [`Game Overview`](2-game-overview.md#game-overview) | [`Getting Started`](3-getting-started.md#getting-started) | [`Individual Tasks`](4-individual-tasks.md#individual-tasks) |
 | :---: | :---: | :---: | :---: | :---: |
 
 <br>
@@ -25,7 +25,7 @@ In this class, we will use GitHub Classroom to distribute code and manage submis
 
 ### Installing Git
 
-Git is a program which you can think of as your local interface for communicating with GitHub. (You can find more information about why Git is useful in the [`Getting Started`](/docs/4-getting-started.md#more-about-git) page.) First, check if your computer already has Git by executing the following command in your terminal.
+Git is a program which you can think of as your local interface for communicating with GitHub. (You can find more information about why Git is useful in the [`Getting Started`](3-getting-started.md#more-about-git) page.) First, check if your computer already has Git by executing the following command in your terminal.
 
 ```sh
 git --version
@@ -166,5 +166,5 @@ uv run segmentation
 
 ---
 
-| [← `README`](/README.md#cs-1820-individual-programming-assignment-1-segmentation) | [`Back to top`](#installation) | [`Game Overview` →](/docs/2-game-overview.md#game-overview) |
+| [← `README`](../README.md#cs-1820-individual-programming-assignment-1-segmentation) | [`Back to top`](#installation) | [`Game Overview` →](2-game-overview.md#game-overview) |
 | :--- | :---: | ---: |

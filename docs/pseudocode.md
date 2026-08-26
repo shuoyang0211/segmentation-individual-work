@@ -8,7 +8,7 @@
 
 # Pseudocode
 
-| [`DFS`](#dfs) | [`BFS`](#bfs) | [`A Star`](#a-star) |
+| [`DFS`](#dfs) | [`BFS`](#bfs) | [`A*`](#a) |
 | :---: | :---: | :---: |
 
 <br>
@@ -67,7 +67,7 @@ function bfs(start_state):
     return failure
 ```
 
-## `A Star`
+## `A*`
 
 ```none
 function a_star(start_state):

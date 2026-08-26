@@ -75,43 +75,43 @@ def main() -> None:
         "--world",
         type=str,
         default="worlds/small.world",
-        help="path to world file to load",
+        help="Path to a world file.",
     )
     parser.add_argument(
         "--agent-one",
         type=AgentId,
         choices=[a.value for a in AgentId],
         default=AgentId.TELEOP,
-        help="which agent to use for player one",
+        help="Which agent to use for player one.",
     )
     parser.add_argument(
         "--agent-two",
         type=AgentId,
         choices=[a.value for a in AgentId],
         default=AgentId.TELEOP,
-        help="which agent to use for player two",
+        help="Which agent to use for player two.",
     )
     parser.add_argument(
         "--headless",
         action="store_true",
-        help="render board to terminal instead of a GUI",
+        help="Optionally render board to terminal instead of as a GUI.",
     )
     parser.add_argument(
         "--marching-squares",
         action="store_true",
-        help="render walls and claimed territory as smoothed blobs instead of flat tiles",
+        help="Optionally render tiles as smoothed blobs.",
     )
     parser.add_argument(
         "--render-delay",
         type=int,
         default=20,
-        help="delay between frames (in seconds). useful when running two autonomous agents",
+        help="Delay between frames (in seconds). Useful when running two autonomous agents.",
     )
     parser.add_argument(
         "--max-iterations",
         type=int,
         default=0,
-        help="max number of turns before declaring a draw. use 0 for no limit",
+        help="Max iterations before declaring a draw. Use 0 for no limit.",
     )
     args = parser.parse_args()
 

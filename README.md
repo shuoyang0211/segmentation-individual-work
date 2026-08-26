@@ -8,7 +8,7 @@
 
 # CS 1820 Individual Programming Assignment 1: Segmentation
 
-| [`README`] | [`Installation`](/docs/1-installation.md#installation) | [`Game Overview`](/docs/2-game-overview.md#game-overview) | [`Getting Started`](/docs/3-getting-started.md#getting-started) | [`Individual Tasks`](/docs/4-individual-tasks.md#tasks) |
+| [`README`] | [`Installation`](docs/1-installation.md#installation) | [`Game Overview`](docs/2-game-overview.md#game-overview) | [`Getting Started`](docs/3-getting-started.md#getting-started) | [`Individual Tasks`](docs/4-individual-tasks.md#individual-tasks) |
 | :---: | :---: | :---: | :---: | :---: |
 
 <br>
@@ -36,9 +36,10 @@ In addition to the files in this `README`, we've provided a few handouts for you
 
 ### `scripts/`
 
-We've also created a few helpful scripts to aid in the development of your agents.
+We've created a few helpful scripts to aid in the development of your agents.
 
 - `creator.py` provides a simple GUI to edit existing worlds and create new worlds, which you can use to test your agents. Once your project environment is set up, you can run `uv run scripts/creator.py -h` for more details.
+- `world-preview.vsix` is a custom VS Code extension, which lets you render `.world` files as grids within VS Code. To install it, navigate to `Extensions` → `...` → `Install from VSIX...` and select `scripts/world-preview.vsix`.
 
 ### `src/`
 
@@ -63,5 +64,5 @@ All the TA-provided world files used for the local tests are located in this fol
 
 ---
 
-| [`Back to top`](#cs-1820-individual-programming-assignment-1-segmentation) | [`Installation` →](/docs/1-installation.md#installation) |
+| [`Back to top`](#cs-1820-individual-programming-assignment-1-segmentation) | [`Installation` →](docs/1-installation.md#installation) |
 | :---: | ---: |

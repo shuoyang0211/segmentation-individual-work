@@ -8,7 +8,7 @@
 
 # Getting Started
 
-| [`README`](/README.md#cs-1820-individual-programming-assignment-1-segmentation) | [`Installation`](/docs/1-installation.md#installation) | [`Game Overview`](/docs/2-game-overview.md#game-overview) | [`Getting Started`] | [`Individual Tasks`](/docs/4-individual-tasks.md#individual-tasks) |
+| [`README`](../README.md#cs-1820-individual-programming-assignment-1-segmentation) | [`Installation`](1-installation.md#installation) | [`Game Overview`](2-game-overview.md#game-overview) | [`Getting Started`] | [`Individual Tasks`](4-individual-tasks.md#individual-tasks) |
 | :---: | :---: | :---: | :---: | :---: |
 
 <br>
@@ -24,7 +24,10 @@ Now, you should be ready to start implementing your own agents and testing them 
 To run the starter code, you can use the following command.
 
 ```sh
-uv run segmentation [--help] [--world WORLD] [--agent-one AGENT_ID] [--agent-two AGENT_ID] [--headless] [--marching-squares] [--render-delay RENDER_DELAY] [--max-iterations MAX_ITERATIONS]
+uv run segmentation [--help] [--world WORLD]
+                    [--agent-one AGENT_ID] [--agent-two AGENT_ID]
+                    [--headless] [--marching-squares]
+                    [--render-delay RENDER_DELAY] [--max-iterations MAX_ITERATIONS]
 ```
 
 > [!tip]
@@ -43,6 +46,8 @@ If you want to try making your own worlds, you can open the board editor GUI by 
 ```sh
 uv run scripts/creator.py [--help] (--load LOAD | --size SIZE) [--out OUT]
 ```
+
+We've also created a custom VS Code extension to automatically render `.world` files as grids directly within VS Code. You can install it by navigating to `Extensions` → `...` → `Install from VSIX...` and selecting `scripts/world-preview.vsix`.
 
 > [!tip]
 > The `--load` flag opens an existing world, while the `--size` flag creates a new world. Here, the parentheses `()` indicate that exactly one of these needs to be supplied in order to run the program. Again, you can read about each option by using the `-h` flag.
@@ -163,5 +168,5 @@ If you don’t see your repo in the list, check that your repo's webpage reflect
 
 ---
 
-| [← `Game Overview`](/docs/2-game-overview.md#game-overview) | [`Back to top`](#getting-started) | [`Individual Tasks` →](/docs/4-individual-tasks.md#individual-tasks) |
+| [← `Game Overview`](2-game-overview.md#game-overview) | [`Back to top`](#getting-started) | [`Individual Tasks` →](4-individual-tasks.md#individual-tasks) |
 | :--- | :---: | ---: |
