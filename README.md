@@ -25,7 +25,7 @@ For this series of assignments, you'll be implementing various agents for a two-
 
 ## Code Structure
 
-This repository contains five major directories of interest.
+This repository contains a couple major directories of interest.
 
 ### `docs/`
 
@@ -54,7 +54,7 @@ Some of these comments have been replicated at `docs/comments.md` for your conve
 
 ### `tests/`
 
-We've provided some simple tests for you to debug your implementations before submitting to Gradescope. The tests in your handout are a strict subset of those used by our autograder. You can run these local tests by executing `uv run pytest`. We recommend that you write your own tests as well!
+We've provided some simple tests for you to debug your implementations before submitting to Gradescope. You can run these local tests by executing `uv run pytest`. We recommend that you write your own tests as well!
 
 ### `worlds/`
 

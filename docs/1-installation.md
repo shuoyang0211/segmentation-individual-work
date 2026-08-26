@@ -13,7 +13,7 @@
 
 <br>
 
-Before we get started with the game, we will walk through how to set up GitHub and Git, Visual Studio Code, and `uv`, which you will need to fetch and start working on this assignment. We assume that most students will be using VS Code, but other IDEs should be fine. Feel free to skip any steps that you have done before, or post on [Ed](TODO) if you get stuck.
+You should already have GitHub, Git, VS Code, and `uv` set up from problem set 0. If so, you can safely skip to [Installing Project Dependencies](#installing-project-dependencies). Otherwise, we've duplicated all the instructions below. We highly recommend that you use `uv` to manage your virtual environments for this course. Feel free to ask for help setting up your environment!
 
 <br>
 
@@ -98,7 +98,7 @@ VS Code is notable for its large library of official and community-made extensio
 From a new VS Code window, click `Open` and locate your cloned repo. Select `Yes` if you are asked whether you trust the authors of the project. You should now be able to navigate the repo using the Explorer on the left. In the `docs` folder, you'll find the file you're reading right now! We'll start running scripts later. For now, to view rendered Markdown files, right-click a `.md` file and select `Open Preview`.
 
 > [!note]
-> VS Code includes an integrated terminal, which you can open by selecting `Terminal > New Terminal` in the app menu bar at the top. Conveniently, this terminal automatically opens inside your project folder, and it lets you keep your terminal in the same window as your code.
+> VS Code includes an integrated terminal, which you can open by selecting `Terminal` → `New Terminal` in the app menu bar at the top. Conveniently, this terminal automatically opens inside your project folder, and it lets you keep your terminal in the same window as your code.
 
 ### Enabling type checking
 

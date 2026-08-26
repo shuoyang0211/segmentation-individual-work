@@ -13,7 +13,7 @@
 
 <br>
 
-Now, you should be ready to start implementing your own agents and testing them out! In this file, we will introduce the various programs which you will need as you complete the assignment. We have also added some more info about using Git, which can save you from a lot of future headaches while coding. You will also need to push your code with Git before you submit your assignment on Gradescope.
+Now, you should be ready to start implementing your own agents and testing them out! In this file, we will introduce the various programs which you will need as you complete the assignment. We've also added some more info about using Git, which can save you from a lot of future headaches while coding. You will need to push your code with Git before you submit your assignment on Gradescope.
 
 <br>
 
