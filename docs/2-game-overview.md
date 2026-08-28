@@ -15,7 +15,7 @@
 
 For both the individual and group portions of the assignment, you'll be playing a two-player, turn-based, zero-sum game of perfect information on a discrete gridworld. Those are a lot of keywords, so let's break it down:
 
-- A *two-player* game is one in which there are exactly two players, possibly cooperating or competing. For this assignment, you will be tasked to develop agents which will be faced against bots provided by the teaching staff (for the graded portions) and agents written by your classmates (for the tournament)!
+- A *two-player* game is one in which there are exactly two players, possibly cooperating or competing. For this assignment, you will be tasked to develop agents which will be faced against bots provided by the teaching staff (for the graded portions) and agents written by your classmates (for a class-wide tournament)!
 
 - A *turn-based* game is one in which players take turns one after another rather than simultaneously. We'll explore simultaneous games in future assignments.
 

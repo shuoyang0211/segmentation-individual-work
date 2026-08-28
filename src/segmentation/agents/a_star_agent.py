@@ -4,11 +4,6 @@ from segmentation_core.engine import GameState, Action, Player
 
 
 class AStarAgent:
-    # Name of the agent for leaderboard purposes
-    _name: str
-    # Which side the agent is on
-    _side: Player
-
     def __init__(self, side: Player):
         self._name = "A* Agent"
         self._side = side
