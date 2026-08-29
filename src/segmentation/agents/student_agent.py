@@ -19,12 +19,9 @@ class StudentAgent:
         Computes the next action to take based on the given game state.
 
         Parameters:
-            `state` (`GameState`): The current state of the game.
+            `state`: The current state of the game.
 
         Returns:
-            Action: The next action to take to move towards SnakeBot.
-
-        Task 4: Return the next action to take based on the given game state to get
-        your agent to eliminate SnakeBot.
+            The next action to take to move towards SnakeBot.
         """
         raise NotImplementedError

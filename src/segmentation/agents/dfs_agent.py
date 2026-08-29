@@ -16,10 +16,14 @@ class DFSAgent:
 
     def dfs(self, state: GameState):
         """
-        Task 1: Implement depth-first search on the game tree to determine a sequence of actions that gets your agent to SlothBot.
+        Task 1: Implement depth-first search on the game tree to determine
+        a sequence of actions that gets your agent to SlothBot.
+
+        Parameters:
+            `state`: The current state of the game.
 
         Note:
-            - You can assume that SlothBot is stationary and will always be reachable.
+            You can assume that SlothBot is stationary and always reachable.
         """
         raise NotImplementedError
 
@@ -28,11 +32,9 @@ class DFSAgent:
         Computes the next action to take based on the given game state.
 
         Parameters:
-            `state` (`GameState`): The current state of the game.
+            `state`: The current state of the game.
 
         Returns:
-            Action: The next action to take to move towards SlothBot.
-
-        Task 1: Return the next action to take based on the given game state to get your agent to SlothBot.
+            The next action to take to move towards SlothBot.
         """
         raise NotImplementedError

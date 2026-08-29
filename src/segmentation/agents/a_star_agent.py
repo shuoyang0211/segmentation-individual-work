@@ -18,10 +18,15 @@ class AStarAgent:
 
     def a_star(self, state: GameState, heuristic: Callable[[GameState], float]):
         """
-        Task 3: Implement the A* search algorithm on the game tree to determine a sequence of actions that gets your agent to SlothBot.
+        Task 3: Implement the A* search algorithm on the game tree to determine
+        a sequence of actions that gets your agent to SlothBot.
+
+        Parameters:
+            `state`: The current state of the game.
+            `heuristic`: A cost-to-go heuristic for game states.
 
         Note:
-            - You can assume that SlothBot is stationary and will always be reachable.
+            You can assume that SlothBot is stationary and always reachable.
         """
         raise NotImplementedError
 
@@ -30,14 +35,13 @@ class AStarAgent:
         Computes the next action to take based on the given game state.
 
         Parameters:
-            `state` (`GameState`): The current state of the game.
+            `state`: The current state of the game.
 
         Returns:
-            Action: The next action to take to move towards SlothBot.
-
-        Task 3: Return the next action to take based on the given game state to get your agent to SlothBot.
+            The next action to take to move towards SlothBot.
 
         Note:
-            - For your final submission to Gradescope, make sure to use squared Euclidean distance as your heuristic function.
+            For your final submission to Gradescope, make sure to use
+            squared Euclidean distance as your heuristic function.
         """
         raise NotImplementedError
