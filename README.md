@@ -50,7 +50,7 @@ As you work through this assignment, you may want to examine the exports of the 
 - Locate and view their type stubs directly in your IDE. These can be found at `.venv/lib/segmentation_core/`. Alternatively, if you're using VS Code, you can `Ctrl`/`Cmd` + `Click` on the package itself or on an object like `Player`.
 - Import the package in a Python REPL, and call `help(object)` on your desired class, method, or function.
 
-Some of these comments have been replicated at `docs/comments.md` for your convenience. If you have any questions about how any part of this assignment works, please feel free to post a question on [Ed](TODO)!
+Some of these comments have been replicated at `docs/comments.md` for your convenience. If you have any questions about how any part of this assignment works, please feel free to post a question on Ed!
 
 ### `tests/`
 
@@ -58,7 +58,7 @@ We've provided some simple tests for you to debug your implementations before su
 
 ### `worlds/`
 
-All the TA-provided world files used for the local tests are located in this folder. In addition to some basic worlds and "path" worlds used for testing, we have also provided a number of "expansion" worlds to play around with as you implement your own agent. To stay organized, we recommend that you save your custom world files in this folder.
+All the TA-provided world files used for the local tests are located in this folder. In addition to some basic worlds, we've included some "path" worlds used for testing, and a number of "expansion" worlds to play around with as you implement your own agent. To stay organized, we recommend that you save your custom world files in this folder.
 
 <br>
 
