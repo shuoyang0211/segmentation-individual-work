@@ -1,6 +1,6 @@
-from typing import Callable
+from collections.abc import Callable
 
-from segmentation_core.engine import GameState, Action, Player
+from segmentation_core.engine import Action, GameState, Player
 
 
 class AStarAgent:

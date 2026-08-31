@@ -1,23 +1,24 @@
 from __future__ import annotations
 
 from argparse import ArgumentParser
+from collections.abc import Callable
 from enum import Enum
-from typing import Callable
 
 from segmentation_core import run
-from segmentation_core.engine import Player
 from segmentation_core.agents import (
     AgentProtocol,
     ChaserBot,
-    SlothBot,
     RandomBot,
+    SlothBot,
     SnakeBot,
     TreeBot,
 )
+from segmentation_core.engine import Player
+
 from segmentation.agents import (
-    DFSAgent,
-    BFSAgent,
     AStarAgent,
+    BFSAgent,
+    DFSAgent,
     StudentAgent,
 )
 

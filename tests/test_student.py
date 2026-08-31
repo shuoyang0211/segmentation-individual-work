@@ -1,5 +1,6 @@
-from segmentation_core.engine import Player
 from segmentation_core.agents import SnakeBot
+from segmentation_core.engine import Player
+
 from segmentation.agents import StudentAgent
 from tests.utils import game_loop
 

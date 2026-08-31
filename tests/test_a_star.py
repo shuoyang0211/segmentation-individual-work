@@ -1,5 +1,6 @@
-from segmentation_core.engine import Player
 from segmentation_core.agents import SlothBot
+from segmentation_core.engine import Player
+
 from segmentation.agents import AStarAgent
 from tests.utils import game_loop
 
