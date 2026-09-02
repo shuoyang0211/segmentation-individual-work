@@ -8,64 +8,12 @@
 
 # Comments
 
-| [`Action`](#action) | [`Board`](#board) | [`GameState`](#gamestate) | [`Player`](#player) | [`PlayerState`](#playerstate) | [`Tile`](#tile) |
+| [`GameState`](#gamestate) | [`Player`](#player) | [`PlayerState`](#playerstate) | [`Board`](#board) | [`Tile`](#tile) | [`Action`](#action) |
 | :---: | :---: | :---: | :---: | :---: | :---: |
 
 <br>
 
 This file contains documentation for the classes defined in `segmentation_core.engine`.
-
-## `Action`
-
-```python
-class Action:
-    r"""
-    Represents a player action.
-    """
-    UP: Action = ...
-    DOWN: Action = ...
-    LEFT: Action = ...
-    RIGHT: Action = ...
-    STAY: Action = ...
-```
-
-## `Board`
-
-```python
-class Board:
-    r"""
-    Represents the state of the board.
-    Stores the dimensions, board layout, and state of each tile.
-    """
-
-    @property
-    def width(self) -> int:
-        r"""
-        Returns the width of the board.
-        """
-
-    @property
-    def height(self) -> int:
-        r"""
-        Returns the height of the board.
-        """
-
-    @property
-    def walls(self) -> set:
-        r"""
-        Returns the walls of the board as a set of (x, y) tuples.
-        """
-
-    def get_tile(self, x: int, y: int) -> Tile | None:
-        r"""
-        Returns the tile at position (x, y), or None if out of bounds.
-        """
-
-    def clone(self) -> Board:
-        r"""
-        Returns a clone of the board.
-        """
-```
 
 ## `GameState`
 
@@ -116,24 +64,6 @@ class GameState:
         r"""
         Returns the game state that would result from the current player taking
         the given action. Note that this does not mutate the current game state.
-
-        Game checks are performed in the following order:
-        1. If the active player moves onto the tile that the other player is on,
-           the active player wins.
-        2. If the active player moves onto a tile that is part of a trail,
-           the trail's owner loses.
-        3. (a) If the active player moves onto a tile in their claim, the area
-               enclosed by their trail and claim is filled as their claim.
-               If the other player is in this area, the other player loses.
-           (b) Otherwise, the active player's trail is extended to include
-               their new position.
-        4. If the active player claims a majority of non-wall tiles, they win.
-
-        Following these checks, the player's position is updated, and the turn
-        is passed to the other player. Games that are already in a terminal state
-        (i.e. have a winner) will not be changed. Attempting to move into a wall
-        or out-of-bounds will result in the player staying in place, passing the
-        turn to the other player.
         """
 
     def clone(self) -> GameState:
@@ -196,6 +126,44 @@ class PlayerState:
         """
 ```
 
+## `Board`
+
+```python
+class Board:
+    r"""
+    Represents the state of the board.
+    Stores the dimensions, board layout, and state of each tile.
+    """
+
+    @property
+    def width(self) -> int:
+        r"""
+        Returns the width of the board.
+        """
+
+    @property
+    def height(self) -> int:
+        r"""
+        Returns the height of the board.
+        """
+
+    @property
+    def walls(self) -> set:
+        r"""
+        Returns the walls of the board as a set of (x, y) tuples.
+        """
+
+    def get_tile(self, x: int, y: int) -> Tile | None:
+        r"""
+        Returns the tile at position (x, y), or None if out of bounds.
+        """
+
+    def clone(self) -> Board:
+        r"""
+        Returns a clone of the board.
+        """
+```
+
 ## `Tile`
 
 ```python
@@ -230,6 +198,20 @@ class Tile:
         r"""
         Returns a clone of the tile.
         """
+```
+
+## `Action`
+
+```python
+class Action:
+    r"""
+    Represents a player action.
+    """
+    UP: Action = ...
+    DOWN: Action = ...
+    LEFT: Action = ...
+    RIGHT: Action = ...
+    STAY: Action = ...
 ```
 
 <br>
