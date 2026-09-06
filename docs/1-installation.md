@@ -132,7 +132,7 @@ One major superpower of `uv` is that it automatically manages different versions
 uv sync
 ```
 
-This will install an appropriate Python version (3.13) and all dependencies, including our testing framework `pytest`. You should see a `.venv` folder appear in the Explorer.
+This will install an appropriate Python version (3.13) and all dependencies. You should see a `.venv` folder appear in the Explorer.
 
 ### Selecting your Python interpreter
 

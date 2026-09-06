@@ -13,13 +13,12 @@ def game_loop(
     Helper function to run a game loop between two agents in a given world.
 
     Parameters:
-       - filename: The name of the world file to load.
-       - agent_one_class: The class of the first agent (Player One).
-       - agent_two_class: The class of the second agent (Player Two).
+       `filename`: Path to the world file to load.
+       `agent_one_class`: Agent class of player one.
+       `agent_two_class`: Agent class of player two.
 
     Returns:
-       - The winning player (Player.PLAYER_ONE or Player.PLAYER_TWO).
-       - The list of actions taken by both players during the game.
+       The winning player and the list of actions taken by both players.
     """
     agent_one = agent_one_class(Player.PLAYER_ONE)
     agent_one_actions = []
