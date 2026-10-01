@@ -49,7 +49,7 @@ class StudentAgent:
         elif len(my_trail) >= 5:
             targets.update(my_claims)
             
-        # Grow: Gradually occupying more tiles when there's no opportunity
+        #3. Grow: Gradually occupying more tiles when there's no opportunity
         else:
             all_tiles = {(x, y) for x in range(board.width) for y in range(board.height)}
             unclaimed_tiles = all_tiles - set(board.walls) - set(my_claims)
@@ -62,9 +62,6 @@ class StudentAgent:
         if action is not None:
             return action
 
-        if len(my_trail) == 0:
-            return Action.STAY
-            
         return self.get_safe_fallback_move(state, enemy_pos, enemy_trail)
 
     def dynamic_bfs(self, state: GameState, targets: set, enemy_pos: tuple, enemy_trail: set) -> Action | None:
